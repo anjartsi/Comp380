@@ -1,0 +1,26 @@
+html{
+	-webkit-user-select:none;
+}
+
+#actionWindow{
+	text-align: center;
+}
+
+#actionCanvas{
+	background-color: white;
+	border: 1px solid black;
+	display: inline;
+}
+
+#dataCont{
+	text-align: center;
+	height: 400px;
+	overflow: auto;
+}
+
+#dataCont table{
+	-webkit-user-select:text;
+	width:500px;
+	border: 1px solid black;
+	margin:0px auto;
+}
