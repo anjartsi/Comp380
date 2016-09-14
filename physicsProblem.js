@@ -1,6 +1,6 @@
 
-var positionX = canvasWidth/2-100;
-var positionY = canvasHeight/2+50;
+var positionX = canvasWidth / 2 - 100;
+var positionY = canvasHeight / 2 + 50;
 
 var shadow = new Thing(positionX,positionY);
 shadow.bigness=25;
