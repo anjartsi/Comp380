@@ -12,8 +12,8 @@ ctx.scale(1,-1);
 Adding gridlines as a background image
 ****************************************/
 // Set this to true to draw gridlines
-var gl = false
-if(gl){
+var gl = true;
+if(gl) {
 	var gridlines = document.createElement('canvas');
 	gridlines.height=canvasHeight;
 	gridlines.width=canvasWidth;
@@ -134,5 +134,3 @@ var printData = function() {
 
 document.getElementById('playButton').addEventListener('mousedown', play);
 document.getElementById('pauseButton').addEventListener('mousedown', pause);
-document.getElementById('oneFrameForwardButton').addEventListener('mousedown', oneFrameForward);
-document.getElementById('printDataButton').addEventListener('mousedown', printData);

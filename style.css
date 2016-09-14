@@ -1,5 +1,8 @@
 html{
 	-webkit-user-select:none;
+	background-color: #221188;
+	color: white;
+	text-align: center;
 }
 
 #actionWindow{
@@ -18,9 +21,11 @@ html{
 	overflow: auto;
 }
 
-#dataCont table{
-	-webkit-user-select:text;
-	width:500px;
-	border: 1px solid black;
-	margin:0px auto;
+button {
+	width: 250px;
+	height: 75px;
+	border-radius: 10px;
+	margin: 10px;
+	font-size: 25px;
+	
 }

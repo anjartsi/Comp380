@@ -13,7 +13,7 @@ var Thing = function(x,y) {
 	this.pos = [x,y];
 	this.m = 1;
 	// Shape
-	this.shap=''
+	this.shap = '';
 	this.path = new Path2D();
 	this.bigness = 10;
 	// Array holding 4 edges of the object, top-right-bottom-left
@@ -157,7 +157,6 @@ Mobile.prototype.collide = function(otherObject,side,dt,dir) {
 	// The remaining time 
 	var dtLeft = 0;
 	if(otherObject instanceof Immobile) {
-		console.log('hi');
 		dx = Math.abs(this.edges[side]-otherObject.edges[otherObjEdge])
 		dtPrime = Math.abs(1000*dx/(this.v[xv]));
 		dtLeft = dt-dtPrime;
