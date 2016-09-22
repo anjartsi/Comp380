@@ -2,14 +2,14 @@
 									NavBar
 **************************************************************************/
 
-var nav = document.getElementById("navBar");
+var navBar = document.getElementById("navBar");
 var pageName = document.getElementById("pageName");
 
-nav.innerHTML += createLink("Chapter Select", "../Chapter-Select/index.html");
-nav.innerHTML += createLink("Chapter 1", "../chapter1/index.html");
-nav.innerHTML += createLink("Chapter 2", "../chapter2/index.html");
-nav.innerHTML += createLink("Chapter 3", "../chapter3/index.html");
-//nav.innerHTML += createLink("Blog", "../resume/index.html");
+navBar.innerHTML += createLink("Chapter Select", "../Chapter-Select/index.html");
+navBar.innerHTML += createLink("Chapter 1", "../chapter1/index.html");
+navBar.innerHTML += createLink("Chapter 2", "../chapter2/index.html");
+navBar.innerHTML += createLink("Chapter 3", "../chapter3/index.html");
+//navBar.innerHTML += createLink("Blog", "../resume/index.html");
 
 // returns a string of the form "<li><a href='url'>name [optional]</a></li>"
 function createLink(name, url, optional) {
