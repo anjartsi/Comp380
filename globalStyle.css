@@ -1,0 +1,119 @@
+/* COLORS START*/
+.color1 {background-color: #3F3D45;}
+.color2 {background-color: #313036;}
+.color3 {background-color: #27262A;}
+.color4 {background-color: #232227;}
+.color5 {background-color: #1B1922;}
+/* COLORS END */
+
+html{
+	color: #FFFFFF;
+	width: 1300px;
+	margin: auto;
+	font-family: Tahoma, Sans-Serif, Arial, Helvetica, "Times New Roman";
+	font-size: 1em;
+	overflow: scroll;
+}
+
+body{
+	margin: auto;
+	width: 1300px;
+}
+/* The nav bar*/
+nav{
+	position: fixed;
+	top: 0px;
+	width: 1300px;
+	z-index: 9999;
+	height: 60px;
+	font-size: 25px;
+	padding-left: 15px;
+}
+
+/* The list in navbar should fill up the entire nav bar*/
+nav ul{
+	height: 100%;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+nav ul li{
+	min-width: 75px	;
+	text-align: left;
+	display: inline-block;
+	/* Need to be inline-block so they're all on one line*/
+	padding-left: 6px;
+	padding-right: 4px;
+	border-left: 2px solid white;
+}
+
+/* The link to the current page should be highlighted */
+nav .active{
+	background-color: #000;
+}
+
+/* 
+	The links in the nav bar should be vertically centered
+		The block display allows the link to be hovered even when the 
+		mouse hovers the block (not just the text)
+*/
+nav a:link, nav a:visited{
+	padding-top: 15px;
+	height: 45px;
+	/*the above two have to add up to 60px because that's the height of the navbar*/
+	
+	text-decoration: none;
+	color: white;
+	display: block;
+}
+
+
+nav li:hover, nav a:hover{
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+nav a:active{
+	text-decoration: none;
+	color: blue;
+}
+
+/* Used to buffer top of page from under the navBar*/
+#buffer {
+	height: 60px;
+	width: 1000px;
+}
+
+/* +/- button for collapsable elements */
+.collapse-pm {
+	-webkit-user-select: none;	
+	font-weight: bold;
+	display: inline;
+	float:right;
+	width:50px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.hide {
+	display: none;
+}
+
+/* floats and clears */
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float:right;
+}
+
+.clearLeft {
+	clear: left;
+}
+
+.clearBoth {
+	clear:both;
+}

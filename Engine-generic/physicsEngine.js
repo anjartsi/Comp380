@@ -51,7 +51,7 @@ var dt; //milliseconds
 var timing = function() {
 	t1 = t2;
 	t2 = new Date();
-	dt = 17;
+	dt = 1000. / 60;
 	elapsedTime +=dt;
 }
 
@@ -90,48 +90,18 @@ var drawEverything = function() {
 }
 
 var play = function() {
-	playing = true;
-	t1 = new Date();
-	t2 = new Date();	
-	window.requestAnimationFrame(drawEverything);
-	console.log('playing')
+	if(!playing) {
+		playing = true;
+		t1 = new Date();
+		t2 = new Date();	
+		window.requestAnimationFrame(drawEverything);
+		console.log('playing')
+
+	}
 }
 
 var pause = function() {
 	playing = null;
-}
-
-var oneFrameForward = function() {
-	if(!playing){
-		dt=17;
-		elapsedTime +=dt;
-		ctx.clearRect(0,0,809,500);
-		ctx.drawImage(gridlines,0,0);	 
-		for (var i=0;i<allThings.length;i++) {
-			if(allThings[i] instanceof Mobile){
-				// Change properties of each mobile object
-				allThings[i].incrementTime(dt);
-				// Check for collisions against each immobile object
-				for(var j=0;j<allImmobiles.length;j++) {
-					allImmobiles[j].checkForCollisions(allThings[i]);
-				}
-			};
-			// Draw Everything
-			allThings[i].draw(ctx);
-		};
-	}
-}
-
-var printData = function() {
-	for (var i=0;i<red.dataT.length;i++) {
-		document.getElementById('dataBody').innerHTML+='<tr>'
-															+'<td>'+red.dataT[i]+'</td>'
-															+'<td>'+red.dataPos[i]+'</td>'
-															+'<td>'+red.dataV[i]+'</td>'
-															+'<td>'+red.dataF[i]+'</td>'
-														+'</tr>';
-
-	}
 }
 
 document.getElementById('playButton').addEventListener('mousedown', play);

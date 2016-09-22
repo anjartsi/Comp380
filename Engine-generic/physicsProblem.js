@@ -42,7 +42,7 @@ wall.initialize();
 var wall2 = new Wall(canvasWidth-23,25,canvasHeight-50);
 wall2.initialize();
 
-// var wall3 = new Wall(760,10,canvasHeight-20);
+var wall3 = new Wall(360,10,canvasHeight-350);
 // wall3.initialize();
 
 var floor = new Platform(25,23,canvasWidth-50);
