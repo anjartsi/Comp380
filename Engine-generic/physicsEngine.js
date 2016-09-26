@@ -90,19 +90,19 @@ var drawEverything = function() {
 }
 
 var play = function() {
-	if(!playing) {
-		playing = true;
-		t1 = new Date();
-		t2 = new Date();	
-		window.requestAnimationFrame(drawEverything);
-		console.log('playing')
-
-	}
-}
-
-var pause = function() {
-	playing = null;
+    if (!playing){
+        playing = true;
+        t1 = new Date();
+        t2 = new Date();
+        document.getElementById('playButton').innerHTML = 'Pause';
+        window.requestAnimationFrame(drawEverything);
+        console.log('playing')
+    }
+    else{
+        playing = false;
+        document.getElementById('playButton').innerHTML = 'Play';
+        console.log('paused')
+    }
 }
 
 document.getElementById('playButton').addEventListener('mousedown', play);
-document.getElementById('pauseButton').addEventListener('mousedown', pause);
