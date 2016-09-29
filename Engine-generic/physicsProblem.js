@@ -1,59 +1,67 @@
+var a = new Engine(document.getElementById("canvas1"), document.getElementById("btn1"));
+var b = new Engine(document.getElementById("canvas2"), document.getElementById("btn2"));
 
-var positionX = canvasWidth / 2 - 100;
-var positionY = canvasHeight / 2 + 50;
+a.create(500, 300, false);
 
-var shadow = new Thing(positionX,positionY);
+b.create(500, 300, false);
+
+var shadow = new Thing(100,100);
 shadow.bigness=25;
 shadow.col='black';
 shadow.path.rect((shadow.pos[0]-shadow.bigness),(shadow.pos[1]-shadow.bigness),(2*shadow.bigness),(2*shadow.bigness))
-shadow.initialize();
+shadow.initialize(a);
 
 
-var red = new Mobile(positionX,positionY);
+var red = new Mobile(100,100);
 red.bigness = 25;
 red.m = 1;
 red.v= [500,00];
 red.f=[0,-500];
 red.shap='square';
 red.col='red';
-red.initialize();
+red.initialize(a);
 
-var blue = new Mobile(positionX,25);
+var shadow2 = new Thing(100,100);
+shadow2.bigness=25;
+shadow2.col='black';
+shadow2.path.rect((shadow2.pos[0]-shadow2.bigness),(shadow2.pos[1]-shadow2.bigness),(2*shadow2.bigness),(2*shadow2.bigness))
+shadow2.initialize(b);
+
+
+var blue = new Mobile(100,100);
 blue.bigness = 25;
 blue.m = 1;
-blue.v= [500,0];
-blue.f=[0, 0];
+blue.v= [100,500];
+blue.f=[0,-500];
 blue.shap='square';
 blue.col='blue';
-blue.initialize();
+blue.initialize(b);
 
-var yellow = new Mobile(25,positionY);
-yellow.bigness = 25;
-yellow.m = 1;
-yellow.v= [0, 0];
-yellow.f=[0, -500];
-yellow.shap='square';
-yellow.col='yellow';
-yellow.initialize();
+var wall = new Wall(23,25,a.canvasHeight-50);
+wall.initialize(a);
 
-var wall = new Wall(23,25,canvasHeight-50);
-wall.initialize();
-
-var wall2 = new Wall(canvasWidth-23,25,canvasHeight-50);
-wall2.initialize();
-
-var wall3 = new Wall(360,10,canvasHeight-350);
-// wall3.initialize();
-
-var floor = new Platform(25,23,canvasWidth-50);
-floor.initialize();
-
-var ceiling = new Platform(25,canvasHeight-23,canvasWidth-50);
-ceiling.initialize();
+var wall2 = new Wall(a.canvasWidth-23,25,a.canvasHeight-50);
+wall2.initialize(a);
 
 
-// Draw everything 
-if(gl) {ctx.drawImage(gridlines,0,0);}
-for (var i = 0; i < allThings.length; i++) {
-	allThings[i].draw(ctx);
+var floor = new Platform(25,23,a.canvasWidth-50);
+floor.initialize(a);
+
+var ceiling = new Platform(25,a.canvasHeight-23,a.canvasWidth-50);
+ceiling.initialize(a);
+
+
+
+var wallB = new Wall(23,25,b.canvasHeight-50);
+wallB.initialize(b);
+var wall2B = new Wall(b.canvasWidth-23,25,b.canvasHeight-50);
+wall2B.initialize(b);
+var floorB = new Platform(25,23,b.canvasWidth-50);
+floorB.initialize(b);
+var ceilingB = new Platform(25,b.canvasHeight - 23,b.canvasWidth - 50);
+ceilingB.initialize(b);
+
+for (var i = 0; i < a.allThings.length; i++) {
+	a.allThings[i].draw(a.ctx);
+	b.allThings[i].draw(b.ctx);
 };
