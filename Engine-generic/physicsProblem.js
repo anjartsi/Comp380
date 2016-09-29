@@ -1,9 +1,12 @@
+var allEngines = [];
+
 var a = new Engine(document.getElementById("canvas1"), document.getElementById("btn1"));
+a.create(500, 300);
+allEngines.push(a);
 var b = new Engine(document.getElementById("canvas2"), document.getElementById("btn2"));
+b.create(500, 300);
+allEngines.push(b);
 
-a.create(500, 300, false);
-
-b.create(500, 300, false);
 
 var shadow = new Thing(100,100);
 shadow.bigness=25;
@@ -61,7 +64,22 @@ floorB.initialize(b);
 var ceilingB = new Platform(25,b.canvasHeight - 23,b.canvasWidth - 50);
 ceilingB.initialize(b);
 
-for (var i = 0; i < a.allThings.length; i++) {
-	a.allThings[i].draw(a.ctx);
-	b.allThings[i].draw(b.ctx);
-};
+
+// for (var i = 0; i < a.allThings.length; i++) {
+// 	a.allThings[i].draw(a.ctx);
+// };
+
+// for (var i = 0; i < b.allThings.length; i++) {
+// 	b.allThings[i].draw(b.ctx);
+// };
+
+
+for(var i = 0; i < allEngines.length; i++) {
+	var current = allEngines[i];
+	if(current.drawGridLines) {
+		current.ctx.drawImage(current.gridLinesImage, 0, 0);
+	}
+	for (var j = 0; j < current.allThings.length; j++) {
+		current.allThings[j].draw(current.ctx);
+	}
+}

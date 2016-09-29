@@ -22,64 +22,66 @@ var Engine = function(elem, buttonElem) {
 	this.allImmobiles = [];	
 }
 
-Engine.prototype.create = function(height, width, drawGridLines) {
-	this.canvasHeight = height;
-	this.canvasWidth = width;
+Engine.prototype.create = function(height, width) {
+	var engine = this;
+	engine.canvasHeight = height;
+	engine.canvasWidth = width;
 
-	this.canvas.height = height;
-	this.canvas.width = width;
+	engine.canvas.height = height;
+	engine.canvas.width = width;
 
 	// rotate the canvas
-	this.ctx.translate(0, height);
-	this.ctx.scale(1,-1);
+	engine.ctx.translate(0, height);
+	engine.ctx.scale(1,-1);
+
+
 	// prepare gridlines
-	this.drawGridLines = drawGridLines;
-	if(this.drawGridLines) {
-		this.gridlines(this.gridLineDistance);
-	}
+	engine.gridLinesImage = document.createElement('canvas');
+	engine.gridLinesImage.height = this.canvasHeight;
+	engine.gridLinesImage.width = this.canvasWidth;
+	engine.prepareGridLines(engine.gridLineDistance);
+
 	// add event listener to button
-	var engine = this;
-	this.button.addEventListener('click', function() {
+	engine.button.addEventListener('click', function() {
 		engine.play();
 	});
 }
 
-Engine.prototype.gridlines = function(distance) {
-	var gridlines = document.createElement('canvas');
-	gridlines.height = this.canvasHeight;
-	gridlines.width = this.canvasWidth;
+Engine.prototype.prepareGridLines = function(distance) {
+	var gridlines = this.gridLinesImage;
 	var gridCtx = gridlines.getContext('2d');
 
-	var pos; 
 	gridCtx.strokeStyle = 'rgba(150,150,150,1)';
+	gridCtx.translate(0, this.canvasHeight);
+	gridCtx.scale(1,-1)
 	gridCtx.setLineDash([2, 2]);
 	gridCtx.beginPath();
 	gridCtx.translate(0, 0);
 	
+	var pos; 
 	// draw vertical lines
 	pos = 1;
-	while(pos < this.width) {
+	while(pos < this.canvasWidth) {
 		gridCtx.moveTo(pos, 0);
-		gridCtx.lineTo(pos, this.height);
+		gridCtx.lineTo(pos, this.canvasHeight);
 		gridCtx.stroke();
 		pos += distance;
 	}
 	// draw horizontal lines
 	pos = 1;
-	while(pos < this.height) {
+	while(pos < this.canvasHeight) {
 		gridCtx.moveTo(0, pos);
-		gridCtx.lineTo(this.width, pos);
+		gridCtx.lineTo(this.canvasWidth, pos);
 		gridCtx.stroke();
 		pos += distance;
 	}
-	this.gridlinesImage = gridlines;
 }
 
 Engine.prototype.drawEverything = function(engine) {
 	if (engine.playing) {
 		engine.ctx.clearRect(0, 0, engine.canvasWidth, engine.canvasHeight);
-		if(engine.gridlines) {
-			// engine.ctx.drawImage(engine.gridLinesImage, 0, 0);
+		if(engine.drawGridLines) {
+			engine.ctx.drawImage(engine.gridLinesImage, 0, 0);
 		}
 		engine.timing();
 		for(var i = 0; i < engine.allThings.length; i++) {
