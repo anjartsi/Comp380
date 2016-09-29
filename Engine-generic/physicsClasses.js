@@ -1,9 +1,4 @@
 "use strict"
-// Array containing all the objects that exist
-var allThings = [];
-var allMobiles = [];
-var allImmobiles = [];
-
 /*****************************************************************************************************
 THINGS
 If it's a thing, it belongs here
@@ -28,8 +23,8 @@ Thing.prototype.draw = function(ctx) {
 	ctx.fill(this.path);
 	ctx.restore;
 }
-Thing.prototype.initialize = function() {
-	allThings.push(this);
+Thing.prototype.initialize = function(engine) {
+	engine.allThings.push(this);
 	this.setEdges();
 }
 
@@ -74,9 +69,9 @@ Mobile.prototype.constructor = Mobile;
 // First method that should be called for each object. 
 // Adds the object to the list(s) it belongs to.
 // Creates the path for the object's shape .
-Mobile.prototype.initialize = function() {
-	allThings.push(this);
-	allMobiles.push(this);
+Mobile.prototype.initialize = function(engine) {
+	engine.allThings.push(this);
+	engine.allMobiles.push(this);
 	this.setEdges();
 	}
 
@@ -132,7 +127,7 @@ Mobile.prototype.incrementTime = function(dt) {
 };
 
 // Checks for collisions and sets the willCollideX or willCollideY to true if there is a collision 
-Mobile.prototype.checkForCollisions = function(otherObject,dt) {
+Mobile.prototype.checkForCollisions = function(otherObject, dt) {
 	// Checks for top, then right, then bottom, then left collision
 	// The top and bottom edge (edge[0], edge[2]) are related to pos[1] and v[1]
 	// The right and left edge (edge[1], edge[3]) are related to pos[0] and v[0]
@@ -217,9 +212,9 @@ var Immobile = function(x, y, bigness) {
 
 Immobile.prototype = Object.create(Thing.prototype)
 Immobile.prototype.constructor = Immobile;
-Immobile.prototype.initialize = function() {
-	allThings.push(this);
-	allImmobiles.push(this);
+Immobile.prototype.initialize = function(engine) {
+	engine.allThings.push(this);
+	engine.allImmobiles.push(this);
 }
 
 /*********
@@ -247,10 +242,10 @@ Wall.prototype.setEdges = function() {
 	this.edges[3] = this.pos[0]-this.thickness; // left edge
 }
 
-Wall.prototype.initialize = function() {
+Wall.prototype.initialize = function(engine) {
 	this.setEdges();
-	allThings.push(this);
-	allImmobiles.push(this);
+	engine.allThings.push(this);
+	engine.allImmobiles.push(this);
 	this.path.rect(this.edges[3],this.edges[2],(2*this.thickness),(this.bigness));
 
 }
@@ -287,10 +282,10 @@ Platform.prototype.setEdges = function() {
 	this.edges[3] = this.pos[0]; // left edge
 }
 
-Platform.prototype.initialize = function() {
+Platform.prototype.initialize = function(engine) {
 	this.setEdges();
-	allThings.push(this);
-	allImmobiles.push(this);
+	engine.allThings.push(this);
+	engine.allImmobiles.push(this);
 	this.path.rect(this.edges[3],this.edges[2],(this.bigness),(2*this.thickness));
 
 }
