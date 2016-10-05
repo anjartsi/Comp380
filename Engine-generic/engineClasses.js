@@ -1,27 +1,37 @@
+/*****************************************************************************************************
+ENGINE
+A physics engine
+*****************************************************************************************************/
 var Engine = function(elem, buttonElem) {
-	this.canvas = elem;
-	this.ctx = elem.getContext('2d');
 	this.button = buttonElem;
 
+	// Canvas
+	this.canvas = elem;
+	this.ctx = elem.getContext('2d');
 	this.ctx.fillStyle = "black";
 	this.canvasHeight;
 	this.canvasWidth;
 
+	// Gridlines
 	this.drawGridLines = false;
 	this.gridLineDistance = 25;
 	this.gridLinesImage;
 	this.playing = null;
 
+	// Timing
 	this.elapsedTime = 0; // In milliseconds
 	this.t1;
 	this.t2;
-	this.dt; //milliseconds
+	this.dt = 1000.0 / 60; // In milliseconds
 
+	// Objects inside the engine
 	this.allThings = [];
 	this.allMobiles = [];
 	this.allImmobiles = [];	
 }
-
+/*************
+ENGINE Methods
+*************/
 Engine.prototype.create = function(height, width) {
 	var engine = this;
 	engine.canvasHeight = height;
@@ -107,9 +117,9 @@ Engine.prototype.drawEverything = function(engine) {
 }
 
 Engine.prototype.timing = function() {
-	this.t1 = this.t2;
-	this.t2 = new Date();
-	this.dt = 1000. / 60;
+	// this.t1 = this.t2;
+	// this.t2 = new Date();
+	// this.dt = this.t2 - this.t1;
 	this.elapsedTime += this.dt;
 }
 
@@ -131,3 +141,56 @@ Engine.prototype.play = function() {
         console.log('paused at ' + this.elapsedTime);
     }
 }
+
+/*****************************************************************************************************
+STATIC ENGINE
+A physics engine
+*****************************************************************************************************/
+var StaticEngine = function(elem, buttonElem) {
+	Engine.call(this, elem, buttonElem);
+	this.button = buttonElem;
+
+	// Canvas
+	this.canvas = elem;
+	this.ctx = elem.getContext('2d');
+	this.ctx.fillStyle = "black";
+	this.canvasHeight;
+	this.canvasWidth;
+
+	// Gridlines
+	this.drawGridLines = false;
+	this.gridLineDistance = 25;
+	this.gridLinesImage;
+	this.playing = null;
+
+	// Timing
+	this.elapsedTime = 0; // In milliseconds
+	this.t1;
+	this.t2;
+	this.dt; //milliseconds
+
+	// Objects inside the engine
+	this.allThings = [];
+	this.allMobiles = [];
+	this.allImmobiles = [];	
+
+	//new
+	this.maxTime;
+	this.beginning = [];
+}
+
+StaticEngine.prototype = Object.create(Engine.prototype)
+StaticEngine.prototype.constructor = StaticEngine;
+
+StaticEngine.prototype.setup = function(maxTime) {
+	var engine = this;
+	this.maxTime = maxTime;
+	for (var i = 0; i < this.allMobiles.length; i++) {
+		var twin = new Mobile;
+		// twin = this.allMobiles[i].makeClone();
+		this.beginning.push(twin);
+
+		console.log(twin);
+	}	
+}
+
