@@ -32,7 +32,7 @@ var Engine = function(elem, buttonElem) {
 /*************
 ENGINE Methods
 *************/
-Engine.prototype.create = function(height, width) {
+Engine.prototype.create = function(width, height) {
 	var engine = this;
 	engine.canvasHeight = height;
 	engine.canvasWidth = width;
@@ -190,7 +190,7 @@ StaticEngine.prototype.setup = function(maxTime) {
 		// twin = this.allMobiles[i].makeClone();
 		this.beginning.push(twin);
 
-		console.log(twin);
+		// console.log(twin);
 	}	
 }
 
