@@ -19,6 +19,16 @@ body{
 	margin: auto;
 	width: 1300px;
 }
+
+a:link{
+	/* unvisited link color*/
+	color: yellow;
+}
+
+a:visited{
+	/* visited link color */
+	color: yellow;
+}
 /* The nav bar*/
 nav{
 	position: fixed;
