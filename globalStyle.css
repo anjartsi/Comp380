@@ -96,6 +96,12 @@ nav a:active{
 	width: 1000px;
 }
 
+/* Nav bar for chapter sections */
+#chapterNav {
+	position: relative;
+	z-index: 1;
+}
+
 /* +/- button for collapsable elements */
 .collapse-pm {
 	-webkit-user-select: none;	
