@@ -17,10 +17,10 @@ var randomInt = function(min, max){
   return Math.floor((min + 0.5) + (max - min) * randomNotReally());
 }
 
+// This function combines the randomInt() and randomNotReally() functions in
+// globalFunctions.js to generate a random number in the range between min and max inclusive.
+// wait is the number of milliseconds it takes to change the result. 1000 ms = 1 s. 86400000 ms = 1 day.
 function randomNum(min, max){
-	// This function combines the randomInt() and randomNotReally() functions in
-	// globalFunctions.js to generate a random number in the range between min and max inclusive.
-	// wait is the number of milliseconds it takes to change the result. 1000 ms = 1 s.
 	var wait = 5000;
 	var result;
   	var d1 = new Date().getTime();
@@ -30,6 +30,22 @@ function randomNum(min, max){
  	d1 = d1 - Math.floor(d1);
  	result = Math.floor(((min + 0.5) + (max - min) * d1));
  	return result;
+}
+
+// ~~~~~~~~~~~~~~~~~ Answer-checking function for sample problems ~~~~~~~~~~~~~~~~~~~~~
+
+// inputField is the string for the element ID where the user's answer is typed in.
+// elementOutput is the element that displays whether the answer is correct or not.
+function answerCheck(inputField, answer, elementOutput){
+	var input = document.getElementById(inputField).value;
+	if (input == answer){
+		elementOutput.innerHTML = "Correct!";
+		elementOutput.setAttribute("style", "color: #1aff1a");
+	}
+	else{
+		elementOutput.innerHTML = "Incorrect, please try again";
+		elementOutput.setAttribute("style", "color: #ff3333");
+	}
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
