@@ -45,6 +45,7 @@ function answerCheck(inputField, answer, elementOutput){
 	else{
 		elementOutput.innerHTML = "Incorrect, please try again";
 		elementOutput.setAttribute("style", "color: #ff3333");
+		
 	}
 }
 

@@ -1,3 +1,7 @@
 body {
 	background-color: blue;
 }
+
+input {
+	margin-right: 10px;
+}

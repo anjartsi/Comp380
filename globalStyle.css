@@ -114,6 +114,19 @@ nav a:active{
 	vertical-align: middle;
 }
 
+.probNum{
+	color: yellow;
+	font-weight: bold;
+}
+
+.probBtn{
+	border-radius: 8px;
+	width: 100px;
+	height: 25px;
+	margin: 10px
+	font-size: 25px;
+}
+
 .hide {
 	display: none;
 }
