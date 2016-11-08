@@ -13,6 +13,7 @@ var Thing = function(x,y) {
 	this.bigness = 10;
 	// Array holding 4 edges of the object, top-right-bottom-left
 	this.edges = [];
+	this.col = "black";
 }
 
 
@@ -107,7 +108,7 @@ Wall.prototype.draw = function(ctx) {
 /*********
 Platforms
 *********/
-var Platform = function(x,y,bigness) {
+var Platform = function(x ,y ,bigness) {
 	Immobile.call(this,x,y,bigness);
 	// Position
 	this.position[0] = x;

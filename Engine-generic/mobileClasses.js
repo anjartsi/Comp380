@@ -59,7 +59,7 @@ Mobile.prototype.draw = function(ctx) {
 	this.setEdges();
 	this.makePath();
 	ctx.save();
-	ctx.strokeStyle='black';
+	ctx.strokeStyle = 'black';
 	ctx.fillStyle = this.col;
 	ctx.stroke(this.path);
 	ctx.fill(this.path);
@@ -122,7 +122,7 @@ Mobile.prototype.checkForCollisions = function(otherObject, dt) {
 // Elastic collision
 // input: side is the index of the edges array that had the collision
 // input: dir is the direction of collision. +1 if it's up or to the right, -1 otherwise
-Mobile.prototype.collide = function(otherObject,side,dt,dir) {
+Mobile.prototype.collide = function(otherObject, side, dt, dir) {
 	var xv = (side + 1) % 2;
 	var otherObjEdge = (side + 2) % 4;
 	// The distance between this object and the other in the last instance before their collision
@@ -156,5 +156,80 @@ Mobile.prototype.collide = function(otherObject,side,dt,dir) {
 	}
 	else {
 		this.willCollide[(side + 1) % 2] = false;
+	}
+}
+
+
+/*****************************************************************************************************
+Sphere
+Mobile objects that are circular in shape
+*****************************************************************************************************/
+var Sphere = function(x, y) {
+	Mobile.call(this, x, y);
+
+}
+Sphere.prototype = Object.create(Mobile.prototype)
+Sphere.prototype.constructor = Sphere;
+
+Sphere.prototype.makePath = function() {
+	this.path = new Path2D();
+	this.path.arc(this.position[0], this.position[1], this.bigness, 0, 2 * Math.PI, true);
+}
+
+Sphere.prototype.checkForCollisions2 = function(otherObject, dt) {
+	// Checks for top, then right, then bottom, then left collision
+	// The top and bottom edge (edge[0], edge[2]) are related to position[1] and velocity[1]
+	// The right and left edge (edge[1], edge[3]) are related to position[0] and velocity[0]
+	var a, b, c, d, e;
+	// top of circle is below bottom edge of otherObject
+	b = this.position[1] + this.bigness < otherObject.edges[2];
+
+	// bottom of circle is above bottom edge of otherObject 
+	c = this.position[1] - this.bigness > otherObject.edges[0];
+
+	// right of circle is below left edge of otherObject
+	d = this.position[0] + this.bigness < otherObject.edges[3];
+
+	// left of circle is above right edge of otherObject
+	e = this.position[0] - this.bigness > otherObject.edges[1];
+
+	// going to the right
+	if(this.velocity[0] > 0) {
+		// right end of circle touching left edge of otherObject
+		a = Math.abs(this.position[0] - otherObject.edges[3]) < this.bigness;
+		if( a & !(b||c) ) {
+			this.willCollide[0] = true;
+			this.collide(otherObject, 1, dt, 1);
+			console.log(otherObject);
+		}
+	}
+	// going to the left
+	else if (this.velocity[0] < 0) {
+		a = Math.abs(this.position[0] - otherObject.edges[1]) < this.bigness;
+		if(a & !(b || c)) {
+			this.willCollide[0] = true;
+			this.collide(otherObject, 3, dt, -1);
+			console.log(otherObject);
+		}
+	}
+
+	// going up
+	if (this.velocity[1] > 0) {
+		// top edge of circle touching bottome edge of otherObject
+		a = Math.abs(this.position[1] - otherObject.edges[2]) < this.bigness;
+		if(a & !(d || e)) {
+			this.willCollide[1] = true;
+			this.collide(otherObject, 0, dt, 1)
+			console.log(otherObject);
+		}
+	}
+	else if (this.velocity[1] < 0) {
+		// left edge of circle touching right edge of otherObject
+		a = Math.abs(this.position[1] - otherObject.edges[0]) < this.bigness;
+		if(a & !(d || e)) {
+			this.willCollide[1] = true;
+			this.collide(otherObject, 2, dt, -1)
+			console.log(otherObject);
+		}
 	}
 }
