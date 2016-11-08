@@ -68,3 +68,12 @@ function toggleClass(el,cls) {
   else{addClass(el,cls)};
 }
 
+/*************************************************************************
+                  Vertical Align: Center
+Vertically centers an element based on its height and its parent element height
+**************************************************************************/
+function verticalCenter(elem) {
+  var elemHeight = elem.clientHeight;
+  var containerHeight = elem.parentElement.clientHeight;
+  elem.style.marginTop = ( containerHeight - elemHeight ) / 2 + "px";
+}
