@@ -14,6 +14,7 @@ var Thing = function(x,y) {
 	// Array holding 4 edges of the object, top-right-bottom-left
 	this.edges = [];
 	this.col = "black";
+	this.engine;
 }
 
 
@@ -27,6 +28,7 @@ Thing.prototype.draw = function(ctx) {
 }
 Thing.prototype.addToEngine = function(engine) {
 	engine.allThings.push(this);
+	this.engine = engine;
 	this.setEdges();
 }
 

@@ -20,7 +20,7 @@ blue.shap = 'square';
 blue.col = 'blue';
 blue.addToEngine(a);
 
-var red = new Sphere(100,200);
+var red = new Sphere(250,200);
 red.bigness = 25;
 red.mass = 1;
 red.velocity  = [250, 00];
@@ -38,17 +38,17 @@ var ceiling = new Platform(25,a.canvasHeight-23,a.canvasWidth-50);
 
 wall.addToEngine(a);
 wall2.addToEngine(a);
-// line.addToEngine(a);
+line.addToEngine(a);
 floor.addToEngine(a);
 ceiling.addToEngine(a);
 
 
 for(var i = 0; i < allEngines.length; i++) {
-	var current = allEngines[i];
-	if(current.drawGridLines) {
-		current.ctx.drawImage(current.gridLinesImage, 0, 0);
-	}
-	for (var j = 0; j < current.allThings.length; j++) {
-		current.allThings[j].draw(current.ctx);
-	}
+	allEngines[i].drawEverything();
 }
+
+var sliderCont = document.getElementById("sliderContainer");
+
+
+red.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m")
+red.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m")
