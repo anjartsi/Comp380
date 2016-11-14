@@ -49,6 +49,11 @@ function answerCheck(inputField, answer, elementOutput){
 	}
 }
 
+// ~~~~~~~~~~~~~~~~~~~ Hint-displaying function ~~~~~~~~~~~~~~~~~~~~~~
+function showHint(hint){
+  alert(hint);
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
 function addClass(el, cls) {
   var classes = el.className.split(' ');

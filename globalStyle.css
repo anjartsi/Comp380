@@ -119,6 +119,14 @@ nav a:active{
 	font-weight: bold;
 }
 
+.hintBtn{
+	border-radius: 8px;
+	width: 100px;
+	height: 25px;
+	margin: 10px
+	font-size: 25px;
+}
+
 .probBtn{
 	border-radius: 8px;
 	width: 100px;
