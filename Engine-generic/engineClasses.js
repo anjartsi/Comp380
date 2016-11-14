@@ -87,7 +87,17 @@ Engine.prototype.prepareGridLines = function(distance) {
 	}
 }
 
-Engine.prototype.drawEverything = function(engine) {
+Engine.prototype.drawEverything = function() {
+	this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+	if(this.drawGridLines) {
+		this.ctx.drawImage(this.gridLinesImage, 0, 0);
+	}
+	for (var i = 0; i < this.allThings.length; i++) {
+		this.allThings[i].draw(this.ctx);
+	}
+}
+
+Engine.prototype.animate = function(engine) {
 	if (engine.playing) {
 		engine.ctx.clearRect(0, 0, engine.canvasWidth, engine.canvasHeight);
 		if(engine.drawGridLines) {
@@ -111,7 +121,7 @@ Engine.prototype.drawEverything = function(engine) {
 			engine.allThings[i].draw(engine.ctx);
 		}// end for(i)
 		engine.playing = window.requestAnimationFrame(function() {
-			engine.drawEverything(engine)
+			engine.animate(engine)
 		});
 	} // end if(engine.playing)
 }
@@ -130,7 +140,7 @@ Engine.prototype.play = function() {
         this.button.innerHTML = 'Pause';
         var engine = this;
         this.playing = window.requestAnimationFrame(function() {
-        	return engine.drawEverything(engine);
+        	return engine.animate(engine);
         });
         console.log('playing');
     }
