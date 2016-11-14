@@ -30,11 +30,13 @@ a:visited{
 	color: yellow;
 }
 /* The nav bar*/
-nav{
+#navBar {
 	position: fixed;
 	top: 0px;
-	width: 1300px;
 	z-index: 9999;
+}
+nav{
+	width: 1300px;
 	height: 60px;
 	font-size: 25px;
 	padding-left: 15px;
@@ -42,7 +44,6 @@ nav{
 
 /* The list in navbar should fill up the entire nav bar*/
 nav ul{
-	height: 100%;
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
@@ -92,7 +93,7 @@ nav a:active{
 
 /* Used to buffer top of page from under the navBar*/
 #buffer {
-	height: 60px;
+	height: 6px;
 	width: 1000px;
 }
 
@@ -111,6 +112,19 @@ nav a:active{
 	width:50px;
 	text-align: right;
 	vertical-align: middle;
+}
+
+.probNum{
+	color: yellow;
+	font-weight: bold;
+}
+
+.probBtn{
+	border-radius: 8px;
+	width: 100px;
+	height: 25px;
+	margin: 10px
+	font-size: 25px;
 }
 
 .hide {
