@@ -50,9 +50,7 @@ Mobile.prototype.setEdges = function() {
 
 Mobile.prototype.makePath = function() {
 	this.path= new Path2D();
-	if (this.shap=='square') {
-		this.path.rect(this.edges[3],this.edges[2],(2 * this.bigness),(2 * this.bigness));
-	}
+	this.path.rect(this.edges[3],this.edges[2],(2 * this.bigness),(2 * this.bigness));
 }
 
 // Draws the object based on its color and path
@@ -212,6 +210,7 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 	var mobile = this;
 	var row = document.createElement("div");
 	row.className = "controlRow";
+	row.style.color = this.col;
 	// create slider
 	var slider = document.createElement("input");
 	slider.type = "range";
@@ -257,11 +256,20 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 	})
 
 	num.addEventListener("input", function() {
+		var inp = parseInt(num.value);
+		if(inp > max) {
+			inp = max;
+			num.value = max;
+		}
+		else if (inp < min)  {
+			inp = min;
+			num.value = min;
+		}
 		if(index != -1) 
-			mobile[variable][index] = num.value;
+			mobile[variable][index] = inp;
 		else 
-			mobile[variable] = num.value;
-		slider.value = num.value;
+			mobile[variable] = inp;
+		slider.value = inp;
 		mobile.engine.drawEverything();
 	})
 
