@@ -44,7 +44,8 @@ prob3.innerHTML = problem3();
 var t3;
 var x3;
 var answer3;
-var hint3 = "Average acceleration is found by dividing the change in velocity (change in position/change in time) by the change in time. At rest, the car's velocity is 0 km/h.\n\nRemember that the kilometers must be changed to meters, and the hours must be changed to seconds.";
+var hint3 = "Average acceleration is found by dividing the change in velocity (change in position/change in time) by the change in time. At rest, the car's velocity is 0 km/h."
+			+ "\n\nRemember that the kilometers must be changed to meters, and the hours must be changed to seconds.";
 
 function problem3(){
 	var question3 = "";
