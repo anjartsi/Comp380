@@ -1,9 +1,24 @@
 var allEngines = [];
 
-var a = new Engine(document.getElementById("canvas1"), document.getElementById("btn1"));
+var b = new StaticEngine(document.getElementById("canvas1"), document.getElementById("btn1"));
+b.create(500, 600);
+b.setup(2000);
+b.drawGridLines = true;
+
+
+allEngines.push(b);
+
+var black = new StaticMobile(400, 500);
+black.col = 'black';
+black.velocity = [-100, 0];
+black.acceleration = [0, -500];
+black.addToEngine(b);
+
+
+
+var a = new Engine(document.getElementById("canvas2"), document.getElementById("btn2"));
 a.create(500, 600);
 a.drawGridLines = true;
-allEngines.push(a);
 
 var shadow = new Thing(100, 200);
 shadow.bigness=25;
@@ -43,6 +58,9 @@ floor.addToEngine(a);
 ceiling.addToEngine(a);
 
 
+
+allEngines.push(a);
+
 for(var i = 0; i < allEngines.length; i++) {
 	allEngines[i].drawEverything();
 }
@@ -52,3 +70,4 @@ var sliderCont = document.getElementById("sliderContainer");
 
 red.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m")
 red.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m")
+
