@@ -172,7 +172,7 @@ var StaticEngine = function(elem, buttonElem) {
 	this.elapsedTime = 0; // In milliseconds
 	this.t1;
 	this.t2;
-	this.dt; //milliseconds
+	this.dt = 1000.0 / 60; //milliseconds
 
 	// Objects inside the engine
 	this.allThings = [];
@@ -189,17 +189,11 @@ StaticEngine.prototype.constructor = StaticEngine;
 StaticEngine.prototype.setup = function(maxTime) {
 	var engine = this;
 	this.maxTime = maxTime;
-	for (var i = 0; i < this.allMobiles.length; i++) {
-		var twin = new Mobile;
-		// twin = this.allMobiles[i].makeClone();
-		this.beginning.push(twin);
-
-		// console.log(twin);
-	}	
 }
 
 
-Engine.prototype.play = function() {
+
+StaticEngine.prototype.play = function() {
     if (!this.playing){
         this.button.innerHTML = 'Pause';
         var engine = this;
@@ -216,7 +210,7 @@ Engine.prototype.play = function() {
     }
 }
 
-Engine.prototype.timing = function() {
+StaticEngine.prototype.timing = function() {
 	this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
 }
 

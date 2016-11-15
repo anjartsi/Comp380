@@ -2,7 +2,7 @@ var allEngines = [];
 
 var b = new StaticEngine(document.getElementById("canvas1"), document.getElementById("btn1"));
 b.create(500, 600);
-b.setup(2000);
+b.setup(1000);
 b.drawGridLines = true;
 
 
@@ -31,7 +31,6 @@ blue.bigness = 25;
 blue.mass = 1;
 blue.velocity  = [250, 00];
 blue.acceleration = [0, -500];
-blue.shap = 'square';
 blue.col = 'blue';
 blue.addToEngine(a);
 
