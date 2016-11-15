@@ -5,6 +5,7 @@ prob1.innerHTML = problem1();
 var x1;
 var y1;
 var answer1;
+var hint1 = "The starting position is 0 meters in this case. Add the amount of movement east, and subtract the amount of movement west.";
 
 function problem1(){
 	var question1 = "";
@@ -23,6 +24,7 @@ prob2.innerHTML = problem2();
 var t2;
 var x2;
 var answer2;
+var hint2 = "The average speed is calculated by dividing the distance traveled by the change in time.\n\nRemember, 1 mile is 5280 feet, and 1 meter is about 3.28 feet.";
 
 function problem2(){
 	var question2 = "";
@@ -42,6 +44,7 @@ prob3.innerHTML = problem3();
 var t3;
 var x3;
 var answer3;
+var hint3 = "Average acceleration is found by dividing the change in velocity (change in position/change in time) by the change in time. At rest, the car's velocity is 0 km/h.\n\nRemember that the kilometers must be changed to meters, and the hours must be changed to seconds.";
 
 function problem3(){
 	var question3 = "";

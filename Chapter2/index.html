@@ -11,7 +11,7 @@
 <body class="color1">
 	<!-- The navBar will be created by navBar.js -->
 	<nav class="color2">
-		<ul id="navBar"></ul>
+		<ul id="navBar" class="color2"></ul>
 	</nav>	
 	<!-- buffer space between the navBar and the rest of the page -->
 	<div id="buffer"></div>
@@ -20,7 +20,7 @@
 	<header>
 	<h1>Chapter 2: Kinematics - Explanation</h1>
 	<nav class="color3">
-		<ul id="chapterNav"></ul>
+		<ul id="chapterNav" ></ul>
 	</nav>
 	</header>
 
@@ -38,10 +38,25 @@
 		<section>
 			<h2>2-1 Position, Displacement, and Distance</h2>
 			<ul>
-				<li>Position: The <b>position</b> of an object describes where the object is relative to a reference frame</li>
+				<li>
+				Position: The <b>position</b> of an object describes where the object is relative to a reference frame
+				</li>
 				<ul>
 					<li><b>Reference frame</b> means another object that we can use for comparison. </li>
 					<li>Some reference frames can be stationary, while other reference frames can be moving. </li>
+					<li>
+						Use the sliders to change the position of the block below
+						<div class="canvasCont">
+							<div class="color4">
+								<canvas id="positionCanvas" style=""></canvas>
+								<br>
+								<div class="controls" id="positionControls"></div>
+								<br>
+								<button id="positionCanvasBtn" class="hide">Play</button>
+							</div>
+						</div>
+					</li>
+					<li>In the example above, the reference frame we are using is the x-y plane, with the bottom-right corner being the (0,0) point</li>
 				</ul>
 				<li> 
 					Displacement: When an object moves from one position to another, 
@@ -61,4 +76,9 @@
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="explanation.js"></script>
+
 </html>

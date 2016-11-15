@@ -5,3 +5,49 @@ body {
 input {
 	margin-right: 10px;
 }
+
+.canvasCont {
+	width: 1000px;
+	text-align: center;
+}
+
+.canvasCont div {
+	display: inline-block;
+}
+
+.controls {
+	display: inline-block;
+	color: white;
+	width: 450px;
+}
+
+.controls .controlRow {
+	margin: 0px 5px 0px 5px;
+	text-align: left;
+}
+.controls label {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 150px;
+}
+
+.controls .sliderInput {
+	width: 125px;
+}
+
+.controls .numberInput {
+	width: 40px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.controls .unit {
+	float: right;
+	text-align: middle;
+	margin-right: 9px;
+	vertical-align: bottom;
+}
+button {
+	margin-right: 10px;
+}
