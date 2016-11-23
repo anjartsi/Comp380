@@ -22,6 +22,32 @@ createLink(navBar, "Chapter Select", "../Chapter-Select/index.html");
 createLink(navBar, "Chapter 1", "../chapter1/index.html");
 createLink(navBar, "Chapter 2", "../chapter2/index.html");
 createLink(navBar, "Chapter 3", "../chapter3/index.html");*/
+
+/*************************************************************************
+||||||||||||||||||||||||||||STICKY NAVBAR|||||||||||||||||||||||||||||||||
+*************************************************************************/
+jQuery(document).ready(function()
+{
+  var navOffset = jQuery("#navBar").offset().top;
+  jQuery("#navBar").wrap('<div class="nav-placeholder"></div>');
+  jQuery(".nav-placeholder").height(jQuery("#navBar").outerHeight());
+
+  jQuery(window).scroll(function()
+  {
+    var scrollPos = jQuery(window).scrollTop();
+
+    if(scrollPos >= navOffset)
+    {
+      jQuery("#navBar").addClass("fixed");
+    }
+
+    else
+    {
+      jQuery("#navBar").removeClass("fixed");
+    }
+  });
+  
+});
 /*************************************************************************
 							Collapsable
 To make elements collapsable: 
