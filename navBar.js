@@ -1,9 +1,10 @@
 /*************************************************************************
 									NavBar
 **************************************************************************/
-var navBar = document.getElementById("navBar");
+/*var navBar = document.getElementById("navBar");
 var chapterName = document.getElementById("chapterName");
-var createLink = function (parent, name, url, optional) {
+var createLink = function (parent, name, url, optional) 
+{
   var listItem = document.createElement("li");
   var newLink = document.createElement("a");
   newLink.innerHTML = name;
@@ -20,7 +21,33 @@ var createLink = function (parent, name, url, optional) {
 createLink(navBar, "Chapter Select", "../Chapter-Select/index.html");
 createLink(navBar, "Chapter 1", "../chapter1/index.html");
 createLink(navBar, "Chapter 2", "../chapter2/index.html");
-createLink(navBar, "Chapter 3", "../chapter3/index.html");
+createLink(navBar, "Chapter 3", "../chapter3/index.html");*/
+
+/*************************************************************************
+||||||||||||||||||||||||||||STICKY NAVBAR|||||||||||||||||||||||||||||||||
+*************************************************************************/
+jQuery(document).ready(function()
+{
+  var navOffset = jQuery("#navBar").offset().top;
+  jQuery("#navBar").wrap('<div class="nav-placeholder"></div>');
+  jQuery(".nav-placeholder").height(jQuery("#navBar").outerHeight());
+
+  jQuery(window).scroll(function()
+  {
+    var scrollPos = jQuery(window).scrollTop();
+
+    if(scrollPos >= navOffset)
+    {
+      jQuery("#navBar").addClass("fixed");
+    }
+
+    else
+    {
+      jQuery("#navBar").removeClass("fixed");
+    }
+  });
+  
+});
 /*************************************************************************
 							Collapsable
 To make elements collapsable: 
@@ -41,8 +68,10 @@ var collapsable = document.getElementsByClassName("collapse-collapsable");
   second parameter is the element that will expand/collapse
   third parameter (optional) is an element that holds a + or - to show the state
 **/
-function makeCollapsable(elemToClick, elemToHide, plusminus) {
-  if(elemToClick) {
+function makeCollapsable(elemToClick, elemToHide, plusminus) 
+{
+  if(elemToClick) 
+  {
     elemToClick.style.cursor = "pointer";
     elemToClick.addEventListener('click', function() {
       toggleClass(elemToHide,'hide'); 
