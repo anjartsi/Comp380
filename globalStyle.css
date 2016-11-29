@@ -11,21 +11,56 @@ html
 	color: #FFFFFF;
 	background-image: url("atom.jpg");
 	background-position: center;
-	width: 100%;
+	width: 1300px;
+	height: 1300px;
 	margin: auto;
 	font-family: Sans-Serif, Arial, Helvetica, "Times New Roman";
 	font-size: 1em;
 	overflow: scroll;
 }
 
+#banner
+{
+	width: 100%;
+	height: 300px;
+	margin: auto;
+	text-align: center;
+	background-image: url("banner.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#bannerText
+{
+	color: white;
+	padding-top: 150px;
+	font-size: 50px;
+}
+
 /*Body Content*/
 #content
 {
 	width: 1300px;
+	padding-top: 10px;
 	margin: auto;
 }
 ul li {
 	margin-bottom: 2px;
+}
+
+#logoLeft
+{
+	float: left;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+#logoRight
+{
+	float: right;
+	padding-right: 10px;
+	padding-top: 5px;
 }
 
 article a
@@ -38,13 +73,25 @@ article a
 /* The nav bar*/
 #navBar 
 {
+	position: sticky;
 	width: 100%;
 	height: 60px;
 	font-size: 25px;
-	position: fixed;
-	top: 0px;
 	background-color: #8EA8C3;
 	z-index: 9999;
+}
+
+.fixed
+{
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.nav-placeholder
+{
+	margin: auto;
 }
 
 nav ul 
@@ -77,7 +124,7 @@ nav li a, .dropbtn
 	background-color: #161925;
 }
 
-nav li a:hover, .dropdown:hover .dropbtn 
+#home:hover, .dropdown:hover .dropbtn 
 {
     background-color: #161925;
 }
@@ -117,9 +164,15 @@ nav li a:hover, .dropdown:hover .dropbtn
 }
 
 /* Used to buffer top of page from under the navBar*/
-#buffer 
+#buffer1
 {
-	height: 35px;
+	height: 0px;
+	width: 1000px;
+}
+
+#buffer2 
+{
+	height: 0px;
 	width: 1000px;
 }
 

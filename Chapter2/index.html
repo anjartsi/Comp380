@@ -10,9 +10,42 @@
 
 <body class="color1">
 	<!-- The navBar will be created by navBar.js -->
+<<<<<<< HEAD
 	<nav class="color2">
 		<ul id="navBar" class="color2"></ul>
 	</nav>	
+=======
+	<div>
+		<nav id = "navBar" class="color2">
+			<li id="logoLeft"><img src="../logo.png" alt="some_text" style="width:50px;height:50px;"></li>
+			<ul class="color2">
+				<li><a href="../Chapter-Select/index.html">Chapter Select</a></li>
+				<li class="dropdown">
+					<a href="../Chapter1/index.html" class="dropbtn">Chapter 1</a>
+					<div class="dropdown-content">
+	      				<a href="../Chapter1/index.html">Explanation</a>
+	      				<a href="../Chapter1/sampleProblems.html">Sample Problems</a>
+	    			</div>
+				</li>
+	  			<li class="dropdown">
+	  				<a  id="selected" href="index.html" class="dropbtn">Chapter 2</a>
+	  				<div class="dropdown-content">
+	      				<a href="index.html">Explanation</a>
+	      				<a href="sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+	  			<li class="dropdown">
+	    			<a href="../Chapter3/index.html" class="dropbtn">Chapter 3</a>
+	    			<div class="dropdown-content">
+	      				<a href="../Chapter3/index.html">Explanation</a>
+	      				<a href="../Chapter3/sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+	  			<li id="logoRight"><img src="../logo.png" alt="some_text" style="width:50px;height:50px;"></li>
+			</ul>
+		</nav>	
+	</div>
+>>>>>>> refs/remotes/origin/design
 	<!-- buffer space between the navBar and the rest of the page -->
 	<div id="buffer"></div>
 
@@ -183,6 +216,7 @@
 	</article>
 </body>
 
+<script type="text/javascript" src="../jquery-3.1.1.js"></script>
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
 <script type="text/javascript" src="script.js"></script>
