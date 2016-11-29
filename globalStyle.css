@@ -10,7 +10,7 @@ html{
 	color: #FFFFFF;
 	width: 1300px;
 	margin: auto;
-	font-family: Tahoma, Sans-Serif, Arial, Helvetica, "Times New Roman";
+	font-family: Sans-Serif, Arial, Helvetica, "Times New Roman";
 	font-size: 1em;
 	overflow: scroll;
 }
@@ -18,6 +18,9 @@ html{
 body{
 	margin: auto;
 	width: 1300px;
+}
+ul li {
+	margin-bottom: 2px;
 }
 
 a:link{
