@@ -45,7 +45,13 @@ function answerCheck(inputField, answer, elementOutput){
 	else{
 		elementOutput.innerHTML = "Incorrect, please try again";
 		elementOutput.setAttribute("style", "color: #ff3333");
+		
 	}
+}
+
+// ~~~~~~~~~~~~~~~~~~~ Hint-displaying function ~~~~~~~~~~~~~~~~~~~~~~
+function showHint(hint){
+  alert(hint);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
@@ -68,3 +74,12 @@ function toggleClass(el,cls) {
   else{addClass(el,cls)};
 }
 
+/*************************************************************************
+                  Vertical Align: Center
+Vertically centers an element based on its height and its parent element height
+**************************************************************************/
+function verticalCenter(elem) {
+  var elemHeight = elem.clientHeight;
+  var containerHeight = elem.parentElement.clientHeight;
+  elem.style.marginTop = ( containerHeight - elemHeight ) / 2 + "px";
+}

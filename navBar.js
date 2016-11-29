@@ -1,29 +1,53 @@
 /*************************************************************************
 									NavBar
 **************************************************************************/
+/*var navBar = document.getElementById("navBar");
+var chapterName = document.getElementById("chapterName");
+var createLink = function (parent, name, url, optional) 
+{
+  var listItem = document.createElement("li");
+  var newLink = document.createElement("a");
+  newLink.innerHTML = name;
+  newLink.href = url;
 
-var navBar = document.getElementById("navBar");
-var pageName = document.getElementById("pageName");
-
-navBar.innerHTML += createLink("Chapter Select", "../Chapter-Select/index.html");
-navBar.innerHTML += createLink("Chapter 1", "../chapter1/index.html");
-navBar.innerHTML += createLink("Chapter 2", "../chapter2/index.html");
-navBar.innerHTML += createLink("Chapter 3", "../chapter3/index.html");
-//navBar.innerHTML += createLink("Blog", "../resume/index.html");
-
-// returns a string of the form "<li><a href='url'>name [optional]</a></li>"
-function createLink(name, url, optional) {
-	var active = ""
-  if(name == pageName.name)
-    active = 'class="active"';
-  var link = "<li " + active + "><a href='" + url + "'>";
-	link += name;
-	if(optional != null)
-		link += optional; 
-	link += "</a></li>";
-	return link;
+  listItem.appendChild(newLink);
+  parent.appendChild(listItem);
+  listItem.className = optional || "";
+  var active = ""
+  if (name == chapterName.name)
+    listItem.className = "active";
 }
 
+createLink(navBar, "Chapter Select", "../Chapter-Select/index.html");
+createLink(navBar, "Chapter 1", "../chapter1/index.html");
+createLink(navBar, "Chapter 2", "../chapter2/index.html");
+createLink(navBar, "Chapter 3", "../chapter3/index.html");*/
+
+/*************************************************************************
+||||||||||||||||||||||||||||STICKY NAVBAR|||||||||||||||||||||||||||||||||
+*************************************************************************/
+jQuery(document).ready(function()
+{
+  var navOffset = jQuery("#navBar").offset().top;
+  jQuery("#navBar").wrap('<div class="nav-placeholder"></div>');
+  jQuery(".nav-placeholder").height(jQuery("#navBar").outerHeight());
+
+  jQuery(window).scroll(function()
+  {
+    var scrollPos = jQuery(window).scrollTop();
+
+    if(scrollPos >= navOffset)
+    {
+      jQuery("#navBar").addClass("fixed");
+    }
+
+    else
+    {
+      jQuery("#navBar").removeClass("fixed");
+    }
+  });
+  
+});
 /*************************************************************************
 							Collapsable
 To make elements collapsable: 
@@ -44,8 +68,10 @@ var collapsable = document.getElementsByClassName("collapse-collapsable");
   second parameter is the element that will expand/collapse
   third parameter (optional) is an element that holds a + or - to show the state
 **/
-function makeCollapsable(elemToClick, elemToHide, plusminus) {
-  if(elemToClick) {
+function makeCollapsable(elemToClick, elemToHide, plusminus) 
+{
+  if(elemToClick) 
+  {
     elemToClick.style.cursor = "pointer";
     elemToClick.addEventListener('click', function() {
       toggleClass(elemToHide,'hide'); 
@@ -67,12 +93,4 @@ for (var i = 0; i < pm.length; i++) {
 }
 
 
-/*************************************************************************
-                  Vertical Align: Center
-Vertically centers an element based on its height and its parent element height
-**************************************************************************/
-function verticalCenter(elem) {
-  var elemHeight = elem.clientHeight;
-  var containerHeight = elem.parentElement.clientHeight;
-  elem.style.marginTop = ( containerHeight - elemHeight ) / 2 + "px";
-}
+
