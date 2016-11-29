@@ -7,34 +7,49 @@
 	<title>Ch. 1 - Sample Problems</title>
 </head>
 
-<body class="color1">
+<body>
 	<!-- The navBar will be created by navBar.js -->
-	<nav class="color2">
-		<ul id="navBar"></ul>
-	</nav>	
+	<div>
+		<nav id = "navBar">
+			<ul class="color2">
+				<li><a href="../Chapter-Select/index.html">Chapter Select</a></li>
+				<li class="dropdown">
+					<a id="selected" href="index.html" id="selected" class="dropbtn">Chapter 1</a>
+					<div class="dropdown-content">
+	      				<a href="index.html">Explanation</a>
+	      				<a href="sampleProblems.html">Sample Problems</a>
+	    			</div>
+				</li>
+	  			<li class="dropdown">
+	  				<a href="../Chapter2/index.html" class="dropbtn">Chapter 2</a>
+	  				<div class="dropdown-content">
+	      				<a href="../Chapter2/index.html">Explanation</a>
+	      				<a href="../Chapter2/sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+	  			<li class="dropdown">
+	    			<a href="../Chapter3/index.html" class="dropbtn">Chapter 3</a>
+	    			<div class="dropdown-content">
+	      				<a href="../Chapter3/index.html">Explanation</a>
+	      				<a href="../Chapter3/sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+			</ul>
+		</nav>
+	</div>
 	<!-- buffer space between the navBar and the rest of the page -->
 	<div id="buffer"></div>
 
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
-	<header>
-	<h1> Ch. 1 Sample Problems </h1>
-	<nav id="chapterNav" class="color3">
-		<ul>
-			<li>
-			<a href="index.html">Explanation </a>	
-			</li>
-			<li>
-			<a href="#">Interactive Animation </a>
-			</li>
-			<li>
-			<a href="sampleProblems.html">Sample Problems </a>
-			</li>
-		</ul>
-	</nav>
-	</header>
-	<article>
-		<div> This number changes every 5 seconds: <var id="num"></var></div>
-	</article>
+	<div id="content" class="color1">
+		<header>
+		<h1> Ch. 1 Sample Problems </h1>
+		</header>
+		
+		<article>
+			<div> This number changes every 5 seconds: <var id="num"></var></div>
+		</article>
+	</div>
 </body>
 
 <script type="text/javascript" src="../globalFunctions.js"></script>

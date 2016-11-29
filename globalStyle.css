@@ -1,117 +1,131 @@
 /* COLORS START*/
-.color1 {background-color: #3F3D45;}
-.color2 {background-color: #313036;}
-.color3 {background-color: #27262A;}
+.color1 {background-color: #000000;}
+.color2 {background-color: #8EA8C3;}
+.color3 {background-color: #161925;}
 .color4 {background-color: #232227;}
 .color5 {background-color: #1B1922;}
 /* COLORS END */
 
-html{
+html
+{
 	color: #FFFFFF;
-	width: 1300px;
+	background-image: url("atom.jpg");
+	background-position: center;
+	width: 100%;
 	margin: auto;
 	font-family: Sans-Serif, Arial, Helvetica, "Times New Roman";
 	font-size: 1em;
 	overflow: scroll;
 }
 
-body{
-	margin: auto;
+/*Body Content*/
+#content
+{
 	width: 1300px;
+	margin: auto;
 }
 ul li {
 	margin-bottom: 2px;
 }
 
-a:link{
-	/* unvisited link color*/
+article a
+{
+	text-decoration: none;
 	color: yellow;
+
 }
 
-a:visited{
-	/* visited link color */
-	color: yellow;
-}
 /* The nav bar*/
-#navBar {
-	width: 1300px;
+#navBar 
+{
+	width: 100%;
 	height: 60px;
 	font-size: 25px;
-	padding-left: 15px;
 	position: fixed;
 	top: 0px;
+	background-color: #8EA8C3;
 	z-index: 9999;
 }
-nav{
-	width: 1300px;
-	height: 60px;
-	font-size: 25px;
-	/*padding-left: 15px;*/
+
+nav ul 
+{
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-/* The list in navbar should fill up the entire nav bar*/
-nav ul{
-	list-style-type: none;
-	margin: 0px;
-	padding: 0px;
-
-}
-
-nav ul li{
-	min-width: 75px	;
-	text-align: left;
+nav li
+{
 	display: inline-block;
-	/* Need to be inline-block so they're all on one line*/
-	padding-left: 6px;
-	padding-right: 4px;
-	border-left: 2px solid white;
 }
 
-/* The link to the current page should be highlighted */
-nav .active{
-	background-color: #000;
+
+nav li a, .dropbtn 
+{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-/* 
-	The links in the nav bar should be vertically centered
-		The block display allows the link to be hovered even when the 
-		mouse hovers the block (not just the text)
-*/
-nav a:link, nav a:visited{
-	padding-top: 15px;
-	height: 45px;
-	/*the above two have to add up to 60px because that's the height of the navbar*/
-	
-	text-decoration: none;
+/*Selected Chapter*/
+#selected
+{
+	background-color: #161925;
+}
+
+nav li a:hover, .dropdown:hover .dropbtn 
+{
+    background-color: #161925;
+}
+
+.dropdown 
+{
+    display: inline-block;
+}
+
+.dropdown-content 
+{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a 
+{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover 
+{
+	background-color: #8EA8C3;
 	color: white;
-	display: block;
 }
 
-
-nav li:hover, nav a:hover{
-	background-color: #FFFFFF;
-	color: #000000;
-}
-
-nav a:active{
-	text-decoration: none;
-	color: blue;
+.dropdown:hover .dropdown-content 
+{
+    display: block;
 }
 
 /* Used to buffer top of page from under the navBar*/
-#buffer {
-	height: 6px;
+#buffer 
+{
+	height: 35px;
 	width: 1000px;
 }
 
-/* Nav bar for chapter sections */
-#chapterNav {
-	position: relative;
-	z-index: 1;
-}
-
 /* +/- button for collapsable elements */
-.collapse-pm {
+.collapse-pm 
+{
 	-webkit-user-select: none;	
 	font-weight: bold;
 	display: inline;
@@ -121,12 +135,14 @@ nav a:active{
 	vertical-align: middle;
 }
 
-.probNum{
+.probNum
+{
 	color: yellow;
 	font-weight: bold;
 }
 
-.hintBtn{
+.hintBtn
+{
 	border-radius: 8px;
 	width: 100px;
 	height: 25px;
@@ -142,27 +158,33 @@ nav a:active{
 	font-size: 25px;
 }
 
-.hide {
+.hide 
+{
 	display: none;
 }
 
 /* floats and clears */
-.floatLeft {
+.floatLeft 
+{
 	float: left;
 }
 
-.floatRight {
+.floatRight 
+{
 	float:right;
 }
 
-.clearLeft {
+.clearLeft 
+{
 	clear: left;
 }
 
-.clearBoth {
+.clearBoth 
+{
 	clear:both;
 }
 
-canvas {
+canvas 
+{
 	background-color: white;
 }
