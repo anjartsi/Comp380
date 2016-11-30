@@ -1,11 +1,20 @@
 
 
+.addLater {
+	background-color: darkblue;
+	width: 500px;
+	margin: 0px 50px;
+	height: 250px;
+	font-size: 25px;
+	text-align: center;
+}
+
 input {
 	margin-right: 10px;
 }
 
 .canvasCont {
-	width: 1000px;
+	width: 500px;
 	text-align: center;
 }
 
@@ -17,6 +26,7 @@ input {
 	display: inline-block;
 	color: white;
 	width: 450px;
+	-webkit-user-select: none
 }
 
 .controls .controlRow {

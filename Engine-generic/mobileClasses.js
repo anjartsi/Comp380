@@ -1,7 +1,7 @@
 /*****************************************************************************************************
 MOBILE
 Objects that move
-So far they are only square-shaped
+These are only square
 *****************************************************************************************************/
 var Mobile = function(x, y) {
 	Thing.call(this, x, y);
@@ -22,7 +22,7 @@ var Mobile = function(x, y) {
 
 	// top, right, bottom, left edges
 	this.edges = [];
-
+	this.printedValues = [];
 }
 
 /*************
@@ -78,7 +78,7 @@ Mobile.prototype.addText = function() {
 // Changes all the properties of the mobile object after each time increment
 Mobile.prototype.incrementTime = function(dt) {
 	// Change the position and velocity
-	for(var i = 0;i<this.velocity.length;i++) {
+	for(var i = 0; i < this.velocity.length; i++) {
 		if(this.velocity[i] && !this.willCollide[i]) {
 			this.position[i] += this.velocity[i] * (dt / 1000) 
 			this.position[i] += this.acceleration[i] / this.mass * dt * dt / 1000000;
@@ -89,6 +89,11 @@ Mobile.prototype.incrementTime = function(dt) {
 	}
 
 	this.willCollide = [false, false];
+
+	// update data and control values
+	for (var i = 0; i < this.printedValues.length; i++) {
+		this.updateValue(this.printedValues[i][0], this.printedValues[i][1], this.printedValues[i][2]);
+	}
 };
 
 // Checks for collisions and sets the willCollideX or willCollideY to true if there is a collision 
@@ -280,6 +285,56 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 	row.appendChild(unit);
 
 	parent.appendChild(row);
+	mobile.printedValues.push([slider, variable, index]);
+	mobile.printedValues.push([num, variable, index]);
+}
+
+
+Mobile.prototype.addData = function(parent, variable, index, desc, units) {
+	var mobile = this;
+	var value;
+
+	if(index < 0) {
+		value = mobile[variable];
+	}
+	else {
+		value = mobile[variable][index];
+	}
+	var row = document.createElement("div");
+	row.className = "dataRow";
+	row.style.color = this.col;
+
+	// create description
+	var name = document.createElement("div");
+	name.className = "dataDesc";
+	name.innerHTML = desc;
+
+	var data = document.createElement("div");
+	data.className = "data";
+	data.innerHTML = value;
+	// create unit
+	var unit = document.createElement("div");
+	unit.innerHTML = units;
+	unit.className = "unit";
+
+	// add to controller
+	row.appendChild(name);
+	row.appendChild(data);
+	row.appendChild(unit);
+	mobile.printedValues.push([data, variable, index]);
+	parent.appendChild(row);
+}
+
+Mobile.prototype.updateValue = function(elem, variable, index) {
+	if(index < 0) {
+		value = this[variable];
+	}
+	else {
+		value = this[variable][index];
+	}
+	value = value.toFixed(2);
+	elem.value= value;
+	elem.innerHTML = value;
 }
 /*****************************************************************************************************
 Sphere
@@ -296,4 +351,3 @@ Sphere.prototype.makePath = function() {
 	this.path = new Path2D();
 	this.path.arc(this.position[0], this.position[1], this.bigness, 0, 2 * Math.PI, true);
 }
-

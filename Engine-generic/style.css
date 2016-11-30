@@ -30,18 +30,17 @@ button {
 	
 }
 
-
 .controller {
 	color: white;
-	width: 100%;
+	width: 400px;
 	/*outline: 1px solid white;*/
 }
 
-.controller .controlRow {
+.controller .controlRow, .controller .dataRow {
 	margin: 0px 5px 0px 5px;
 	text-align: left;
 }
-.controller label {
+.controller label, .controller .dataDesc {
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
@@ -52,7 +51,11 @@ button {
 	width: 140px;
 }
 
-.controller .numberInput {
+.controller .data {
+	display: inline;
+}
+
+.controller .numberInput, .controller .data {
 	width: 40px;
 	vertical-align: top;
 	text-align: center;
@@ -63,4 +66,11 @@ button {
 	text-align: middle;
 	margin-right: 9px;
 	vertical-align: bottom;
+}
+.controller .controlRow:nth-child(even), .controller .dataRow:nth-child(even) {
+	background-color: #333;
+}
+
+.controller .controlRow:nth-child(odd), .controller .dataRow:nth-child(odd) {
+	background-color: #222;
 }
