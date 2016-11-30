@@ -28,6 +28,7 @@ var Engine = function(elem, buttonElem) {
 	this.allThings = [];
 	this.allMobiles = [];
 	this.allImmobiles = [];	
+	this.dataToUpdate = [];
 }
 /*************
 ENGINE Methods
@@ -95,6 +96,9 @@ Engine.prototype.drawEverything = function() {
 	for (var i = 0; i < this.allThings.length; i++) {
 		this.allThings[i].draw(this.ctx);
 	}
+	for (var i = 0; i < this.dataToUpdate.length; i++) {
+		this.dataToUpdate[i].update();
+	}
 }
 
 Engine.prototype.animate = function(engine) {
@@ -127,16 +131,11 @@ Engine.prototype.animate = function(engine) {
 }
 
 Engine.prototype.timing = function() {
-	// this.t1 = this.t2;
-	// this.t2 = new Date();
-	// this.dt = this.t2 - this.t1;
 	this.elapsedTime += this.dt;
 }
 
 Engine.prototype.play = function() {
     if (!this.playing){
-        this.t1 = new Date();
-        this.t2 = new Date();
         this.button.innerHTML = 'Pause';
         var engine = this;
         this.playing = window.requestAnimationFrame(function() {
@@ -177,7 +176,7 @@ var StaticEngine = function(elem, buttonElem) {
 	this.elapsedTime = 0; // In milliseconds
 	this.t1;
 	this.t2;
-	this.dt; //milliseconds
+	this.dt = 1000.0 / 60; //milliseconds
 
 	// Objects inside the engine
 	this.allThings = [];
@@ -186,7 +185,6 @@ var StaticEngine = function(elem, buttonElem) {
 
 	//new
 	this.maxTime;
-	this.beginning = [];
 }
 
 StaticEngine.prototype = Object.create(Engine.prototype)
@@ -195,12 +193,62 @@ StaticEngine.prototype.constructor = StaticEngine;
 StaticEngine.prototype.setup = function(maxTime) {
 	var engine = this;
 	this.maxTime = maxTime;
-	for (var i = 0; i < this.allMobiles.length; i++) {
-		var twin = new Mobile;
-		// twin = this.allMobiles[i].makeClone();
-		this.beginning.push(twin);
-
-		// console.log(twin);
-	}	
 }
 
+
+
+StaticEngine.prototype.play = function() {
+    if (!this.playing){
+        this.button.innerHTML = 'Pause';
+        var engine = this;
+        this.playing = window.requestAnimationFrame(function() {
+        	return engine.animate(engine);
+        });
+        console.log('playing');
+    }
+    else{
+        window.cancelAnimationFrame(this.playing);
+        this.playing = null;
+        this.button.innerHTML = 'Play';
+        console.log('paused at ' + this.elapsedTime);
+    }
+}
+
+StaticEngine.prototype.timing = function() {
+	if(this.elapsedTime >= this.maxTime) {
+		this.elapsedTime = 0;
+	}
+	else {
+		this.elapsedTime += this.dt;
+	}
+	// this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
+}
+
+StaticEngine.prototype.animate = function(engine) {
+	if (engine.playing) {
+		engine.ctx.clearRect(0, 0, engine.canvasWidth, engine.canvasHeight);
+		if(engine.drawGridLines) {
+			engine.ctx.drawImage(engine.gridLinesImage, 0, 0);
+		}
+		engine.timing();
+		for(var i = 0; i < engine.allThings.length; i++) {
+			if(engine.allThings[i] instanceof StaticMobile){
+				// Change properties of each mobile object
+				engine.allThings[i].changePos(engine.elapsedTime);
+
+			}; // end if(Mobile)
+			// Draw Everything
+			engine.allThings[i].draw(engine.ctx);
+		}// end for(i)
+
+		if(this.elapsedTime < this.maxTime) {
+				engine.playing = window.requestAnimationFrame(function() {
+					engine.animate(engine)
+				});
+		}
+		else {
+			// this.playing = null;
+			this.play();
+		}
+	} // end if(engine.playing)
+}
