@@ -1,6 +1,6 @@
 /* COLORS START*/
 .color1 {background-color: #000000;}
-.color2 {background-color: #8EA8C3;}
+.color2 {background-color: #851331;}
 .color3 {background-color: #161925;}
 .color4 {background-color: #232227;}
 .color5 {background-color: #1B1922;}
@@ -9,12 +9,12 @@
 html
 {
 	color: #FFFFFF;
-	background-image: url("atom.jpg");
+	background-image: url("galaxy2.jpg");
 	background-position: center;
 	width: 1300px;
 	height: 1300px;
 	margin: auto;
-	font-family: Tahoma, Sans-Serif, Arial, Helvetica, "Times New Roman";
+	font-family: Sans-Serif, Arial, Helvetica, "Times New Roman";
 	font-size: 1em;
 	overflow: scroll;
 }
@@ -23,26 +23,20 @@ html
 {
 	width: 100%;
 	height: 300px;
-	margin: auto;
+	margin-top: 0px;
 	text-align: center;
-	background-image: url("banner.jpg");
+	background-image: url("galaxy.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 }
 
-#bannerText
-{
-	color: white;
-	padding-top: 150px;
-	font-size: 50px;
-}
-
 /*Body Content*/
 #content
 {
-	width: 1300px;
+	width: 100%;
 	padding-top: 10px;
+	padding-bottom: 10px;
 	margin: auto;
 }
 
@@ -74,7 +68,7 @@ article a
 	width: 100%;
 	height: 60px;
 	font-size: 25px;
-	background-color: #8EA8C3;
+	background-color: #851331;
 	z-index: 9999;
 }
 
@@ -118,12 +112,12 @@ nav li a, .dropbtn
 /*Selected Chapter*/
 #selected
 {
-	background-color: #161925;
+	background-color: #68093C;
 }
 
 #home:hover, .dropdown:hover .dropbtn 
 {
-    background-color: #161925;
+    background-color: #68093C;
 }
 
 .dropdown 
@@ -165,6 +159,11 @@ nav li a, .dropbtn
 {
 	height: 0px;
 	width: 1000px;
+}
+
+#textBuffer
+{
+	width: 10px;
 }
 
 #buffer2 
