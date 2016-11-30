@@ -8,12 +8,13 @@
 	<title>Ch. 2 - Explanation</title>
 </head>
 
-<body>
+<body class="color1">
 	<!-- The navBar will be created by navBar.js -->
+
 	<div>
 		<nav id = "navBar" class="color2">
-			<li id="logoLeft"><img src="../logo.png" alt="some_text" style="width:50px;height:50px;"></li>
 			<ul class="color2">
+			<li id="logoLeft"><img src="../logo.png" alt="some_text" style="width:50px;height:50px;"></li>
 				<li><a href="../Chapter-Select/index.html">Chapter Select</a></li>
 				<li class="dropdown">
 					<a href="../Chapter1/index.html" class="dropbtn">Chapter 1</a>
@@ -44,59 +45,170 @@
 	<div id="buffer"></div>
 
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
-	<div id="content" class="color1">
-		<header>
-		<h1>Chapter 2: Kinematics - Explanation</h1>
-		</header>
+	<header>
+	<h1>Chapter 2: Kinematics - Explanation</h1>
+	<nav class="color3">
+		<ul id="chapterNav" ></ul>
+	</nav>
+	</header>
 
-		<article>
-			<section>
-				<h2>Kinematics</h2>
+	<article>
+		<section>
+			<h2>Kinematics</h2>
+			<ul>
+				<li><b>Kinematics</b> is the study of motion without considering its causes</li>
 				<ul>
-					<li><b>Kinematics</b> is the study of motion without considering its causes</li>
-					<ul>
-						<li> <i>How</i> does an object move? </li>
-						<li> Not <i>why</i> an object is moving? </li>
-					</ul>
+					<li> <i>How</i> does an object move? </li>
+					<li> Not <i>why</i> an object is moving? </li>
 				</ul>
-			</section>
-			<section>
-				<h2>2-1 Position, Displacement, and Distance</h2>
+			</ul>
+		</section>
+
+		<section>
+			<h2>2-1 Position, Displacement, and Distance</h2>
+			<ul>
+				<li>
+				Position: The <b>position</b> of an object describes where the object is relative to a reference frame
+				</li>
 				<ul>
+					<li><b>Reference frame</b> means another object that we can use for comparison. </li>
+					<li>Some reference frames can be stationary, while other reference frames can be moving. </li>
 					<li>
-					Position: The <b>position</b> of an object describes where the object is relative to a reference frame
-					</li>
-					<ul>
-						<li><b>Reference frame</b> means another object that we can use for comparison. </li>
-						<li>Some reference frames can be stationary, while other reference frames can be moving. </li>
-						<li>
-							Use the sliders to change the position of the block below
-							<div class="canvasCont">
-								<div class="color4">
-									<canvas id="positionCanvas" style=""></canvas>
-									<br>
-									<div class="controls" id="positionControls"></div>
-									<br>
-									<button id="positionCanvasBtn" class="hide">Play</button>
-								</div>
+						Use the sliders to change the position of the block below
+						<div class="canvasCont">
+							<div class="color4">
+								<canvas id="positionCanvas" style=""></canvas>
+								<br>
+								<div class="controls" id="positionControls"></div>
+								<br>
+								<button id="positionCanvasBtn" class="hide">Play</button>
 							</div>
-						</li>
-						<li>In the example above, the reference frame we are using is the x-y plane, with the bottom-right corner being the (0,0) point</li>
-					</ul>
-					<li> 
-						Displacement: When an object moves from one position to another, 
-						its change in position is called <b>displacement</b>.
-						<ul>
-							<li>&Delta;x = x<sub>f</sub> &minus; x<sub>0</sub></li>
-							<li>Displacement = final position &minus; initial position</li>
-							<li>Greek letter delta (&Delta;) means "change in" whatever quantity follows it.</li>
-						</ul>
-
+						</div>
 					</li>
+					<li>In the example above, the reference frame we are using is the x-y plane, with the bottom-right corner being the (0,0) point</li>
+					<li>Since we need two numbers to represent where the object is, this is a <b>2-dimensional</b> reference frame</li>
 				</ul>
-			</section>
-		</article>
-	</div>
+				<li> 
+					Displacement: When an object moves from one position to another, 
+					its change in position is called <b>displacement</b>.
+					<ul>
+						<li>&Delta;x = x<sub>f</sub> &minus; x<sub>0</sub></li>
+						<li>Displacement = final position &minus; initial position</li>
+						<li>Greek letter delta (&Delta;) means "change in" whatever quantity follows it.</li>
+					</ul>
+				</li>
+				<li>
+				Distance: Distance is defined to be the <i>magnitude</i> (or size) of the displacement between two points
+					<ul>
+						<li>Note that the distance between two points does not depend on the direction</li>
+						<li>Unlike displacement, the distance between two points will never be negative.</li>
+					</ul>
+				</li>
+				<div class="addLater"> Displacement vs Distance Example</div>
+				<li>
+					Distance Traveled: The distance traveled is the total length of the path traveled between two positions.
+				</li>
+			</ul>
+		</section> 
+		<!-- end section 2.1 -->
+
+		<section>
+			<h2>2-2 Vectors, Scalars, and Coordinate Systems</h2>
+			<ul>
+				<li>
+					Vectors: A vector is any quantity that has both a magnitude (size) <b>and</b> a direction
+					<br>
+					Some examples of vectors are: 
+					<ul>
+						<li>Position</li>
+						<li>Displacement</li>	
+						<li>Velocity (described below)</li>
+					</ul>
+					Vectors can be positive (&plus;) or negative (&minus;). 
+					<br>
+					Vectors that point in opposite directions have opposite signs<br>
+				</li>
+				<li>
+					Scalars: A scalar is any quantity that has a magnitude (size), but no direction.
+					<br>
+					Some examples of scalars are: 
+					<ul>
+						<li>Distance</li>
+						<li>Time</li>
+						<li>Mass</li>
+						<li>Speed</li>
+					</ul>
+					Scalars are always positive numbers
+				</li>
+				<li>
+					Coordinate Systems: In order to describe the direction of a vector, we must first dsignate a coordinate system . 
+				</li>
+				<li>
+					One-dimensional: 
+					<ul>
+						<li>For one-dimensional motion, our coordinate system consists of a one-dimensional coordinate line</li>
+						<div class="addLater"> number line</div>
+						<li>When describing horizontal motion, we usually describe motion to the right as positive and motion to the left as negative </li>
+						<li>When describing vertical motion, we usually describe the up direction as positive and the down direction as negative</li>
+						<li>However, it can sometimes be convenient to switch the positive and negative directions, and this is acceptable.</li>
+					</ul>
+				</li>
+				<li>
+				Two-dimensional: 
+					<ul>
+						<li>For two-dimensional motion, our coordinate consists of the x-y plane </li>
+						<div class="addLater"> x-y plane</div>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- end section 2.2 -->
+
+		<section>
+			<h2>2-3 Time, Velocity, and Speed</h2>
+			<ul>
+				<li>
+					Time: Time is one of the most fundamental physical quantities. These quantities are defined by how they are measured. 
+					<ul>
+						<li>Every measurement of time involves measuring a change in some quantity: a heartbeat, the position of the Sun in the sky, the position of Earth around the Sun, etc.</li>
+						<li>Thus we can say that time <i>is</i> change, or the interval over which change occurs</li>
+						<li>The SI unit for time is the second, abbreviated <i>s</i></li>
+						<li>
+						The time it takes for something to occur is called its <b>elapsed time</b>
+						<br>
+						Elapsed time is measured as: 
+						&Delta;t = t<sub>f</sub> &minus; t<sub>0</sub>
+						(Notice the similarity between this formula and the one for displacement?)
+						<br> 
+						For simplicity's sake, we will always say that t<sub>0</sub> = 0, thus &Delta;t = t<sub>f</sub>	
+						</li>
+
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- end section 2.3 -->
+
+		<section>
+			<h2>2-4 Acceleration</h2>
+		</section>
+		<!-- end section 2.4 -->
+
+		<section>
+			<h2>2-5 Motion Equations for Constant Acceleration in One Dimension</h2>
+		</section>
+		<!-- end section 2.5 -->
+
+		<section>
+			<h2>2-6 Problem-Solving Basics for One-Dimensional Kinematics</h2>
+		</section>
+		<!-- end section 2.6 -->
+
+		<section>
+			<h2>2-7 Falling Objects</h2>
+		</section>
+		<!-- end section 2.7 -->
+	</article>
 </body>
 
 <script type="text/javascript" src="../jquery-3.1.1.js"></script>

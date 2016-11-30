@@ -39,6 +39,9 @@ html
 	padding-bottom: 10px;
 	margin: auto;
 }
+ul li {
+	margin-bottom: 2px;
+}
 
 #logoLeft
 {
