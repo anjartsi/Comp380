@@ -65,8 +65,18 @@ for(var i = 0; i < allEngines.length; i++) {
 }
 
 var sliderCont = document.getElementById("sliderContainer");
+var sliderCont2 = document.getElementById("sliderContainer2");
 
 
-red.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m")
-red.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m")
+black.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m");
+black.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m");
+
+red.addSlider(sliderCont2, "position", 0, 50, 450, "x-coordinate", "m")
+red.addSlider(sliderCont2, "position", 1, 50, 450, "y-coordinate", "m")
+red.addSlider(sliderCont2, "velocity", 0, -500, 500, "velocity-x", "m/s");
+red.addSlider(sliderCont2, "velocity", 1, -500, 500, "velocity-y", "m/s");
+blue.addSlider(sliderCont2, "position", 0, 50, 450, "x-coordinate", "m")
+blue.addSlider(sliderCont2, "position", 1, 50, 450, "y-coordinate", "m")
+blue.addSlider(sliderCont2, "velocity", 0, -500, 500, "velocity-x", "m/s");
+blue.addSlider(sliderCont2, "velocity", 1, -500, 500, "velocity-y", "m/s");
 

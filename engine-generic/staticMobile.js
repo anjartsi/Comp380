@@ -60,4 +60,9 @@ StaticMobile.prototype.changePos = function(time) {
 		this.position[i] = this.initialPosition[i] + this.velocity[i] * time / 1000 
 		this.position[i] += 0.5 * this.acceleration[i] * time * time / 1000000
 	}
+
+	for (var i = 0; i < this.printedValues.length; i++) {
+		this.updateValue(this.printedValues[i][0], this.printedValues[i][1], this.printedValues[i][2]);
+	}
+
 }

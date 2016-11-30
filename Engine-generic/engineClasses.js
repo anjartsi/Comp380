@@ -211,7 +211,13 @@ StaticEngine.prototype.play = function() {
 }
 
 StaticEngine.prototype.timing = function() {
-	this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
+	if(this.elapsedTime >= this.maxTime) {
+		this.elapsedTime = 0;
+	}
+	else {
+		this.elapsedTime += this.dt;
+	}
+	// this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
 }
 
 StaticEngine.prototype.animate = function(engine) {
@@ -230,8 +236,15 @@ StaticEngine.prototype.animate = function(engine) {
 			// Draw Everything
 			engine.allThings[i].draw(engine.ctx);
 		}// end for(i)
-		engine.playing = window.requestAnimationFrame(function() {
-			engine.animate(engine)
-		});
+
+		if(this.elapsedTime < this.maxTime) {
+				engine.playing = window.requestAnimationFrame(function() {
+					engine.animate(engine)
+				});
+		}
+		else {
+			// this.playing = null;
+			this.play();
+		}
 	} // end if(engine.playing)
 }
