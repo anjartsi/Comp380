@@ -22,7 +22,7 @@ var Mobile = function(x, y) {
 
 	// top, right, bottom, left edges
 	this.edges = [];
-
+	this.printedValues = [];
 }
 
 /*************
@@ -89,6 +89,11 @@ Mobile.prototype.incrementTime = function(dt) {
 	}
 
 	this.willCollide = [false, false];
+
+	// update data and control values
+	for (var i = 0; i < this.printedValues.length; i++) {
+		this.updateValue(this.printedValues[i][0], this.printedValues[i][1], this.printedValues[i][2]);
+	}
 };
 
 // Checks for collisions and sets the willCollideX or willCollideY to true if there is a collision 
@@ -280,6 +285,56 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 	row.appendChild(unit);
 
 	parent.appendChild(row);
+	mobile.printedValues.push([slider, variable, index]);
+	mobile.printedValues.push([num, variable, index]);
+}
+
+
+Mobile.prototype.addData = function(parent, variable, index, desc, units) {
+	var mobile = this;
+	var value;
+
+	if(index < 0) {
+		value = mobile[variable];
+	}
+	else {
+		value = mobile[variable][index];
+	}
+	var row = document.createElement("div");
+	row.className = "dataRow";
+	row.style.color = this.col;
+
+	// create description
+	var name = document.createElement("div");
+	name.className = "dataDesc";
+	name.innerHTML = desc;
+
+	var data = document.createElement("div");
+	data.className = "data";
+	data.innerHTML = value;
+	// create unit
+	var unit = document.createElement("div");
+	unit.innerHTML = units;
+	unit.className = "unit";
+
+	// add to controller
+	row.appendChild(name);
+	row.appendChild(data);
+	row.appendChild(unit);
+	mobile.printedValues.push([data, variable, index]);
+	parent.appendChild(row);
+}
+
+Mobile.prototype.updateValue = function(elem, variable, index) {
+	if(index < 0) {
+		value = this[variable];
+	}
+	else {
+		value = this[variable][index];
+	}
+	value = value.toFixed(2);
+	elem.value= value;
+	elem.innerHTML = value;
 }
 /*****************************************************************************************************
 Sphere
@@ -295,70 +350,4 @@ Sphere.prototype.constructor = Sphere;
 Sphere.prototype.makePath = function() {
 	this.path = new Path2D();
 	this.path.arc(this.position[0], this.position[1], this.bigness, 0, 2 * Math.PI, true);
-}
-
-
-
-/*****************************************************************************************************
-STATIC MOBILE
-Objects that move
-So far they are only square-shaped
-*****************************************************************************************************/
-var StaticMobile = function(x, y) {
-	Mobile.call(this, x, y);
-	// Position, Velocity, Force
-	this.position = [x, y];
-	this.velocity = [0, 0];
-	this.acceleration = [0, 0];
-	// Mass 
-	this.mass = 1;
-
-	// Whether the object will undergo a collision between this frame and next frame
-	this.willCollide = [false,false]; 
-
-	// Shape
-	// Half the side of a square, radius of a circle
-	this.bigness = 20;
-	this.path = new Path2D();
-
-	// top, right, bottom, left edges
-	this.edges = [];
-
-}
-
-/*****************************************************************************************************
-STATIC MOBILE
-Objects that move in the Static Engine
-*****************************************************************************************************/
-var StaticMobile = function(x, y) {
-	Mobile.call(this, x, y);
-	// Position
-	this.initialPosition = [x, y];
-	this.position = [x, y];
-	this.velocity = [0, 0];
-	this.acceleration = [0, 0];
-	// Mass 
-	this.mass = 1;
-
-	// Shape
-	// Half the side of a square, radius of a circle
-	this.bigness = 20;
-	this.path = new Path2D();
-	this.shap = 'square';
-	// top, right, bottom, left edges
-	this.edges = [];
-
-}
-
-/*************
-STATIC MOBILE Methods
-*************/
-StaticMobile.prototype = Object.create(Mobile.prototype)
-StaticMobile.prototype.constructor = StaticMobile;
-
-StaticMobile.prototype.changePos = function(time) {
-	for (var i = 0; i < 2; i++) {
-		this.position[i] = this.initialPosition[i] + this.velocity[i] * time / 1000 
-		this.position[i] += 0.5 * this.acceleration[i] * time * time / 1000000
-	}
 }
