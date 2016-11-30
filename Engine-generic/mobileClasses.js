@@ -23,6 +23,7 @@ var Mobile = function(x, y) {
 	// top, right, bottom, left edges
 	this.edges = [];
 	this.printedValues = [];
+	this.calculatedValues = [];
 }
 
 /*************
@@ -63,6 +64,13 @@ Mobile.prototype.draw = function(ctx) {
 	ctx.stroke(this.path);
 	ctx.fill(this.path);
 	ctx.restore();
+
+	// update data and control values
+	for (var i = 0; i < this.printedValues.length; i++) {
+		this.updateValue(this.printedValues[i][0], 
+						this.printedValues[i][1], 
+						this.printedValues[i][2]);
+	}
 }
 
 Mobile.prototype.addText = function() {
@@ -89,11 +97,6 @@ Mobile.prototype.incrementTime = function(dt) {
 	}
 
 	this.willCollide = [false, false];
-
-	// update data and control values
-	for (var i = 0; i < this.printedValues.length; i++) {
-		this.updateValue(this.printedValues[i][0], this.printedValues[i][1], this.printedValues[i][2]);
-	}
 };
 
 // Checks for collisions and sets the willCollideX or willCollideY to true if there is a collision 
@@ -266,7 +269,7 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 			inp = max;
 			num.value = max;
 		}
-		else if (inp < min)  {
+		else if (inp < min || inp == NaN || inp == null) {
 			inp = min;
 			num.value = min;
 		}
@@ -289,42 +292,6 @@ Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, u
 	mobile.printedValues.push([num, variable, index]);
 }
 
-
-Mobile.prototype.addData = function(parent, variable, index, desc, units) {
-	var mobile = this;
-	var value;
-
-	if(index < 0) {
-		value = mobile[variable];
-	}
-	else {
-		value = mobile[variable][index];
-	}
-	var row = document.createElement("div");
-	row.className = "dataRow";
-	row.style.color = this.col;
-
-	// create description
-	var name = document.createElement("div");
-	name.className = "dataDesc";
-	name.innerHTML = desc;
-
-	var data = document.createElement("div");
-	data.className = "data";
-	data.innerHTML = value;
-	// create unit
-	var unit = document.createElement("div");
-	unit.innerHTML = units;
-	unit.className = "unit";
-
-	// add to controller
-	row.appendChild(name);
-	row.appendChild(data);
-	row.appendChild(unit);
-	mobile.printedValues.push([data, variable, index]);
-	parent.appendChild(row);
-}
-
 Mobile.prototype.updateValue = function(elem, variable, index) {
 	if(index < 0) {
 		value = this[variable];
@@ -336,6 +303,7 @@ Mobile.prototype.updateValue = function(elem, variable, index) {
 	elem.value= value;
 	elem.innerHTML = value;
 }
+
 /*****************************************************************************************************
 Sphere
 Mobile objects that are circular in shape

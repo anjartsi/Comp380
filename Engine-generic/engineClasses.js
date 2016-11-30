@@ -28,6 +28,7 @@ var Engine = function(elem, buttonElem) {
 	this.allThings = [];
 	this.allMobiles = [];
 	this.allImmobiles = [];	
+	this.dataToUpdate = [];
 }
 /*************
 ENGINE Methods
@@ -94,6 +95,9 @@ Engine.prototype.drawEverything = function() {
 	}
 	for (var i = 0; i < this.allThings.length; i++) {
 		this.allThings[i].draw(this.ctx);
+	}
+	for (var i = 0; i < this.dataToUpdate.length; i++) {
+		this.dataToUpdate[i].update();
 	}
 }
 

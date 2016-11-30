@@ -76,10 +76,11 @@
 					<li>
 						Use the sliders to change the position of the block below
 						<div class="canvasCont">
-							<div class="color4">
+							<div class="color5">
+								<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
 								<canvas id="positionCanvas" style=""></canvas>
 								<br>
-								<div class="controls" id="positionControls"></div>
+								<div class="controller" id="positionControls"></div>
 								<br>
 								<button id="positionCanvasBtn" class="hide">Play</button>
 							</div>
@@ -104,7 +105,16 @@
 						<li>Unlike displacement, the distance between two points will never be negative.</li>
 					</ul>
 				</li>
-				<div class="addLater"> Displacement vs Distance Example</div>
+				<div class="canvasCont">
+					<div class="color5">
+						<h4>Move the slider to change the position of the blue ball, and see how this affects its displacement and its distance from its original location</h4>
+						<canvas id="dvdCanvas" style=""></canvas>
+						<br>
+						<div class="controller" id="dvdControls"></div>
+						<br>
+						<button id="dvdCanvasBtn" class="hide">Play</button>
+					</div>
+				</div>
 				<li>
 					Distance Traveled: The distance traveled is the total length of the path traveled between two positions.
 				</li>
@@ -217,7 +227,9 @@
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
 <script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/staticMobile.js"></script>
 <script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
 <script type="text/javascript" src="explanation.js"></script>
 
 </html>
