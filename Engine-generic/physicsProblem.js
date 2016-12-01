@@ -96,7 +96,7 @@ var blackX = new SliderControl("Position - x", 0, b.canvasWidth - 4 * black.bign
 blackX.decimalPlaces = 0;
 blackX.addToEngine(b, black);
 blackX.print(sliderContainer);
-var blackY = new SliderControl("Position - x", 0, b.canvasHeight - 4 * black.bigness, "meters", "white");
+var blackY = new SliderControl("Position - y", 0, b.canvasHeight - 4 * black.bigness, "meters", "white");
 blackY.decimalPlaces = 0;
 blackY.addToEngine(b, black);
 blackY.print(sliderContainer);
@@ -109,6 +109,8 @@ blackX.manipulate = function() {
 blackX.changeProperty = function() {
 	var newVal = this.value + 50;
 	this.thing.position[0] = newVal;
+	this.thing.initialPosition[0] = newVal;
+	this.engine.elapsedTime = 0;
 }
 
 blackY.manipulate = function() {
@@ -118,6 +120,8 @@ blackY.manipulate = function() {
 blackY.changeProperty = function() {
 	var newVal = this.value + 50;
 	this.thing.position[1] = newVal;
+	this.thing.initialPosition[1] = newVal;
+	this.engine.elapsedTime = 0;
 }
 // black.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m");
 // black.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m");

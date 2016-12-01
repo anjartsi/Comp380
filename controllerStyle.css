@@ -11,6 +11,7 @@ ROW
 ***********************************/
 .controller .controllerRow {
 	width: 450px;
+	height: 35px;
 	text-align: left;
 }
 
@@ -44,24 +45,21 @@ DESCRIPTION - the english words that describe the row
 SLIDERS
 **********************************************************************/
 .controller .controlSlider {
-	width: 150px;
-	height: 20px;
-	margin-right: 15px;
+	width: 150px!important;
+	margin-right: 15px!important;
 }
 /**************************************************
 dataSliders are the sliders that only show numbers
 without providing controls
 ***************************************************/
 .controller .dataSlider {
+	/*These sliders can't be controlled by the mouse*/
 	pointer-events: none;
-	-webkit-appearance: none;
-
-	width: 150px;
-	margin-right: 15px;
+	width: 150px!important;
+	margin-right: 15px!important;
 }
 
 .controller .dataSlider::-webkit-slider-thumb {
-	/*These sliders can't be controlled by the mouse*/
 	-webkit-appearance: none;
 	background-color: #aaa;
 	border: 1px solid black;
@@ -111,3 +109,182 @@ UNIT - The units each row is calculated in
 	pointer-events: none;
 }
 /* END UNIT */
+
+
+
+/*
+SLIDER MAGIC 
+Generated from: http://danielstern.ca/range.css/#/
+*/
+
+input[type=range].controlSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10.8px 0;
+}
+input[type=range].controlSlider:focus {
+  outline: none;
+}
+input[type=range].controlSlider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range].controlSlider::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range].controlSlider:focus::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+input[type=range].controlSlider::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range].controlSlider::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range].controlSlider::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].controlSlider::-ms-fill-lower {
+  background: rgba(128, 128, 128, 0.01);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].controlSlider::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0.01);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].controlSlider::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+  height: 8.4px;
+}
+input[type=range].controlSlider:focus::-ms-fill-lower {
+  background: rgba(255, 255, 255, 0.01);
+}
+input[type=range].controlSlider:focus::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/********************************************************************/
+input[type=range].dataSlider {
+  -webkit-appearance: none;
+  width: 100%;
+}
+input[type=range].dataSlider:focus {
+  outline: none;
+}
+input[type=range].dataSlider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #a9a9a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range].dataSlider::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 7px;
+  border-radius: 0px;
+  background: #3c3c3c;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -1px;
+}
+input[type=range].dataSlider:focus::-webkit-slider-runnable-track {
+  background: #a9a9a9;
+}
+input[type=range].dataSlider::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #a9a9a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range].dataSlider::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #3c3c3c;
+  cursor: pointer;
+}
+input[type=range].dataSlider::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].dataSlider::-ms-fill-lower {
+  background: #a9a9a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].dataSlider::-ms-fill-upper {
+  background: #a9a9a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].dataSlider::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 0px;
+  background: #3c3c3c;
+  cursor: pointer;
+  height: 8.4px;
+}
+input[type=range].dataSlider:focus::-ms-fill-lower {
+  background: #a9a9a9;
+}
+input[type=range].dataSlider:focus::-ms-fill-upper {
+  background: #a9a9a9;
+}
