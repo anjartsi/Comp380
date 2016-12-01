@@ -4,30 +4,30 @@ var cWidth = 300;
 /**********************************************
  Position Canvas
 **********************************************/
-var position = new Engine(document.getElementById("positionCanvas"), document.getElementById("positionCanvasBtn"));
+var positionCanvas = new Engine(document.getElementById("positionCanvas"), document.getElementById("positionCanvasBtn"));
 var positionControls = document.getElementById("positionControls");
-position.create(cWidth, cHeight);
-position.drawGridLines = true;
+positionCanvas.create(cWidth, cHeight);
+positionCanvas.drawGridLines = true;
 
 var shadow = new Mobile(125, 125);
 shadow.bigness = 25;
 shadow.col = 'black';
-shadow.addToEngine(position);
+shadow.addToEngine(positionCanvas);
 var red = new Mobile(125, 125);
 red.bigness = 25;
 red.mass = 1;
 red.velocity  = [0, 0];
 red.acceleration = [0, 0];
 red.col = 'red';
-red.addToEngine(position);
+red.addToEngine(positionCanvas);
 var redX = new SliderControl("Position - x", 0, cWidth - 2 * red.bigness, "meters", red.col);
 redX.decimalPlaces = 0;
-redX.addToEngine(position, red);
+redX.addToEngine(positionCanvas, red);
 redX.print(positionControls);
 
 var redY = new SliderControl("Position - y", 0, cHeight - 2 * red.bigness, "meters", red.col);
 redY.decimalPlaces = 0;
-redY.addToEngine(position, red);
+redY.addToEngine(positionCanvas, red);
 redY.print(positionControls);
 
 redX.manipulate = function() {
@@ -46,15 +46,17 @@ redY.changeProperty = function() {
 	this.thing.position[1] = newVal;
 }
 
-position.drawEverything();
+positionCanvas.drawEverything();
+
+
 
 /**********************************************
  Displacement vs Distance Canvas
 **********************************************/
-var dvd = new Engine(document.getElementById("dvdCanvas"), document.getElementById("dvdCanvasBtn"));
+var dvdCanvas = new Engine(document.getElementById("dvdCanvas"), document.getElementById("dvdCanvasBtn"));
 var dvdControls = document.getElementById("dvdControls");
-dvd.create(cWidth, 50);
-dvd.drawGridLines = true;
+dvdCanvas.create(cWidth, 50);
+dvdCanvas.drawGridLines = true;
 var blue = new Sphere(150, 25);
 blue.bigness = 25;
 blue.mass = 1;
@@ -73,24 +75,24 @@ shadow.col = 'black';
 var double = function(n) {
 	return 2 * n;
 }
-shadow.addToEngine(dvd);
-blue.addToEngine(dvd);
+shadow.addToEngine(dvdCanvas);
+blue.addToEngine(dvdCanvas);
 // blue.addSlider(dvdControls, "position", 0, 0, cWidth , "position", "meters");
 var bluePos = new SliderControl("Position", 0, 200, "meters", blue.col);
 bluePos.decimalPlaces = 0;
-bluePos.addToEngine(dvd, blue);
+bluePos.addToEngine(dvdCanvas, blue);
 bluePos.print(dvdControls);
 
 
 
 var blueDisp = new SliderData("Displacement", -200, 200 ,"meters", blue.col);
 blueDisp.decimalPlaces = 0;
-blueDisp.addToEngine(dvd);
+blueDisp.addToEngine(dvdCanvas, blue);
 blueDisp.print(dvdControls);
 
 var blueDist = new SliderData("Distance", -200, 200, "meters", blue.col);
 blueDist.decimalPlaces = 0;
-blueDist.addToEngine(dvd);
+blueDist.addToEngine(dvdCanvas, blue);
 blueDist.print(dvdControls);
 
 bluePos.manipulate = function() {
@@ -110,4 +112,72 @@ blueDist.manipulate = function() {
 }
 
 
-dvd.drawEverything(dvdControls);
+dvdCanvas.drawEverything(dvdControls);
+
+
+
+/**********************************************
+Velocity Canvas
+**********************************************/
+var velocityCanvas = new Engine(document.getElementById("velocityCanvas"), document.getElementById("velocityCanvasBtn"));
+var velocityControls = document.getElementById("velocityControls");
+velocityCanvas.create(cWidth, cHeight);
+velocityCanvas.drawGridLines = false;
+var slow = new Sphere(27, 2 * cHeight / 3);
+slow.bigness = 25;
+slow.mass = 1;
+slow.velocity = [150,0];
+slow.acceleration = [0, 0];
+slow.col = '#2233ff';
+
+var fast = new Sphere(27, cHeight / 3);
+fast.bigness = 25;
+fast.mass = 1;
+fast.velocity = [200,0];
+fast.acceleration = [0, 0];
+fast.col = 'red';
+
+fast.addToEngine(velocityCanvas);
+slow.addToEngine(velocityCanvas);
+
+var wall1 = new Wall(0,0, cHeight);
+var wall2 = new Wall(cWidth,0, cHeight);
+
+wall1.addToEngine(velocityCanvas);
+wall2.addToEngine(velocityCanvas);
+
+var slowVel = new Data("Velocity", "m/s", slow.col);
+var slowSp = new Data("Speed", "m/s", slow.col);
+var fastVel = new Data("Velocity", "m/s", fast.col);
+var fastSp = new Data("Speed", "m/s", fast.col);
+
+
+slowVel.addToEngine(velocityCanvas, slow);
+slowVel.print(velocityControls);
+slowVel.manipulate = function() {
+	return this.thing.velocity[0];
+}
+slowSp.addToEngine(velocityCanvas, slow);
+slowSp.print(velocityControls);
+slowSp.manipulate = function() {
+	return Math.abs(this.thing.velocity[0]);
+}
+fastVel.addToEngine(velocityCanvas, fast);
+fastVel.print(velocityControls);
+fastVel.manipulate = function() {
+	return this.thing.velocity[0];
+}
+fastSp.addToEngine(velocityCanvas, fast);
+fastSp.print(velocityControls);
+fastSp.manipulate = function() {
+	return Math.abs(this.thing.velocity[0]);
+}
+
+
+velocityCanvas.drawEverything();
+
+
+/**********************************************
+Acceleration Canvas
+**********************************************/
+

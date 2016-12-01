@@ -1,6 +1,7 @@
 var Data = function(desc, unit, col) {
 	this.dataType = "data";
 	this.engine;
+	this.thing;
 	this.value;
 	this.desc = desc;
 	this.units = unit;
@@ -14,9 +15,10 @@ var Data = function(desc, unit, col) {
 	this.rowElem = document.createElement("div");
 }
 
-Data.prototype.addToEngine = function(engine) {
+Data.prototype.addToEngine = function(engine, thing) {
 	engine.dataToUpdate.push(this);
 	this.engine = engine;	
+	this.thing = thing;
 }
 
 Data.prototype.makeDesc = function() {
@@ -75,11 +77,6 @@ var SliderData = function(desc, mini, maxi, unit, col) {
 
 SliderData.prototype = Object.create(Data.prototype)
 SliderData.prototype.constructor = SliderData;
-
-SliderData.prototype.addToEngine = function(engine) {
-	engine.dataToUpdate.push(this);
-	this.engine = engine;
-}
 
 SliderData.prototype.print = function(parentElem) {
 	this.parent = parentElem;
