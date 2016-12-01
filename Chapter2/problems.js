@@ -57,3 +57,39 @@ function problem3(){
 				What is the average acceleration during this time interval, in m/s<sup>2</sup>? (Round to 2 decimal places.)";
 	return question3;
 }
+
+/* Problem 4: deceleration and displacement */
+var prob4 = document.getElementById("prob4");
+var output4 = document.getElementById("output4");
+prob4.innerHTML = problem4();
+var answer4;
+var hint4 = "Since the motorcycle is starting at position 0, you can just solve for x and find the motorcycle's displacement. To get this, the square of the final velocity must be subtracted by the square of the initial velocity. \
+			This must then be divided by 2 times the deceleration of the vehicle.";
+
+function problem4(){
+	var decelerate = randomNum(-8, -5);
+	var initVel = randomNum(27, 35);
+	var question4 = "A motorcycle can decelerate at a rate of <span class='probNum'>" + Math.abs(decelerate) + "</span> m/s<sup>2</sup> on a certain concrete road. Imagine this vehicle is moving \
+					at an initial velocity of <span class='probNum'>" + initVel + "</span> m/s.<br> Find how much distance it takes for the car to slow down until its velocity is zero, to the nearest tenth of a meter.";
+	answer4 = -Math.pow(initVel, 2) / (2 * decelerate);
+	answer4 = Math.round(answer4 * 10) / 10;
+	return question4;
+}
+
+/* Problem 5: falling objects */
+var prob5 = document.getElementById("prob5");
+var output5 = document.getElementById("output5");
+prob5.innerHTML = problem5();
+var answer5;
+var hint5 = "Finding the position of a falling object at time t can be done by using a formula. You must add the initial postion plus the initial velocity times time t plus one-half of g times t squared.";
+
+function problem5(){
+	var initVel = randomNum(12, 17);
+	var time = 2;
+	var question5 = "A pebble is thrown straight up into the air on the edge of a cliff, with a starting velocity of <span class='probNum'>" + initVel + "</span> m/s. \
+					As the rock falls, it misses the cliff edge and continues falling. What is the position (to the nearest tenth of a meter) of the pebble at <span class='probNum'>" + time + "</span> seconds after it is thrown? \
+					<br>Assume it starts at vertical position zero, there is no wind resistance nor object mass, and a = g = -9.8 m/s<sup>2</sup>.";
+	answer5 = initVel * time + -9.8 * Math.pow(time, 2) / 2;
+	answer5 = Math.round(answer5 * 10) / 10;
+	return question5;
+}
