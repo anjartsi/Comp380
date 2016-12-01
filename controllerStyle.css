@@ -112,10 +112,10 @@ UNIT - The units each row is calculated in
 
 
 
-/*
+/*********************************************************************
 SLIDER MAGIC 
 Generated from: http://danielstern.ca/range.css/#/
-*/
+*********************************************************************/
 
 input[type=range].controlSlider {
   -webkit-appearance: none;
@@ -203,7 +203,9 @@ input[type=range].controlSlider:focus::-ms-fill-upper {
   background: rgba(255, 255, 255, 0.01);
 }
 
-/********************************************************************/
+/********************************************************************
+dataSliders
+********************************************************************/
 input[type=range].dataSlider {
   -webkit-appearance: none;
   width: 100%;
