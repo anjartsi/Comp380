@@ -45,11 +45,15 @@ var double = function(n) {
 shadow.addToEngine(dvd);
 blue.addToEngine(dvd);
 blue.addSlider(dvdControls, "position", 0, 0, cWidth , "position", "meters");
-var blueDisp = new Data(dvdControls, blue.position[0], "Displacement", "meters", blue.col);
+var blueDisp = new Data(blue.position[0], "Displacement", "meters", blue.col);
+blueDisp.decimalPlaces = 0;
 blueDisp.addToEngine(dvd);
-var blueDist = new Data(dvdControls, 0, "Distance", "meters", blue.col);
+blueDisp.print(dvdControls);
+var blueDist = new Data(0, "Distance", "meters", blue.col);
+blueDist.decimalPlaces = 0;
 blueDist.addToEngine(dvd);
-dvd.drawEverything();
+blueDist.print(dvdControls);
+dvd.drawEverything(dvdControls);
 
 blueDisp.recalculate = function() {
 	return blue.position[0] - shadow.position[0];

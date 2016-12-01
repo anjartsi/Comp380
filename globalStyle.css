@@ -250,6 +250,7 @@ canvas
 }
 
 .controller .controlRow, .controller .dataRow {
+	width: 100%;
 	margin: 0px 5px 0px 5px;
 	text-align: left;
 }
@@ -266,21 +267,30 @@ canvas
 
 .controller .dataValue {
 	display: inline;
-	margin: 10px;
+	margin: 0px 10px;
 }
 
 .controller .numberInput, .controller .dataValue {
 	width: 40px;
+	margin:auto;
 	vertical-align: top;
 	text-align: center;
 }
 
+.controller .dataRow .dataValue {
+	display: inline-block;
+	height: 100%;
+	width: 200px;
+	text-align: center;
+}
 .controller .unit {
 	float: right;
 	text-align: middle;
 	margin-right: 9px;
 	vertical-align: bottom;
 }
+
+
 .controller .controlRow:nth-child(even), .controller .dataRow:nth-child(even) {
 	background-color: #222;
 }
