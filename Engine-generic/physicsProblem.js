@@ -1,9 +1,24 @@
 var allEngines = [];
 
-var a = new Engine(document.getElementById("canvas1"), document.getElementById("btn1"));
+var b = new StaticEngine(document.getElementById("canvas1"), document.getElementById("btn1"));
+b.create(500, 600);
+b.setup(1000);
+b.drawGridLines = true;
+
+
+allEngines.push(b);
+
+var black = new StaticMobile(400, 500);
+black.col = 'black';
+black.velocity = [-100, 0];
+black.acceleration = [0, -500];
+black.addToEngine(b);
+
+
+
+var a = new Engine(document.getElementById("canvas2"), document.getElementById("btn2"));
 a.create(500, 600);
 a.drawGridLines = true;
-allEngines.push(a);
 
 var shadow = new Thing(100, 200);
 shadow.bigness=25;
@@ -16,7 +31,6 @@ blue.bigness = 25;
 blue.mass = 1;
 blue.velocity  = [250, 00];
 blue.acceleration = [0, -500];
-blue.shap = 'square';
 blue.col = 'blue';
 blue.addToEngine(a);
 
@@ -43,12 +57,85 @@ floor.addToEngine(a);
 ceiling.addToEngine(a);
 
 
+
+allEngines.push(a);
+
+
+var sliderCont = document.getElementById("sliderContainer");
+var sliderCont2 = document.getElementById("sliderContainer2");
+
+
+var redX = new SliderControl("Position - x", 0, a.canvasWidth - 4 * red.bigness, "meters", red.col);
+redX.decimalPlaces = 0;
+redX.addToEngine(a, red);
+redX.print(sliderContainer2)
+
+var redY = new SliderControl("Position - y", 0, a.canvasHeight - 4 * red.bigness, "meters", red.col);
+redY.decimalPlaces = 0;
+redY.addToEngine(a, red);
+redY.print(sliderContainer2)
+
+redX.manipulate = function() {
+	return this.thing.position[0] - 50;
+}
+redX.changeProperty = function() {
+	var newVal = this.value + 50;
+	this.thing.position[0] = newVal;
+}
+
+redY.manipulate = function() {
+	return this.thing.position[1] - 50;
+}
+redY.changeProperty = function() {
+	var newVal = this.value + 50;
+	this.thing.position[1] = newVal;
+}
+
+
+var blackX = new SliderControl("Position - x", 0, b.canvasWidth - 4 * black.bigness, "meters", "white");
+blackX.decimalPlaces = 0;
+blackX.addToEngine(b, black);
+blackX.print(sliderContainer);
+var blackY = new SliderControl("Position - y", 0, b.canvasHeight - 4 * black.bigness, "meters", "white");
+blackY.decimalPlaces = 0;
+blackY.addToEngine(b, black);
+blackY.print(sliderContainer);
+
+
+blackX.manipulate = function() {
+	return this.thing.position[0] - 50;
+}
+
+blackX.changeProperty = function() {
+	var newVal = this.value + 50;
+	this.thing.position[0] = newVal;
+	this.thing.initialPosition[0] = newVal;
+	this.engine.elapsedTime = 0;
+}
+
+blackY.manipulate = function() {
+	return this.thing.position[1] - 50;
+}
+
+blackY.changeProperty = function() {
+	var newVal = this.value + 50;
+	this.thing.position[1] = newVal;
+	this.thing.initialPosition[1] = newVal;
+	this.engine.elapsedTime = 0;
+}
+// black.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m");
+// black.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m");
+
+// red.addSlider(sliderCont2, "position", 0, 50, 450, "x-coordinate", "m")
+// red.addSlider(sliderCont2, "position", 1, 50, 450, "y-coordinate", "m")
+// red.addSlider(sliderCont2, "velocity", 0, -500, 500, "velocity-x", "m/s");
+// red.addSlider(sliderCont2, "velocity", 1, -500, 500, "velocity-y", "m/s");
+// blue.addSlider(sliderCont2, "position", 0, 50, 450, "x-coordinate", "m")
+// blue.addSlider(sliderCont2, "position", 1, 50, 450, "y-coordinate", "m")
+// blue.addSlider(sliderCont2, "velocity", 0, -500, 500, "velocity-x", "m/s");
+// blue.addSlider(sliderCont2, "velocity", 1, -500, 500, "velocity-y", "m/s");
+
+
 for(var i = 0; i < allEngines.length; i++) {
 	allEngines[i].drawEverything();
 }
-
-var sliderCont = document.getElementById("sliderContainer");
-
-
-red.addSlider(sliderCont, "position", 0, 50, 450, "x-coordinate", "m")
-red.addSlider(sliderCont, "position", 1, 50, 450, "y-coordinate", "m")

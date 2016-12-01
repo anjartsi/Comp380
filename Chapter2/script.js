@@ -7,8 +7,3 @@ if (pageType.name == "explanation")
 
 else if (pageType.name == "sampleProblems")
 	s = "active";
-//createLink(chapterNav, "Explanation", "index.html", e);
-//createLink(chapterNav, "Sample Problems", "sampleProblems.html", s);
-
-
-

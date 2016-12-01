@@ -23,7 +23,7 @@ var randomInt = function(min, max){
 function randomNum(min, max){
 	var wait = 5000;
 	var result;
-  	var d1 = new Date().getTime();
+  var d1 = new Date().getTime();
  	var d2 = new Date().getTime() % wait;
  	d1 = d1 - d2;
  	d1 = Math.sin(d1);
@@ -50,8 +50,9 @@ function answerCheck(inputField, answer, elementOutput){
 }
 
 // ~~~~~~~~~~~~~~~~~~~ Hint-displaying function ~~~~~~~~~~~~~~~~~~~~~~
-function showHint(hint){
-  alert(hint);
+function showHint(hint, elementOutput){
+  elementOutput.innerHTML = hint;
+  elementOutput.setAttribute("style", "color: yellow");
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
