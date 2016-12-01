@@ -150,10 +150,16 @@ SliderControl.prototype.addToEngine = function(engine, thing) {
 	engine.dataToUpdate.push(this);
 	engine.controls.push(this);
 	this.engine = engine;
-	this.thing = thing;
+	this.thing = thing;	// the thing that is controlled by this slider
 }
 
-
+SliderData.prototype.update = function() {
+	var newVal = this.manipulate();
+	newVal = newVal.toFixed(this.decimalPlaces);
+	this.value = newVal;
+	this.valueElem.value = newVal;
+	this.sliderElem.value = newVal;
+}
 
 SliderData.prototype.makeValue = function() {
 	this.valueElem.className = "controllerValue sliderValue";
@@ -215,10 +221,12 @@ SliderData.prototype.changeProperty = function() {
 
 SliderControl.prototype.turnOff = function() {
 	addClass(this.sliderElem, "turnedOff");
+	addClass(this.sliderElem, "dataSlider");
 	addClass(this.valueElem, "turnedOff");
 }
 
 SliderControl.prototype.turnOn = function() {
-	remove(this.sliderElem, "turnedOff");
-	remove(this.valueElem, "turnedOff");
+	removeClass(this.sliderElem, "turnedOff");
+	removeClass(this.sliderElem, "dataSlider");
+	removeClass(this.valueElem, "turnedOff");
 }
