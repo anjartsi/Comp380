@@ -67,8 +67,8 @@ var hint4 = "Since the motorcycle is starting at position 0, you can just solve 
 			This must then be divided by 2 times the deceleration of the vehicle.";
 
 function problem4(){
-	var decelerate = -7;//randomNum(-8, -5);
-	var initVel = 30;//randomNum(27, 35);
+	var decelerate = randomNum(-8, -5);
+	var initVel = randomNum(27, 35);
 	var question4 = "A motorcycle can decelerate at a rate of <span class='probNum'>" + Math.abs(decelerate) + "</span> m/s<sup>2</sup> on a certain concrete road. Imagine this vehicle is moving \
 					at an initial velocity of <span class='probNum'>" + initVel + "</span> m/s.<br> Find how much distance it takes for the car to slow down until its velocity is zero, to the nearest tenth of a meter.";
 	answer4 = -Math.pow(initVel, 2) / (2 * decelerate);
@@ -84,7 +84,7 @@ var answer5;
 var hint5 = "Finding the position of a falling object at time t can be done by using a formula. You must add the initial postion plus the initial velocity times time t plus one-half of g times t squared.";
 
 function problem5(){
-	var initVel = 13;
+	var initVel = randomNum(12, 17);
 	var time = 2;
 	var question5 = "A pebble is thrown straight up into the air on the edge of a cliff, with a starting velocity of <span class='probNum'>" + initVel + "</span> m/s. \
 					As the rock falls, it misses the cliff edge and continues falling. What is the position (to the nearest tenth of a meter) of the pebble at <span class='probNum'>" + time + "</span> seconds after it is thrown? \
