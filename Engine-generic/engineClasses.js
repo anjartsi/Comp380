@@ -29,6 +29,7 @@ var Engine = function(elem, buttonElem) {
 	this.allMobiles = [];
 	this.allImmobiles = [];	
 	this.dataToUpdate = [];
+	this.controls = [];
 }
 /*************
 ENGINE Methods

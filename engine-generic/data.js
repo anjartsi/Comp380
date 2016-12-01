@@ -1,17 +1,17 @@
-var Data = function(val, desc, unit, col) {
+var Data = function(desc, unit, col) {
+	this.dataType = "data";
 	this.engine;
-	this.value = val;
+	this.value;
 	this.desc = desc;
 	this.units = unit;
 	this.col = col;
-
 	this.decimalPlaces = 2;
 	// HTML elements linked to this data
 	this.parentElem;
-	this.rowElem = document.createElement("div");
 	this.valueElem = document.createElement("div");
 	this.descElem = document.createElement("div");
 	this.unitsElem = document.createElement("div");
+	this.rowElem = document.createElement("div");
 }
 
 Data.prototype.addToEngine = function(engine) {
@@ -19,29 +19,30 @@ Data.prototype.addToEngine = function(engine) {
 	this.engine = engine;	
 }
 
-Data.prototype.writeDesc = function() {
-	this.descElem.className = "dataDesc";
+Data.prototype.makeDesc = function() {
+	this.descElem.className = "controllerDescription " + this.dataType +  "Desc";
 	this.descElem.innerHTML = this.desc;
 }
 
-Data.prototype.writeValue = function() {
-	this.valueElem.className = "dataValue";
+Data.prototype.makeValue = function() {
+	this.valueElem.className = "controllerValue " + this.dataType +  "Value";
 	this.valueElem.innerHTML = this.value;
 }
 
-Data.prototype.writeUnits = function() {
+Data.prototype.makeUnits = function() {
 	this.unitsElem.innerHTML = this.units;
 	this.unitsElem.className = "unit";
 }
 
 Data.prototype.print = function(parentElem) {
 	this.parent = parentElem;
-	this.rowElem.className = "dataRow";
+
+	this.rowElem.className = "controllerRow " + this.dataType +  "Row";
 	this.rowElem.style.color = this.col;
 
-	this.writeDesc();
-	this.writeValue();
-	this.writeUnits();
+	this.makeDesc();
+	this.makeValue();
+	this.makeUnits();
 
 	// add to controller
 	this.rowElem.appendChild(this.descElem);
@@ -51,90 +52,173 @@ Data.prototype.print = function(parentElem) {
 }
 
 Data.prototype.update = function() {
-	var newVal = this.recalculate();
+	var newVal = this.manipulate();
 	newVal = newVal.toFixed(this.decimalPlaces);
 	this.value = newVal;
 	this.valueElem.innerHTML = newVal;
 }
 
-Data.prototype.recalculate = function() {
+Data.prototype.manipulate = function() {
 	return 0;
 }
 
-// Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, units) {
-// 	var mobile = this;
-// 	var row = document.createElement("div");
-// 	row.className = "controlRow";
-// 	row.style.color = this.col;
-// 	// create slider
-// 	var slider = document.createElement("input");
-// 	slider.type = "range";
-// 	slider.className = "sliderInput";
-// 	slider.min = min;
-// 	slider.max = max;
-// 	if(index != -1) 
-// 		slider.value = this[variable][index];
-// 	else
-// 		slider.value = this[variable];
-// 	// create number input
-// 	var num = document.createElement("input");
-// 	num.type = "number";
-// 	num.name = variable;
-// 	num.id = variable;
-// 	num.className = "numberInput"
-// 	num.min = min;
-// 	num.max = max;
-// 	num.value = this[variable][index];
-// 	if(index != -1) 
-// 		num.value = this[variable][index];
-// 	else
-// 		num.value = this[variable];
+/***********************************************
+SLIDERDATA
+************************************************/
+var SliderData = function(desc, mini, maxi, unit, col) {
+	Data.call(this, desc, unit, col);
+	this.sliderElem = document.createElement("input");
+	this.minVal = mini;
+	this.maxVal = maxi;
 
-// 	// create label
-// 	var name = document.createElement("label");
-// 	name.for = num.name;
-// 	name.innerHTML = desc;
+}
 
-// 	// create unit
-// 	var unit = document.createElement("div");
-// 	unit.innerHTML = units;
-// 	unit.className = "unit";
+SliderData.prototype = Object.create(Data.prototype)
+SliderData.prototype.constructor = SliderData;
 
-// 	// event listeners
-// 	slider.addEventListener("input", function() {
-// 		if(index != -1) 
-// 			mobile[variable][index] = parseInt(slider.value);
-// 		else
-// 			mobile[variable] = parseInt(slider.value);
-// 		num.value = parseInt(slider.value);
-// 		mobile.engine.drawEverything();
-// 	})
+SliderData.prototype.addToEngine = function(engine) {
+	engine.dataToUpdate.push(this);
+	this.engine = engine;
+}
 
-// 	num.addEventListener("input", function() {
-// 		var inp = parseInt(num.value);
-// 		if(inp > max) {
-// 			inp = max;
-// 			num.value = max;
-// 		}
-// 		else if (inp < min || inp == NaN || inp == null) {
-// 			inp = min;
-// 			num.value = min;
-// 		}
-// 		if(index != -1) 
-// 			mobile[variable][index] = inp;
-// 		else 
-// 			mobile[variable] = inp;
-// 		slider.value = inp;
-// 		mobile.engine.drawEverything();
-// 	})
+SliderData.prototype.print = function(parentElem) {
+	this.parent = parentElem;
 
-// 	// add to controller
-// 	row.appendChild(name);
-// 	row.appendChild(slider);
-// 	row.appendChild(num);
-// 	row.appendChild(unit);
+	this.rowElem.className = "controllerRow " + this.dataType +  "Row";
+	this.rowElem.style.color = this.col;
 
-// 	parent.appendChild(row);
-// 	mobile.printedValues.push([slider, variable, index]);
-// 	mobile.printedValues.push([num, variable, index]);
-// }
+	this.makeDesc();
+	this.makeSlider();
+	this.makeValue();
+	this.makeUnits();
+
+	// add to controller
+	this.rowElem.appendChild(this.descElem);
+	this.rowElem.appendChild(this.sliderElem);
+	this.rowElem.appendChild(this.valueElem);
+	this.rowElem.appendChild(this.unitsElem);
+	this.parent.appendChild(this.rowElem);
+}
+
+SliderData.prototype.update = function() {
+	var newVal = this.manipulate();
+	newVal = newVal.toFixed(this.decimalPlaces);
+	this.value = newVal;
+	this.valueElem.innerHTML = newVal;
+	this.valueElem.value = newVal;
+	this.sliderElem.value = newVal;
+}
+
+SliderData.prototype.makeDesc = function() {
+	this.descElem.className = "controllerDescription sliderDesc";
+	this.descElem.innerHTML = this.desc;
+}
+
+SliderData.prototype.makeValue = function() {
+	this.valueElem.className = "controllerValue sliderValue";
+	this.valueElem.innerHTML = this.value;
+}
+
+SliderData.prototype.makeUnits = function() {
+	this.unitsElem.innerHTML = this.units;
+	this.unitsElem.className = "unit";
+}
+
+SliderData.prototype.makeSlider = function() {
+	this.sliderElem.type = "range";
+	this.sliderElem.className = this.dataType +  "Slider";
+	this.sliderElem.min = this.minVal;
+	this.sliderElem.max = this.maxVal;
+}
+
+
+/***********************************************
+SLIDERCONTROL
+************************************************/
+var SliderControl = function(desc, mini, maxi, unit, col) {
+	SliderData.call(this, desc, mini, maxi, unit, col);
+	this.dataType = "control";
+	this.valueElem = document.createElement("input");
+	this.valueElem.type = "number";
+	this.thing;
+}
+
+SliderControl.prototype = Object.create(SliderData.prototype)
+SliderControl.prototype.constructor = SliderControl;
+
+SliderControl.prototype.addToEngine = function(engine, thing) {
+	engine.dataToUpdate.push(this);
+	engine.controls.push(this);
+	this.engine = engine;
+	this.thing = thing;
+}
+
+
+
+SliderData.prototype.makeValue = function() {
+	this.valueElem.className = "controllerValue sliderValue";
+	this.valueElem.value = this.value;
+}
+
+SliderData.prototype.print = function(parentElem) {
+	this.parent = parentElem;
+
+	this.rowElem.className = "controllerRow " + this.dataType +  "Row";
+	this.rowElem.style.color = this.col;
+
+	this.makeDesc();
+	this.makeSlider();
+	this.makeValue();
+	this.makeUnits();
+
+	// add to controller
+	this.rowElem.appendChild(this.descElem);
+	this.rowElem.appendChild(this.sliderElem);
+	this.rowElem.appendChild(this.valueElem);
+	this.rowElem.appendChild(this.unitsElem);
+	this.parent.appendChild(this.rowElem);
+
+	var controlSlider = this;
+
+	// event listeners
+	this.sliderElem.addEventListener("input", function() {
+		controlSlider.value = parseInt(controlSlider.sliderElem.value, 10);
+		controlSlider.valueElem.value = controlSlider.value;
+		controlSlider.changeProperty();
+		controlSlider.engine.drawEverything();
+	})
+
+	this.valueElem.addEventListener("input", function() {
+		var inp = parseInt(controlSlider.valueElem.value, 10);
+		if(inp > controlSlider.maxVal) {
+			inp = controlSlider.maxVal;
+			controlSlider.valueElem.value = controlSlider.maxVal;
+		}
+		else if (inp < controlSlider.minVal) {
+			inp = controlSlider.minVal;
+			controlSlider.valueElem.value = controlSlider.minVal;
+		}
+		if(inp == NaN || inp == null) {
+			inp = controlSlider.minVal;
+		}
+		controlSlider.value = inp;
+		controlSlider.sliderElem.value = inp;
+		controlSlider.changeProperty();
+		controlSlider.engine.drawEverything();
+	})
+
+}
+
+SliderData.prototype.changeProperty = function() {
+	return 0;
+}
+
+SliderControl.prototype.turnOff = function() {
+	addClass(this.sliderElem, "turnedOff");
+	addClass(this.valueElem, "turnedOff");
+}
+
+SliderControl.prototype.turnOn = function() {
+	remove(this.sliderElem, "turnedOff");
+	remove(this.valueElem, "turnedOff");
+}
