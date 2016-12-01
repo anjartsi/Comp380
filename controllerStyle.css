@@ -1,0 +1,113 @@
+MOBILE CONTROLLER STYLE*/
+
+.controller {
+	color: white;
+	width: 400px;
+	-webkit-user-select: none;
+}
+
+/**********************************
+ROW
+***********************************/
+.controller .controllerRow {
+	width: 450px;
+	text-align: left;
+}
+
+.controller .controllerRow:nth-child(even) {
+	background-color: #222;
+}
+
+.controller .controllerRow:nth-child(odd) {
+	background-color: #111;
+}
+
+.controller .controllerRow:first-child {
+	margin-top: 10px;
+}
+/* END ROW */
+
+
+/**********************************************************************
+DESCRIPTION - the english words that describe the row
+**********************************************************************/
+.controller .controllerDescription {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 100px;
+}
+/* END DESCRIPTION */
+
+
+/**********************************************************************
+SLIDERS
+**********************************************************************/
+.controller .controlSlider {
+	width: 150px;
+	height: 20px;
+	margin-right: 15px;
+}
+/**************************************************
+dataSliders are the sliders that only show numbers
+without providing controls
+***************************************************/
+.controller .dataSlider {
+	pointer-events: none;
+	-webkit-appearance: none;
+
+	width: 150px;
+	margin-right: 15px;
+}
+
+.controller .dataSlider::-webkit-slider-thumb {
+	/*These sliders can't be controlled by the mouse*/
+	-webkit-appearance: none;
+	background-color: #aaa;
+	border: 1px solid black;
+
+	width: 8px;
+	height: 20px;
+}
+
+/* END SLIDER */
+
+/*********************************************************************
+VALUE - The number (either input or output) 
+**********************************************************************/
+.controller .controllerValue {
+	display: inline;
+	width: 40px;
+	margin:auto;
+	vertical-align: top;
+	text-align: center;
+}
+
+.controller .dataRow .sliderValue {
+	vertical-align: top;
+}
+
+.controller .dataRow .dataValue {
+	display: inline-block;
+	height: 100%;
+	width: 200px; /* must have a big width because it has no slider */
+	text-align: center;
+}
+/* END VALUE */
+
+
+/*********************************************************************
+UNIT - The units each row is calculated in 
+**********************************************************************/
+.controller .unit {
+	float: right;
+	text-align: middle;
+	margin-right: 9px;
+	vertical-align: bottom;
+}
+
+
+.turnedOff {
+	pointer-events: none;
+}
+/* END UNIT */

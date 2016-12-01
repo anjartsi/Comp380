@@ -1,4 +1,6 @@
-
+img {
+	margin: 0px auto;
+}
 
 .addLater {
 	background-color: darkblue;
@@ -7,10 +9,6 @@
 	height: 250px;
 	font-size: 25px;
 	text-align: center;
-}
-
-input {
-	margin-right: 10px;
 }
 
 .canvasCont {

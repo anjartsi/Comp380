@@ -29,6 +29,7 @@ var Engine = function(elem, buttonElem) {
 	this.allMobiles = [];
 	this.allImmobiles = [];	
 	this.dataToUpdate = [];
+	this.controls = [];
 }
 /*************
 ENGINE Methods
@@ -121,9 +122,8 @@ Engine.prototype.animate = function(engine) {
 				engine.allThings[i].incrementTime(engine.dt);
 
 			}; // end if(Mobile)
-			// Draw Everything
-			engine.allThings[i].draw(engine.ctx);
 		}// end for(i)
+		engine.drawEverything();
 		engine.playing = window.requestAnimationFrame(function() {
 			engine.animate(engine)
 		});
@@ -138,6 +138,9 @@ Engine.prototype.play = function() {
     if (!this.playing){
         this.button.innerHTML = 'Pause';
         var engine = this;
+        for (var i = 0; i < this.controls.length; i++) {
+        	this.controls[i].turnOff();
+        }
         this.playing = window.requestAnimationFrame(function() {
         	return engine.animate(engine);
         });
@@ -147,6 +150,9 @@ Engine.prototype.play = function() {
         window.cancelAnimationFrame(this.playing);
         this.playing = null;
         this.button.innerHTML = 'Play';
+        for (var i = 0; i < this.controls.length; i++) {
+        	this.controls[i].turnOn();
+        }
         console.log('paused at ' + this.elapsedTime);
     }
 }
@@ -199,7 +205,10 @@ StaticEngine.prototype.setup = function(maxTime) {
 
 StaticEngine.prototype.play = function() {
     if (!this.playing){
-        this.button.innerHTML = 'Pause';
+        this.button.innerHTML = 'Pause';        
+        for (var i = 0; i < this.controls.length; i++) {
+        	this.controls[i].turnOff();
+        }
         var engine = this;
         this.playing = window.requestAnimationFrame(function() {
         	return engine.animate(engine);
@@ -210,6 +219,9 @@ StaticEngine.prototype.play = function() {
         window.cancelAnimationFrame(this.playing);
         this.playing = null;
         this.button.innerHTML = 'Play';
+        for (var i = 0; i < this.controls.length; i++) {
+        	this.controls[i].turnOn();
+        }
         console.log('paused at ' + this.elapsedTime);
     }
 }
@@ -237,10 +249,8 @@ StaticEngine.prototype.animate = function(engine) {
 				engine.allThings[i].changePos(engine.elapsedTime);
 
 			}; // end if(Mobile)
-			// Draw Everything
-			engine.allThings[i].draw(engine.ctx);
 		}// end for(i)
-
+		engine.drawEverything();
 		if(this.elapsedTime < this.maxTime) {
 				engine.playing = window.requestAnimationFrame(function() {
 					engine.animate(engine)
