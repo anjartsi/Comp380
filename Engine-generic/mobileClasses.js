@@ -64,13 +64,6 @@ Mobile.prototype.draw = function(ctx) {
 	ctx.stroke(this.path);
 	ctx.fill(this.path);
 	ctx.restore();
-
-	// update data and control values
-	for (var i = 0; i < this.printedValues.length; i++) {
-		this.updateValue(this.printedValues[i][0], 
-						this.printedValues[i][1], 
-						this.printedValues[i][2]);
-	}
 }
 
 Mobile.prototype.addText = function() {
@@ -201,107 +194,6 @@ Mobile.prototype.collide = function(otherObject, side, dt, dir) {
 	else {
 		this.willCollide[(side + 1) % 2] = false;
 	}
-}
-
-/** 
-Adds a slider to change certain values of a mobile object
-parent: the parent HTML element that will hold the slider
-variable: the name of the variable that will be controlled by the slider
-index: For some variables taht are arrays (like position) this will indicate the 
-		index of the array that will be controlled by the slider.
-		For variables that are not arrays, set index to -1
-min / max: The min/max value allowed in the slider
-desc: a 1- or 2-word description that will be printed next to the slider
-units: a string indicating the unit that will appear after the number-input
-**/
-Mobile.prototype.addSlider = function(parent, variable, index, min, max, desc, units) {
-	var mobile = this;
-	var row = document.createElement("div");
-	row.className = "controlRow";
-	row.style.color = this.col;
-	// create slider
-	var slider = document.createElement("input");
-	slider.type = "range";
-	slider.className = "sliderInput";
-	slider.min = min;
-	slider.max = max;
-	if(index != -1) 
-		slider.value = this[variable][index];
-	else
-		slider.value = this[variable];
-	// create number input
-	var num = document.createElement("input");
-	num.type = "number";
-	num.name = variable;
-	num.id = variable;
-	num.className = "numberInput"
-	num.min = min;
-	num.max = max;
-	num.value = this[variable][index];
-	if(index != -1) 
-		num.value = this[variable][index];
-	else
-		num.value = this[variable];
-
-	// create label
-	var name = document.createElement("label");
-	name.for = num.name;
-	name.innerHTML = desc;
-
-	// create unit
-	var unit = document.createElement("div");
-	unit.innerHTML = units;
-	unit.className = "unit";
-
-	// event listeners
-	slider.addEventListener("input", function() {
-		if(index != -1) 
-			mobile[variable][index] = parseInt(slider.value);
-		else
-			mobile[variable] = parseInt(slider.value);
-		num.value = parseInt(slider.value);
-		mobile.engine.drawEverything();
-	})
-
-	num.addEventListener("input", function() {
-		var inp = parseInt(num.value);
-		if(inp > max) {
-			inp = max;
-			num.value = max;
-		}
-		else if (inp < min || inp == NaN || inp == null) {
-			inp = min;
-			num.value = min;
-		}
-		if(index != -1) 
-			mobile[variable][index] = inp;
-		else 
-			mobile[variable] = inp;
-		slider.value = inp;
-		mobile.engine.drawEverything();
-	})
-
-	// add to controller
-	row.appendChild(name);
-	row.appendChild(slider);
-	row.appendChild(num);
-	row.appendChild(unit);
-
-	parent.appendChild(row);
-	mobile.printedValues.push([slider, variable, index]);
-	mobile.printedValues.push([num, variable, index]);
-}
-
-Mobile.prototype.updateValue = function(elem, variable, index) {
-	if(index < 0) {
-		value = this[variable];
-	}
-	else {
-		value = this[variable][index];
-	}
-	value = value.toFixed(2);
-	elem.value= value;
-	elem.innerHTML = value;
 }
 
 /*****************************************************************************************************
