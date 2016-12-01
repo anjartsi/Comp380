@@ -34,11 +34,9 @@ html
 /*Body Content*/
 #content
 {
-	width: 100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	width: 1264px;
 	padding: 10px;
-	margin: auto;
+	
 }
 ul li {
 	margin-bottom: 2px;
@@ -149,7 +147,7 @@ nav li a, .dropbtn
 
 .dropdown-content a:hover 
 {
-	background-color: #8EA8C3;
+	background-color: #68093C;
 	color: white;
 }
 
