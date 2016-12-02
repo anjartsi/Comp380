@@ -22,8 +22,6 @@ var Mobile = function(x, y) {
 
 	// top, right, bottom, left edges
 	this.edges = [];
-	this.printedValues = [];
-	this.calculatedValues = [];
 }
 
 /*************
@@ -31,6 +29,18 @@ MOBILE Methods
 *************/
 Mobile.prototype = Object.create(Thing.prototype)
 Mobile.prototype.constructor = Mobile;
+
+// Draws the object based on its color and path
+Mobile.prototype.draw = function(ctx) {
+	this.setEdges();
+	this.makePath();
+	ctx.save();
+	ctx.strokeStyle = 'black';
+	ctx.fillStyle = this.col;
+	ctx.stroke(this.path);
+	ctx.fill(this.path);
+	ctx.restore();
+}
 
 // First method that should be called for each object. 
 // Adds the object to the list(s) it belongs to.
@@ -54,17 +64,7 @@ Mobile.prototype.makePath = function() {
 	this.path.rect(this.edges[3],this.edges[2],(2 * this.bigness),(2 * this.bigness));
 }
 
-// Draws the object based on its color and path
-Mobile.prototype.draw = function(ctx) {
-	this.setEdges();
-	this.makePath();
-	ctx.save();
-	ctx.strokeStyle = 'black';
-	ctx.fillStyle = this.col;
-	ctx.stroke(this.path);
-	ctx.fill(this.path);
-	ctx.restore();
-}
+
 
 Mobile.prototype.addText = function() {
 	ctx.save();

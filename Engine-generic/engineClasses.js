@@ -20,8 +20,6 @@ var Engine = function(elem, buttonElem) {
 
 	// Timing
 	this.elapsedTime = 0; // In milliseconds
-	this.t1;
-	this.t2;
 	this.dt = 1000.0 / 60; // In milliseconds
 
 	// Objects inside the engine
@@ -180,8 +178,6 @@ var StaticEngine = function(elem, buttonElem) {
 
 	// Timing
 	this.elapsedTime = 0; // In milliseconds
-	this.t1;
-	this.t2;
 	this.dt = 1000.0 / 60; //milliseconds
 
 	// Objects inside the engine
@@ -246,7 +242,7 @@ StaticEngine.prototype.animate = function(engine) {
 		for(var i = 0; i < engine.allThings.length; i++) {
 			if(engine.allThings[i] instanceof StaticMobile){
 				// Change properties of each mobile object
-				engine.allThings[i].changePos(engine.elapsedTime);
+				engine.allThings[i].incrementTime(engine.elapsedTime);
 
 			}; // end if(Mobile)
 		}// end for(i)
