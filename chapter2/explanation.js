@@ -182,7 +182,7 @@ Acceleration Canvas
 
 var accelerationCanvas = new StaticEngine(document.getElementById("accelerationCanvas"), document.getElementById("accelerationCanvasBtn"));
 var accelerationControls = document.getElementById("accelerationControls");
-accelerationCanvas.create(2 * cWidth, cHeight);
+accelerationCanvas.create(2 * cWidth - 100, cHeight);
 accelerationCanvas.setup(3000);
 accelerationCanvas.drawGridLines = false;
 
@@ -257,35 +257,82 @@ fastAccelVel.manipulate = function() {
 accelerationCanvas.drawEverything();
 
 
+/**********************************************
+Acceleration2 Canvas
+**********************************************/
 
-/**
+var acceleration2Canvas = new StaticEngine(document.getElementById("acceleration2Canvas"), document.getElementById("acceleration2CanvasBtn"));
+var acceleration2Controls = document.getElementById("acceleration2Controls");
+acceleration2Canvas.create(2 * cWidth - 100, cHeight);
+acceleration2Canvas.setup(3000);
+acceleration2Canvas.drawGridLines = false;
 
-var engineName = new Engine(canvasElem, buttonElem)
-engineName.create(width, height)
+var slowAccel2 = new StaticMobile(12 + 50, 2 * cHeight / 3);
+slowAccel2.bigness = 10;
+slowAccel2.mass = 1;
+slowAccel2.velocity = [50,0];
+slowAccel2.acceleration = [50, 0];
+slowAccel2.col = '#2233ff';
 
-mobileName = new Mobile(x, y);
-mobileName.velocity = [];
-mobileName.acceleration = [];
-mobileName.bigness = 10;
-mobileName.addToEngine(engineName);
+var fastAccel2 = new StaticMobile(12, cHeight / 3);
+fastAccel2.bigness = 10;
+fastAccel2.mass = 1;
+fastAccel2.velocity = [0,0];
+fastAccel2.acceleration = [100, 0];
+fastAccel2.col = 'red';
 
-mobileDataName = new Data(label, units, color);
-mobileDataName.addToEngine(engineName, mobileName);
-mobileDataName.print(controllerElem)
+fastAccel2.addToEngine(acceleration2Canvas);
+slowAccel2.addToEngine(acceleration2Canvas);
 
-mobileDataName.manipulate = function() {
-	return this.thing.position[0] * 2 ;
+var timeSlider2 = new SliderControl("Time", 0, 3000, "milliseconds", "white");
+timeSlider2.addToEngine(acceleration2Canvas, acceleration2Canvas);
+timeSlider2.print(acceleration2Controls);
+timeSlider2.sliderElem.step = 10;
+timeSlider2.decimalPlaces = 0;
+timeSlider2.manipulate = function() {
+	return this.thing.elapsedTime;
+}
+timeSlider2.changeProperty = function() {
+	this.engine.elapsedTime = this.value;
+	// this.engine.drawEverything();
 }
 
-mobileSliderControlName = new SliderData(label, max, min, units, color);
-mobileSliderControlName.addToEngine(engineName, mobileName);
-mobileSliderControlName.print(controllerElem);
+var slowAccel2A = new Data("Acceleration", "m/s<sup>2</sup>", slowAccel2.col);
+var slowAccel2Vel = new SliderData("Velocity", 0, 300, "m/s", slowAccel2.col);
 
-mobileSliderControlName.manipulate = function() {
-	return ....;
+var fastAccel2A = new Data("Acceleration", "m/s<sup>2</sup>", fastAccel2.col);
+var fastAccel2Vel = new SliderData("Velocity", 0, 300, "m/s", fastAccel2.col);
+
+
+slowAccel2A.addToEngine(acceleration2Canvas, slowAccel2);
+slowAccel2A.print(acceleration2Controls);
+slowAccel2A.manipulate = function() {
+	return this.thing.acceleration[0] / 10;
 }
 
-mobileSliderControlName.changeProperty = function() {
-	return ....;
+slowAccel2Vel.addToEngine(acceleration2Canvas, slowAccel2);
+slowAccel2Vel.print(acceleration2Controls);
+slowAccel2Vel.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t) / 10;
 }
-**/
+
+fastAccel2A.addToEngine(acceleration2Canvas, fastAccel2);
+fastAccel2A.print(acceleration2Controls);
+fastAccel2A.manipulate = function() {
+	return this.thing.acceleration[0] / 10;
+}
+
+fastAccel2Vel.addToEngine(acceleration2Canvas, fastAccel2);
+fastAccel2Vel.print(acceleration2Controls);
+fastAccel2Vel.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t) / 10;
+}
+
+
+acceleration2Canvas.drawEverything();
