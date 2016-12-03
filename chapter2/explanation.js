@@ -336,3 +336,37 @@ fastAccel2Vel.manipulate = function() {
 
 
 acceleration2Canvas.drawEverything();
+
+/**********************************************
+Deceleration Canvas
+**********************************************/
+var decelerationCanvas = new StaticEngine(document.getElementById("decelerationCanvas"), document.getElementById("decelerationCanvasBtn"));
+var decelerationControls = document.getElementById("decelerationControls");
+decelerationCanvas.create(cWidth, cHeight);
+decelerationCanvas.setup(6000);
+decelerationCanvas.drawGridLines = false;
+
+var decelRed = new StaticMobile(27, cHeight / 2 + 50);
+decelRed.velocity = [150, 0];
+decelRed.acceleration = [-150 / 3, 0];
+decelRed.col = 'red';
+decelRed.incrementTime = function(time) {
+	var timeMaxed = Math.min(time, 3000);
+	for (var i = 0; i < 2; i++) {
+		this.position[i] = this.initialPosition[i] + this.velocity[i] * timeMaxed / 1000;
+		this.position[i] += 0.5 * this.acceleration[i] * timeMaxed * timeMaxed / 1000000;
+	}
+}
+
+
+decelRed.addToEngine(decelerationCanvas);
+var decelBlue = new StaticMobile(27, cHeight / 2 - 50);
+decelBlue.velocity = [150, 0];
+decelBlue.acceleration = [-150 / 3, 0];
+decelBlue.col = '#2233ff';
+
+decelBlue.addToEngine(decelerationCanvas);
+
+
+decelerationCanvas.drawEverything();
+
