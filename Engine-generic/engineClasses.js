@@ -20,8 +20,6 @@ var Engine = function(elem, buttonElem) {
 
 	// Timing
 	this.elapsedTime = 0; // In milliseconds
-	this.t1;
-	this.t2;
 	this.dt = 1000.0 / 60; // In milliseconds
 
 	// Objects inside the engine
@@ -180,8 +178,6 @@ var StaticEngine = function(elem, buttonElem) {
 
 	// Timing
 	this.elapsedTime = 0; // In milliseconds
-	this.t1;
-	this.t2;
 	this.dt = 1000.0 / 60; //milliseconds
 
 	// Objects inside the engine
@@ -201,7 +197,19 @@ StaticEngine.prototype.setup = function(maxTime) {
 	this.maxTime = maxTime;
 }
 
-
+StaticEngine.prototype.drawEverything = function() {
+	this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+	if(this.drawGridLines) {
+		this.ctx.drawImage(this.gridLinesImage, 0, 0);
+	}
+	for (var i = 0; i < this.allThings.length; i++) {
+		this.allThings[i].draw(this.ctx);
+		this.allThings[i].incrementTime(this.elapsedTime - this.dt);
+	}
+	for (var i = 0; i < this.dataToUpdate.length; i++) {
+		this.dataToUpdate[i].update();
+	}
+}
 
 StaticEngine.prototype.play = function() {
     if (!this.playing){
@@ -246,12 +254,12 @@ StaticEngine.prototype.animate = function(engine) {
 		for(var i = 0; i < engine.allThings.length; i++) {
 			if(engine.allThings[i] instanceof StaticMobile){
 				// Change properties of each mobile object
-				engine.allThings[i].changePos(engine.elapsedTime);
+				engine.allThings[i].incrementTime(engine.elapsedTime);
 
 			}; // end if(Mobile)
 		}// end for(i)
 		engine.drawEverything();
-		if(this.elapsedTime < this.maxTime) {
+		if(this.elapsedTime + this.dt < this.maxTime) {
 				engine.playing = window.requestAnimationFrame(function() {
 					engine.animate(engine)
 				});
