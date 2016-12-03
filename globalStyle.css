@@ -4,15 +4,31 @@
 .color3 {background-color: #161925;}
 .color4 {background-color: #232227;}
 .color5 {background-color: #1B1922;}
+
 /* COLORS END */
+
+
+#shade {
+position: fixed;
+width: 1284px;
+height: 100%;
+z-index: -2;
+background-color: black;
+opacity: 0.75;
+}
 
 html
 {
+
+	/*-webkit-text-stroke-width: 2px;*/
+   /*-webkit-text-stroke-color: blue;*/
 	color: #FFFFFF;
 	background-image: url("galaxy2.jpg");
-	background-position: center;
-	width: 1300px;
-	height: 1300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+   	width: 1300px;
+	/*height: 1300px;*/
 	margin: auto;
 	font-family: Sans-Serif, Arial, Helvetica, "Times New Roman";
 	font-size: 1em;
