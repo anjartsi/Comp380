@@ -204,7 +204,7 @@ StaticEngine.prototype.drawEverything = function() {
 	}
 	for (var i = 0; i < this.allThings.length; i++) {
 		this.allThings[i].draw(this.ctx);
-		this.allThings[i].incrementTime(this.elapsedTime - this.dt);
+		this.allThings[i].incrementTime(this.elapsedTime);
 	}
 	for (var i = 0; i < this.dataToUpdate.length; i++) {
 		this.dataToUpdate[i].update();
@@ -221,7 +221,6 @@ StaticEngine.prototype.play = function() {
         this.playing = window.requestAnimationFrame(function() {
         	return engine.animate(engine);
         });
-        console.log('playing');
     }
     else{
         window.cancelAnimationFrame(this.playing);
@@ -230,7 +229,6 @@ StaticEngine.prototype.play = function() {
         for (var i = 0; i < this.controls.length; i++) {
         	this.controls[i].turnOn();
         }
-        console.log('paused at ' + this.elapsedTime);
     }
 }
 
@@ -239,7 +237,7 @@ StaticEngine.prototype.timing = function() {
 		this.elapsedTime = 0;
 	}
 	else {
-		this.elapsedTime += this.dt;
+		this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
 	}
 	// this.elapsedTime = (this.elapsedTime + this.dt) % this.maxTime;
 }
