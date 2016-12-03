@@ -2,7 +2,6 @@
 .canvasCont {
 /* Holds everything related to the canvas (text and engineHolder)*/
   position: relative;
-  opacity: 1.0;
   width: 500px;
   padding-top: 1px;
   text-align: center;
