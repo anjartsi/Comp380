@@ -101,14 +101,13 @@ bluePos.manipulate = function() {
 bluePos.changeProperty = function() {
 	var newVal = this.value + 50;
 	this.thing.position[0] = newVal;
-	// this.engine.drawEverything();
 }
 
 blueDisp.manipulate = function() {
-	return blue.position[0] - shadow.position[0];
+	return this.thing.position[0] - shadow.position[0];
 }
 blueDist.manipulate = function() {
-	return Math.abs(blue.position[0] - shadow.position[0]);
+	return Math.abs(this.thing.position[0] - shadow.position[0]);
 }
 
 
@@ -181,3 +180,112 @@ velocityCanvas.drawEverything();
 Acceleration Canvas
 **********************************************/
 
+var accelerationCanvas = new StaticEngine(document.getElementById("accelerationCanvas"), document.getElementById("accelerationCanvasBtn"));
+var accelerationControls = document.getElementById("accelerationControls");
+accelerationCanvas.create(2 * cWidth, cHeight);
+accelerationCanvas.setup(3000);
+accelerationCanvas.drawGridLines = false;
+
+var slowAccel = new StaticMobile(12, 2 * cHeight / 3);
+slowAccel.bigness = 10;
+slowAccel.mass = 1;
+slowAccel.velocity = [0,0];
+slowAccel.acceleration = [50, 0];
+slowAccel.col = '#2233ff';
+
+var fastAccel = new StaticMobile(12, cHeight / 3);
+fastAccel.bigness = 10;
+fastAccel.mass = 1;
+fastAccel.velocity = [0,0];
+fastAccel.acceleration = [100, 0];
+fastAccel.col = 'red';
+
+fastAccel.addToEngine(accelerationCanvas);
+slowAccel.addToEngine(accelerationCanvas);
+
+var timeSlider = new SliderControl("Time", 0, 3000, "milliseconds", "white");
+timeSlider.addToEngine(accelerationCanvas, accelerationCanvas);
+timeSlider.print(accelerationControls);
+timeSlider.sliderElem.step = 10;
+timeSlider.decimalPlaces = 0;
+timeSlider.manipulate = function() {
+	return this.thing.elapsedTime;
+}
+timeSlider.changeProperty = function() {
+	this.engine.elapsedTime = this.value;
+	// this.engine.drawEverything();
+}
+
+var slowAccelA = new Data("Acceleration", "m/s<sup>2</sup>", slowAccel.col);
+var slowAccelVel = new SliderData("Velocity", 0, 300, "m/s", slowAccel.col);
+
+var fastAccelA = new Data("Acceleration", "m/s<sup>2</sup>", fastAccel.col);
+var fastAccelVel = new SliderData("Velocity", 0, 300, "m/s", fastAccel.col);
+
+
+slowAccelA.addToEngine(accelerationCanvas, slowAccel);
+slowAccelA.print(accelerationControls);
+slowAccelA.manipulate = function() {
+	return this.thing.acceleration[0] / 10;
+}
+
+slowAccelVel.addToEngine(accelerationCanvas, slowAccel);
+slowAccelVel.print(accelerationControls);
+slowAccelVel.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t) / 10;
+}
+
+fastAccelA.addToEngine(accelerationCanvas, fastAccel);
+fastAccelA.print(accelerationControls);
+fastAccelA.manipulate = function() {
+	return this.thing.acceleration[0] / 10;
+}
+
+fastAccelVel.addToEngine(accelerationCanvas, fastAccel);
+fastAccelVel.print(accelerationControls);
+fastAccelVel.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t) / 10;
+}
+
+
+accelerationCanvas.drawEverything();
+
+
+
+/**
+
+var engineName = new Engine(canvasElem, buttonElem)
+engineName.create(width, height)
+
+mobileName = new Mobile(x, y);
+mobileName.velocity = [];
+mobileName.acceleration = [];
+mobileName.bigness = 10;
+mobileName.addToEngine(engineName);
+
+mobileDataName = new Data(label, units, color);
+mobileDataName.addToEngine(engineName, mobileName);
+mobileDataName.print(controllerElem)
+
+mobileDataName.manipulate = function() {
+	return this.thing.position[0] * 2 ;
+}
+
+mobileSliderControlName = new SliderData(label, max, min, units, color);
+mobileSliderControlName.addToEngine(engineName, mobileName);
+mobileSliderControlName.print(controllerElem);
+
+mobileSliderControlName.manipulate = function() {
+	return ....;
+}
+
+mobileSliderControlName.changeProperty = function() {
+	return ....;
+}
+**/

@@ -10,16 +10,3 @@ img {
 	font-size: 25px;
 	text-align: center;
 }
-
-.canvasCont {
-	width: 500px;
-	text-align: center;
-}
-
-.canvasCont div {
-	display: inline-block;
-}
-
-button {
-	margin-right: 10px;
-}

@@ -73,19 +73,18 @@
 					<ul>
 						<li><b>Reference frame</b> means another object that we can use for comparison. </li>
 						<li>Some reference frames can be stationary, while other reference frames can be moving. </li>
-						<li>
-							Use the sliders to change the position of the block below
-							<div class="canvasCont">
-								<div class="color5">
-									<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
-									<canvas id="positionCanvas" style=""></canvas>
-									<br>
-									<div class="controller" id="positionControls"></div>
-									<br>
-									<button id="positionCanvasBtn" class="hide">Play</button>
-								</div>
+
+						<div class="canvasCont color5">
+							<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
+							<div class="engineHolder">
+								<canvas id="positionCanvas" style=""></canvas>
+								<br>
+								<div class="controller" id="positionControls"></div>
+								<br>
+								<button id="positionCanvasBtn" class="hide">Play</button>
 							</div>
-						</li>
+						</div>
+
 						<li>In the example above, the reference frame we are using is the x-y plane, with the bottom-right corner being the (0,0) point</li>
 						<li>Since we need two numbers to represent where the object is, this is a <b>2-dimensional</b> reference frame</li>
 					</ul>
@@ -105,11 +104,10 @@
 							<li>Unlike displacement, the distance between two points will never be negative.</li>
 						</ul>
 					</li>
-					<li>
-						Move the slider to change the position of the blue ball, and see how this affects its displacement and its distance from its original location
-						<div class="canvasCont">
-							<div class="color5">
-								<h4>Note the difference between displacement and distance.</h4>
+						<div class="canvasCont color5">
+							<h4>Move the slider to change the position of the ball</h4>
+							<h5>Note the difference between displacement and distance.</h5>
+							<div class="engineHolder">
 								<canvas id="dvdCanvas" style=""></canvas>
 								<br>
 								<div class="controller" id="dvdControls"></div>
@@ -117,7 +115,6 @@
 								<button id="dvdCanvasBtn" class="hide">Play</button>
 							</div>
 						</div>
-					</li>
 					<li>
 						Distance Traveled: The distance traveled is the total length of the path traveled between two positions.
 					</li>
@@ -224,9 +221,9 @@
 						</ul>
 					</ul>
 
-					<div class="canvasCont">
-						<div class="color5">
-							<h4>Press play to see how objects with different velocities move differently</h4>
+					<div class="canvasCont color5">
+						<h4>Press play to see how objects with different velocities move differently</h4>
+							<div class="engineHolder">
 							<canvas id="velocityCanvas" style=""></canvas>
 							<br>
 							<div class="controller" id="velocityControls"></div>
@@ -270,6 +267,18 @@
 									<li>But deceleration is not always the same as negative acceleration</li>
 								</ul>
 						</ul>
+
+					<div class="canvasCont color5" style="width:700px;">
+						<h4>Press play to see how objects with different accelerations move differently</h4>
+						<h5>Both of these objects start from rest, but the red square has a bigger accceleration than the blue square.</h5>
+							<div class="engineHolder">
+							<canvas id="accelerationCanvas" style=""></canvas>
+							<br>
+							<div class="controller" id="accelerationControls"></div>
+							<br>
+							<button id="accelerationCanvasBtn" class="ctrlButton">Play</button>
+						</div>
+					</div>
 					</li>
 					<!-- End acceleration -->
 				</ul>

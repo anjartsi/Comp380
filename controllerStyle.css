@@ -1,9 +1,24 @@
 /*MOBILE CONTROLLER STYLE*/
+.canvasCont {
+/* Holds everything related to the canvas (text and engineHolder)*/
+  width: 500px;
+  padding-top: 1px;
+  text-align: center;
+}
+
+.engineHolder {
+  /* Holds everything related to the engine (canvas, controller, button)*/
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+}
 
 .controller {
 	color: white;
-	width: 400px;
+	width: 100%;
 	-webkit-user-select: none;
+  display: inline;
+  text-align: center;
 }
 
 /**********************************
@@ -13,6 +28,8 @@ ROW
 	width: 450px;
 	height: 35px;
 	text-align: left;
+  
+  vertical-align: middle;
 }
 
 .controller .controllerRow:nth-child(even) {
@@ -34,6 +51,7 @@ DESCRIPTION - the english words that describe the row
 **********************************************************************/
 .controller .controllerDescription {
 	display: inline-block;
+  height:100%;
 	vertical-align: middle;
 	text-align: center;
 	width: 100px;
@@ -75,7 +93,7 @@ VALUE - The number (either input or output)
 **********************************************************************/
 .controller .controllerValue {
 	display: inline;
-	width: 40px;
+	width: 60px;
 	margin:auto;
 	vertical-align: top;
 	text-align: center;
@@ -98,11 +116,11 @@ VALUE - The number (either input or output)
 UNIT - The units each row is calculated in 
 **********************************************************************/
 .controller .unit {
+  display: inline;
 	float: right;
-	text-align: middle;
+	text-align: center;
 	margin-right: 9px;
-	vertical-align: bottom;
-	height: 35px;
+	vertical-align: middle;
 }
 
 
@@ -113,9 +131,9 @@ UNIT - The units each row is calculated in
 
 .ctrlButton {
 	width: 200px;
-	height: 35px;
+	height: 50px;
 	border-radius: 10px;
-	margin: 10px;
+	margin: 0px 10px 10px 10px;
 	font-size: 25px;
 	
 }

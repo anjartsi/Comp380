@@ -94,6 +94,7 @@ SliderData.prototype.print = function(parentElem) {
 	this.rowElem.appendChild(this.sliderElem);
 	this.rowElem.appendChild(this.valueElem);
 	this.rowElem.appendChild(this.unitsElem);
+	
 	this.parent.appendChild(this.rowElem);
 }
 
