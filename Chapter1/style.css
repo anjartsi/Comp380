@@ -20,12 +20,3 @@ canvas{
 	border: 1px solid black;
 	display: inline;
 }
-
-button {
-	width: 250px;
-	height: 75px;
-	border-radius: 10px;
-	margin: 10px;
-	font-size: 25px;
-	
-}
