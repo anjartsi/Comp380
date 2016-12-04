@@ -1,4 +1,42 @@
 var allEngines = [];
+var gWidth = 500;
+var gHeight = 400;
+var pSize = 60;
+var game = new Engine(document.getElementById("gameCanvas"), document.getElementById('gameCanvasBtn'));
+game.create(gWidth, gHeight);
+
+allEngines.push(game);
+
+var paddle = new Mobile(gWidth / 2 - pSize / 2, 10 - pSize);
+paddle.bigness = pSize;
+paddle.col = "red";
+paddle.addToEngine(game);
+
+var joystick = new SliderControl("L", 0, gWidth, "R", "white");
+joystick.addToEngine(game, paddle);
+// joystick.valueElem = "<div></div>";
+joystick.print(document.getElementById('gameController'));
+joystick.manipulate = function() {
+	return this.thing.position[0];
+}
+joystick.changeProperty = function() {
+	this.thing.position[0] = this.value;
+}
+joystick.turnOff = function() {};
+joystick.turnOn = function() {};
+
+var ball = new Sphere(gWidth / 2, gHeight / 2);
+ball.bigness = 5;
+ball.col = "blue";
+ball.velocity = [150, -0];
+ball.addToEngine(game);
+
+var leftWall = new Wall(2, 0);
+leftWall.bigness = gHeight;
+leftWall.addToEngine(game);
+var rightWall = new Wall(gWidth - 2, 0);
+rightWall.bigness = gHeight;
+rightWall.addToEngine(game);
 
 var b = new StaticEngine(document.getElementById("canvas1"), document.getElementById("btn1"));
 b.create(500, 600);
