@@ -9,7 +9,7 @@
 
 
 <body>
-	<!-- The navBar will be created by navBar.js -->
+	<div id="shade"></div>
 	<div>
 		<nav id = "navBar">
 			<ul>
@@ -44,15 +44,15 @@
 	<div id="buffer2"></div>
 
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
-	<div id="content" class="color1">
+	<div id="content">
 		<header>
 		<h1>Chapter 1: Introduction - The Nature of Science and Physics</h1>
+		<img src="ch1Header.png" id="chapterHeader">
 		</header>
 		
 		<article>
 			<section>
 			<h2>1-1 Physics: An Introduction</h2>
-				<img src="https://usm.maine.edu/sites/default/files/planet/physics.jpg">
 				<ul>
 					<li>Physics is concerned with describing the interactions of energy, matter, space, and time, and the mechanisms underlying these concepts.</li>
 					<li>Physics can be used to describe how different objects function. For instance, GPS systems use motion, distance, and speed to determine the approximate travel time between locations.</li>
@@ -93,15 +93,29 @@
 
 			<section>
 				<h2>1-2 Physical Quantities and Units</h2>
+				<img src="units.png" class="figures">
 				<ul>
 					<li>Physical quantities of objects require units, or standardized values that depend on the concept being measured.</li>
 					<li>SI units (metric system):</li>
 					<ul>
 						<li>Time: second (s)</li>
-						<li>Length: meter (m)</li>
+						<li>Length/Position: meter (m)</li>
 						<li>Mass: kilogram (kg)</li>
+						<li>Velocity: meters per second (m/s)</li>
+						<li>Acceleration: meters-per-second per second or meters per second <sup>2</sup> (m/s <sup>2</sup>)</li>
+						<li>Force: Newton (N = kg m / s <sup>2</sup>)</li>
+						<li>Energy: Joule (J = kg m <sup>2</sup> / s <sup>2</sup>)</li>
+						<img src="metric.png" class="figures">
 					</ul>
 					<li>When converting from one unit to another, you must multiply the quantity by a conversion factor (such as 1 km / 1000 m) in such a way that the original units are cancelled out and the new units are left.</li>
+					<ul>
+						<li> Example 1: 
+							<img src="unit-cancelllation.PNG" class="figures">
+						</li>
+						<li> Example 2:
+							<img src="unit-conversion.PNG" class="figures">
+						</li>
+					</ul>
 				</ul>
 			</section>
 
@@ -111,6 +125,9 @@
 					<li>Accuracy: how close a measurement is to the correct value.</li>
 					<li>Precision: how close together repeated measurements are (regardless of correct value).</li>
 					<li>Measurements may not always be both precise and accurate; repeated measurements may be close together while being far from correct, or they could be near the correct value without being near to each other.</li>
+					<img src="accuracy.PNG" class="figures">
+					<img src="precision.PNG" class="figures" style="height:288px;">
+					
 					<li>Measurement tools each have different levels of precision, and their measurements can only be done to a certain number of digits (significant figures).</li>
 					<ul>
 						<li>Significant figures must be kept track of when finding measurements and making calculations. The last digit is the first digit with some uncertainty.</li>
@@ -134,22 +151,6 @@
 						</ul>
 					</ul>
 				</ul>
-			</section>
-			
-			<section>
-				<div class='container body floatLeft' id='actionWindow'>	
-					<div class="canvasCont">
-						<canvas id='canvas1' ></canvas>
-						<br>
-						<button class='btn' id='btn1'>Play</button>
-					</div>
-					<div class="canvasCont">
-						<canvas id='canvas2' ></canvas>
-						<br>
-						<button class='btn' id='btn2'>Play</button>
-					</div>
-				</div>
-				<br class="clearBoth">
 			</section>
 		</article>
 	</div>

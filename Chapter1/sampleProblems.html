@@ -9,6 +9,7 @@
 
 <body>
 	<!-- The navBar will be created by navBar.js -->
+	<div id="shade"></div>
 	<div>
 		<nav id = "navBar">
 			<ul class="color2">
@@ -40,16 +41,33 @@
 		</nav>
 	</div>
 	<!-- buffer space between the navBar and the rest of the page -->
-	<div id="buffer2"></div>
+	<div id="buffer"></div>
 
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
-	<div id="content" class="color1">
+	<div id="content">
 		<header>
-		<h1> Ch. 1 Sample Problems </h1>
+		<h1> Chapter 1: Introduction - The Nature of Science and Physics - Sample Problems</h1>
 		</header>
 		
 		<article>
-			<div> This number changes every 5 seconds: <var id="num"></var></div>
+		<p>
+			<div id="prob1"></div>
+			<div>
+				<input id="input1" type="number">
+				<button class="probBtn" type="button" onClick="answerCheck('input1', answer1, output1);">Submit</button>
+				<button class="hintBtn" type="button" onClick="showHint(hint1, output1)">Hint</button>
+			</div>
+			<div id="output1"></div>
+		</p>
+		<p>
+			<div id="prob2"></div>
+			<div>
+				<input id="input2" type="number">
+				<button class="probBtn" type="button" onClick="answerCheck('input2', answer2, output2);">Submit</button>
+				<button class="hintBtn" type="button" onClick="showHint(hint2, output2)">Hint</button>
+			</div>
+			<div id="output2"></div>
+		</p>
 		</article>
 	</div>
 </body>
