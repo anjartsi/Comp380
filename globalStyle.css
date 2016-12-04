@@ -7,7 +7,11 @@
 
 /* COLORS END */
 
-
+#chapterHeader {
+	width: 50%;
+	position: relative;
+	left: 25%;
+}
 #shade {
 position: fixed;
 width: 1284px;
@@ -41,7 +45,7 @@ html
 	height: 300px;
 	margin-top: 0px;
 	text-align: center;
-	background-image: url("galaxy.png");
+	background-image: url("galaxy1.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
