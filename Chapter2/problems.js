@@ -24,7 +24,9 @@ prob2.innerHTML = problem2();
 var t2;
 var x2;
 var answer2;
-var hint2 = "The average speed is calculated by dividing the distance traveled by the change in time.\n\nRemember, 1 mile is 5280 feet, and 1 meter is about 3.28 feet.";
+var hint2 = "The average speed is calculated by dividing the distance traveled by the change in time."
+			+"<br>Remember to convert the units to meters and seconds first."
+			+"<br> (1 mile is 5280 feet, and 1 meter is about 3.28 feet)"
 
 function problem2(){
 	var question2 = "";
@@ -32,7 +34,7 @@ function problem2(){
 	x2 = randomNum(20, 80);	// distance in miles
 	answer2 = x2 / t2 * 5280 / 3.28 / 60; // answer in meters per second, with 1 meter = 3.28 feet
 	answer2 = Math.round(answer2);
-	question2 = "A train travels between 2 different cities in a time of <span class='probNum'>" + t2 + "</span> minutes. \
+	question2 = "A train travels between two cities in a time of <span class='probNum'>" + t2 + "</span> minutes. \
 				The distance between these two cities is  <span class='probNum'>" + x2 + "</span> miles. What is the average speed of the train, to the nearest meters per second?";
 	return question2;
 }
@@ -44,8 +46,9 @@ prob3.innerHTML = problem3();
 var t3;
 var x3;
 var answer3;
-var hint3 = "Average acceleration is found by dividing the change in velocity (change in position/change in time) by the change in time. At rest, the car's velocity is 0 km/h."
-			+ "\n\nRemember that the kilometers must be changed to meters, and the hours must be changed to seconds.";
+var hint3 = "Average acceleration is found by dividing the change in velocity by the change in time."
+			+"<br> When the car is at rest, its velocity is 0 km/h."
+			+ "<br> Remember that the kilometers must be changed to meters, and the hours must be changed to seconds.";
 
 function problem3(){
 	var question3 = "";
@@ -63,8 +66,9 @@ var prob4 = document.getElementById("prob4");
 var output4 = document.getElementById("output4");
 prob4.innerHTML = problem4();
 var answer4;
-var hint4 = "Since the motorcycle is starting at position 0, you can just solve for x and find the motorcycle's displacement. To get this, the square of the final velocity must be subtracted by the square of the initial velocity. \
-			This must then be divided by 2 times the deceleration of the vehicle.";
+var hint4 = "Since the motorcycle is starting at position 0, you can just solve for x and find the motorcycle's displacement."
+			+"<br> Take the formula v<sub>f</sub><sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2ax and solve it for x"
+			+"<br> It becomes x = (v<sub>f</sub><sup>2</sup> - v<sub>0</sub><sup>2</sup>) / 2a";
 
 function problem4(){
 	var decelerate = randomNum(-8, -5);
@@ -81,14 +85,15 @@ var prob5 = document.getElementById("prob5");
 var output5 = document.getElementById("output5");
 prob5.innerHTML = problem5();
 var answer5;
-var hint5 = "Finding the position of a falling object at time t can be done by using a formula. You must add the initial postion plus the initial velocity times time t plus one-half of g times t squared.";
+var hint5 = "Finding the position of a falling object at time t can be done by using the formula: "
+			+ "x = x<sub>0</sub> + v<sub>0</sub>t + 1&frasl;2 a t<sup>2</sup>";
 
 function problem5(){
 	var initVel = randomNum(12, 17);
 	var time = 2;
 	var question5 = "A pebble is thrown straight up into the air on the edge of a cliff, with a starting velocity of <span class='probNum'>" + initVel + "</span> m/s. \
 					As the rock falls, it misses the cliff edge and continues falling. What is the position (to the nearest tenth of a meter) of the pebble at <span class='probNum'>" + time + "</span> seconds after it is thrown? \
-					<br>Assume it starts at vertical position zero, there is no wind resistance nor object mass, and a = g = -9.8 m/s<sup>2</sup>.";
+					<br>Assume it starts at vertical position zero, there is no wind resistance, and a = g = -9.8 m/s<sup>2</sup>.";
 	answer5 = initVel * time + -9.8 * Math.pow(time, 2) / 2;
 	answer5 = Math.round(answer5 * 10) / 10;
 	return question5;

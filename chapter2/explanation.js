@@ -78,28 +78,28 @@ var double = function(n) {
 shadow.addToEngine(dvdCanvas);
 blue.addToEngine(dvdCanvas);
 // blue.addSlider(dvdControls, "position", 0, 0, cWidth , "position", "meters");
-var bluePos = new SliderControl("Position", 0, 200, "meters", blue.col);
+var bluePos = new SliderControl("Position", -100, 100, "meters", blue.col);
 bluePos.decimalPlaces = 0;
 bluePos.addToEngine(dvdCanvas, blue);
 bluePos.print(dvdControls);
 
 
 
-var blueDisp = new SliderData("Displacement", -200, 200 ,"meters", blue.col);
+var blueDisp = new SliderData("Displacement", -100, 100 ,"meters", blue.col);
 blueDisp.decimalPlaces = 0;
 blueDisp.addToEngine(dvdCanvas, blue);
 blueDisp.print(dvdControls);
 
-var blueDist = new SliderData("Distance", -200, 200, "meters", blue.col);
+var blueDist = new SliderData("Distance", -100, 100, "meters", blue.col);
 blueDist.decimalPlaces = 0;
 blueDist.addToEngine(dvdCanvas, blue);
 blueDist.print(dvdControls);
 
 bluePos.manipulate = function() {
-	return this.thing.position[0] - 50;
+	return this.thing.position[0] - 150;
 }
 bluePos.changeProperty = function() {
-	var newVal = this.value + 50;
+	var newVal = this.value + 150;
 	this.thing.position[0] = newVal;
 }
 

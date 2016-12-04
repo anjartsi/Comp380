@@ -53,6 +53,7 @@ function answerCheck(inputField, answer, elementOutput){
 function showHint(hint, elementOutput){
   elementOutput.innerHTML = hint;
   elementOutput.setAttribute("style", "color: #B84664");
+
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
