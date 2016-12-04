@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="../globalStyle.css">		
+	<link rel="stylesheet" type="text/css" href="../globalStyle.css">	
+	<link rel="stylesheet" type="text/css" href="../controllerStyle.css">		
 	<meta id="chapterName" name="Chapter 2">
 	<meta id="pageType" name="sampleProblems">
 	<title>Ch. 2 - Sample Problems</title>
@@ -95,6 +96,21 @@
 			</div>
 			<div id="output5"></div>
 		</p>
+		<p>
+			<div class="canvasCont color5">
+				<h4>Press play to see how objects with different velocities move differently</h4>
+					<div class="engineHolder">
+					<canvas id="maxHeightCanvas" class="floatLeft" ></canvas>
+					<br>
+					<div style="width: 100px;height: 10px;float: left;">  </div>
+					<div class="controller floatLeft" id="maxHeightControls">
+						<button id="maxHeightCanvasBtn" class="ctrlButton">Play</button>
+					</div>
+					<div class="clearBoth"></div>
+					<br>
+				</div>
+			</div>
+		</p>
 		</article>
 	</div>
 </body>
@@ -102,6 +118,11 @@
 <script type="text/javascript" src="../jquery-3.1.1.js"></script>
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
-<script type="text/javascript" src="problems.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/staticMobile.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="problems.js"></script>
 </html>

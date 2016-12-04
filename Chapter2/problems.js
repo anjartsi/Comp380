@@ -93,3 +93,62 @@ function problem5(){
 	answer5 = Math.round(answer5 * 10) / 10;
 	return question5;
 }
+
+/* Game animation */
+var cHeight = 800;
+var cWidth = 150;
+
+var maxHeightCanvas = new Engine(document.getElementById("maxHeightCanvas"), document.getElementById("maxHeightCanvasBtn"));
+var maxHeightControls = document.getElementById("maxHeightControls");
+maxHeightCanvas.create(cWidth, cHeight);
+maxHeightCanvas.drawGridLines = true;
+
+var blue = new Sphere(cWidth / 2, 10 + 25);
+blue.bigness = 25;
+blue.mass = 1;
+blue.velocity  = [0, 0];
+blue.acceleration = [0, -500];
+blue.col = 'blue';
+
+var blueVel = new SliderControl("Velocity", -1000, 1000, "m/s", blue.col);
+blueVel.addToEngine(maxHeightCanvas, blue);
+blueVel.print(maxHeightControls);
+
+blueVel.manipulate = function() {
+	return this.thing.velocity[1];
+}
+
+blueVel.changeProperty = function() {
+	this.thing.velocity[1] = this.value;
+}
+
+var hred = randomNum(cHeight - cWidth + 1, cHeight - 3 * blue.bigness);
+var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
+var yred = hred + cWidth / 2;
+var ygreen = hgreen + cWidth / 2;
+// var greenHeight = randomNum(cHeight / 2, cHeight * 3 / 4);
+
+var green = new Mobile(cWidth / 2, ygreen);
+green.bigness = cWidth / 2;
+green.col = 'green';
+
+// var greenTop = greenHeight + green.bigness;
+
+// var redHeight = cHeight - greenTop;
+// redHeight = greenTop + redHeight / 2;
+
+var red = new Mobile(cWidth / 2, yred);
+red.bigness = cWidth / 2;
+red.col = 'red';
+
+
+var floor = new Platform(0,-2,maxHeightCanvas.canvasWidth);
+
+// var ceiling = new Platform(0,maxHeightCanvas.canvasHeight,maxHeightCanvas.canvasWidth);
+
+green.addToEngine(maxHeightCanvas);
+red.addToEngine(maxHeightCanvas);
+floor.addToEngine(maxHeightCanvas);
+// ceiling.addToEngine(maxHeightCanvas);
+blue.addToEngine(maxHeightCanvas);
+maxHeightCanvas.drawEverything();
