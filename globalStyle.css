@@ -79,10 +79,12 @@ ul li {
 article a
 {
 	text-decoration: none;
-	color: yellow;
+	color: #B84664;
 
 }
-
+article a:hover {
+	text-decoration: underline;
+}
 /* The nav bar*/
 #navBar 
 {
@@ -208,7 +210,7 @@ nav li a, .dropbtn
 
 .probNum
 {
-	color: yellow;
+	color: #B84664;
 	font-weight: bold;
 }
 
