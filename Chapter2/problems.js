@@ -95,60 +95,95 @@ function problem5(){
 }
 
 /* Game animation */
-var cHeight = 800;
+var cHeight = 600;
 var cWidth = 150;
+var cTime = 2000;
+var bBig = 25;
+var bStart = 10 + bBig;
+var oldPos = bStart;
+var newPos = bStart;
+var msgOutput = false;
 
-var maxHeightCanvas = new Engine(document.getElementById("maxHeightCanvas"), document.getElementById("maxHeightCanvasBtn"));
+var maxHeightCanvas = new StaticEngine(document.getElementById("maxHeightCanvas"), document.getElementById("maxHeightCanvasBtn"));
 var maxHeightControls = document.getElementById("maxHeightControls");
+var maxHeightOutput = document.getElementById("maxHeightOutput");
 maxHeightCanvas.create(cWidth, cHeight);
+maxHeightCanvas.setup(cTime);
 maxHeightCanvas.drawGridLines = true;
 
-var blue = new Sphere(cWidth / 2, 10 + 25);
-blue.bigness = 25;
+var blue = new StaticMobile(cWidth / 2, bStart);
+blue.bigness = bBig;
 blue.mass = 1;
 blue.velocity  = [0, 0];
 blue.acceleration = [0, -500];
 blue.col = 'blue';
 
-var blueVel = new SliderControl("Velocity", -1000, 1000, "m/s", blue.col);
-blueVel.addToEngine(maxHeightCanvas, blue);
-blueVel.print(maxHeightControls);
-
-blueVel.manipulate = function() {
-	return this.thing.velocity[1];
-}
-
-blueVel.changeProperty = function() {
-	this.thing.velocity[1] = this.value;
-}
-
 var hred = randomNum(cHeight - cWidth + 1, cHeight - 3 * blue.bigness);
 var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
-// var greenHeight = randomNum(cHeight / 2, cHeight * 3 / 4);
 
-var green = new Mobile(cWidth / 2, ygreen);
+var blueVel = new SliderControl("Velocity", 0, 1000, "m/s", blue.col);
+blueVel.addToEngine(maxHeightCanvas, blue);
+blueVel.print(maxHeightControls);
+
+blueVel.manipulate = function() {
+	if(msgOutput == false){
+		newPos = this.thing.position[1];
+		heightCheck();
+		oldPos = this.thing.position[1];
+	}
+	return this.thing.velocity[1];
+}
+
+blueVel.changeProperty = function() {
+	oldPos = bStart;
+	newPos = bStart;
+	msgOutput = false;
+	this.thing.velocity[1] = this.value;
+	this.engine.elapsedTime = 0;
+	maxHeightOutput.innerHTML = "";
+}
+
+function heightCheck(){
+	if (blue.position[1] + bBig >= hred){
+		maxHeightOutput.setAttribute("style", "color: #ff3333");
+		msgOutput = true;
+		return maxHeightOutput.innerHTML = "Entered red area... choose a lower velocity and try again!";
+	}
+	if (newPos < oldPos && (blue.position[1] + bBig < hred) && (blue.position[1] + bBig > hgreen)){
+		maxHeightOutput.setAttribute("style", "color: #1aff1a");
+		msgOutput = true;
+		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * 100) / 100 + " meters.";
+	}
+	if (newPos < oldPos && (blue.position[1] + bBig < hgreen)){
+		maxHeightOutput.setAttribute("style", "color: #ff3333");
+		msgOutput = true;
+		return maxHeightOutput.innerHTML = "Velocity too low... choose a higher velocity and try again!";
+	}
+}
+
+var green = new StaticMobile(cWidth / 2, ygreen);
 green.bigness = cWidth / 2;
 green.col = 'green';
 
-// var greenTop = greenHeight + green.bigness;
-
-// var redHeight = cHeight - greenTop;
-// redHeight = greenTop + redHeight / 2;
-
-var red = new Mobile(cWidth / 2, yred);
+var red = new StaticMobile(cWidth / 2, yred);
 red.bigness = cWidth / 2;
 red.col = 'red';
 
+// var greenHeight = randomNum(cHeight / 2, cHeight * 3 / 4);
+// var greenTop = greenHeight + green.bigness;
 
-var floor = new Platform(0,-2,maxHeightCanvas.canvasWidth);
+// var redHeight = cHeight - greenTop;
+// sredHeight = greenTop + redHeight / 2;
+
+// var floor = new Platform(0,-2,maxHeightCanvas.canvasWidth);
 
 // var ceiling = new Platform(0,maxHeightCanvas.canvasHeight,maxHeightCanvas.canvasWidth);
 
 green.addToEngine(maxHeightCanvas);
 red.addToEngine(maxHeightCanvas);
-floor.addToEngine(maxHeightCanvas);
+// floor.addToEngine(maxHeightCanvas);
 // ceiling.addToEngine(maxHeightCanvas);
 blue.addToEngine(maxHeightCanvas);
 maxHeightCanvas.drawEverything();
