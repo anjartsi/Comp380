@@ -368,9 +368,39 @@ decelBlue.col = '#2233ff';
 decelBlue.addToEngine(decelerationCanvas);
 
 decelBlueA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
-decelBlueV = new SliderData("Velocity", 0, 300, "m/s", blue.col);
+decelBlueV = new SliderData("Velocity", -300, 300, "m/s", blue.col);
 decelRedA = new Data("Acceleration", "m/s<sup>2</sup>", red.col);
-decelRedV = new SliderData("Velocity", 0, 300, "m/s", red.col);
+decelRedV = new SliderData("Velocity", -300, 300, "m/s", red.col);
+
+decelBlueA.addToEngine(decelerationCanvas, decelBlue);
+decelBlueA.print(decelerationControls);
+decelBlueA.manipulate = function() {
+	return this.thing.acceleration[0];
+}
+decelBlueV.addToEngine(decelerationCanvas, decelBlue);
+decelBlueV.print(decelerationControls);
+decelBlueV.manipulate = function() {
+	var timeMaxed = Math.min(this.thing.engine.elapsedTime, 2000);
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(timeMaxed, 10) / 1000;
+	return (v0 + a * t);
+}
+decelRedA.addToEngine(decelerationCanvas, decelRed);
+decelRedA.print(decelerationControls);
+decelRedA.manipulate = function() {
+	return this.thing.acceleration[0];
+}
+decelRedV.addToEngine(decelerationCanvas, decelRed);
+decelRedV.print(decelerationControls);
+decelRedV.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t);
+}
+
+
 
 decelerationCanvas.drawEverything();
 
