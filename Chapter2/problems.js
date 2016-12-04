@@ -151,12 +151,12 @@ function heightCheck(){
 		msgOutput = true;
 		return maxHeightOutput.innerHTML = "Entered red area... choose a lower velocity and try again!";
 	}
-	if (newPos < oldPos && (blue.position[1] + bBig < hred) && (blue.position[1] + bBig > hgreen)){
+	if (newPos < oldPos && (blue.position[1] + bBig < hred) && (blue.position[1] - bBig > hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #1aff1a");
 		msgOutput = true;
 		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * 100) / 100 + " meters.";
 	}
-	if (newPos < oldPos && (blue.position[1] + bBig < hgreen)){
+	if (newPos < oldPos && (blue.position[1] - bBig < hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #ff3333");
 		msgOutput = true;
 		return maxHeightOutput.innerHTML = "Velocity too low... choose a higher velocity and try again!";
