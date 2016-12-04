@@ -7,3 +7,24 @@
 	-webkit-text-stroke-width: 3px;
    -webkit-text-stroke-color: white;
 }
+
+.quote {
+	font-size: 1.3em;
+	background-color: white;
+	color: black;
+}
+
+header p {
+	font-size: 1.2em;
+}
+
+.chLink {
+	font-size: 1.5em;
+	font-weight: bold;
+	list-style: none
+}
+
+a:hover {
+	background-color: white;
+	/*color: black;*/
+}

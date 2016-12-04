@@ -284,7 +284,7 @@ fastAccel2.col = 'red';
 fastAccel2.addToEngine(acceleration2Canvas);
 slowAccel2.addToEngine(acceleration2Canvas);
 
-var timeSlider2 = new SliderControl("Time", 0, 3000, "milliseconds", "white");
+var timeSlider2 = new SliderControl("Elapsed Time", 0, 3000, "milliseconds", "white");
 timeSlider2.addToEngine(acceleration2Canvas, acceleration2Canvas);
 timeSlider2.print(acceleration2Controls);
 timeSlider2.sliderElem.step = 10;
@@ -346,6 +346,19 @@ decelerationCanvas.create(cWidth, cHeight);
 decelerationCanvas.setup(4000);
 decelerationCanvas.drawGridLines = false;
 
+var decelTimeSlider = new SliderControl("Elapsed Time", 0, 4000, "milliseconds", "white");
+decelTimeSlider.addToEngine(decelerationCanvas, decelerationCanvas);
+decelTimeSlider.print(decelerationControls);
+decelTimeSlider.sliderElem.step = 10;
+decelTimeSlider.decimalPlaces = 0;
+decelTimeSlider.manipulate = function() {
+	return this.thing.elapsedTime;
+}
+decelTimeSlider.changeProperty = function() {
+	this.engine.elapsedTime = this.value;
+}
+
+
 var decelRed = new StaticMobile(27, cHeight / 2 + 50);
 decelRed.velocity = [250, 0];
 decelRed.acceleration = [-125, 0];
@@ -399,6 +412,7 @@ decelRedV.manipulate = function() {
 	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
 	return (v0 + a * t);
 }
+
 
 
 
