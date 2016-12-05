@@ -40,11 +40,11 @@ function answerCheck(inputField, answer, elementOutput){
 	var input = document.getElementById(inputField).value;
 	if (input == answer){
 		elementOutput.innerHTML = "Correct!";
-		elementOutput.setAttribute("style", "color: #1aff1a");
+    elementOutput.className = "correct"
 	}
 	else{
 		elementOutput.innerHTML = "Incorrect, please try again";
-		elementOutput.setAttribute("style", "color: #ff3333");
+    elementOutput.className = "incorrect"
 		
 	}
 }
@@ -52,7 +52,7 @@ function answerCheck(inputField, answer, elementOutput){
 // ~~~~~~~~~~~~~~~~~~~ Hint-displaying function ~~~~~~~~~~~~~~~~~~~~~~
 function showHint(hint, elementOutput){
   elementOutput.innerHTML = hint;
-  elementOutput.setAttribute("style", "color: #B84664");
+  elementOutput.className = "hint"
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~

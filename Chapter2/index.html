@@ -49,7 +49,7 @@
 	<div id="content">
 		<header>
 			<h1>Chapter 2: Kinematics</h1>
-			<img src="ch2header.png" id="chapterHeader">
+			<img src="images/ch2header.png" id="chapterHeader">
 		</header>
 
 		<article>
@@ -161,8 +161,8 @@
 					<ul>
 						<li>When describing horizontal motion, we usually describe motion to the right as positive and motion to the left as negative </li>
 						<li>When describing vertical motion, we usually describe the up direction as positive and the down direction as negative</li>
-						<img src="x_axis.PNG">
-						<img src="y_axis.PNG">
+						<img src="images/x_axis.PNG">
+						<img src="images/y_axis.PNG">
 						<li>However, it can sometimes be more convenient to switch the positive and negative directions</li>
 
 						<li>For example, if an object is moving towards the left, it makes more sense to call <i>that</i> the &plus;x direction, this is perfectly acceptable.</li>
@@ -173,7 +173,7 @@
 					Two-dimensional: 
 					<ul>
 						<li>For two-dimensional motion, our coordinate consists of the x-y plane </li>
-						<img src="xy_plane.PNG">
+						<img src="images/xy_plane.PNG">
 						<li>Again, we are free to switch the positive (&plus;) and negative (&minus;) directions (for both x and y). </li>
 					</ul>
 				</li>
@@ -315,16 +315,67 @@
 
 			<section>
 				<h2>2-5 Motion Equations for Constant Acceleration in One Dimension</h2>
+				<ul>
+					<li>Different equations are used for finding an object's properties depening on whether its velocity is constant or not.</li>
+					<li>Assume acceleration is constant (<b><span style="text-decoration: overline;">a</span></b> = <b>a</b> = constant).</li>
+					<ul>
+						<li>These equations do not require acceleration in their calculations:</li>
+						<ul>
+							<li><span style="text-decoration: overline;">v</span> = <sup>&Delta;x</sup> &frasl; <sub>&Delta; t</sub> = <sup>(x-x<sub>0</sub>)</sup> &frasl; <sub>t</sub> = <sup>(v+v<sub>0</sub>)</sup> &frasl; <sub>2</sub></li>
+							<li>x = x<sub>0</sub> + <span style="text-decoration: overline;">v</span>t</li>
+						</ul>
+						<li>Solving for final velocity requires the use of a constant acceleration:</li>
+						<ul>
+							<li>a = <sup>&Delta;v</sup> &frasl; <sub>&Delta; t</sub> = <sup>(v - v<sub>0</sub>)</sup> &frasl; <sub>t</sub></li>
+							<li>v = v<sub>0</sub> + at</li>
+						</ul>
+						<li>Solving for final position also requires a constant acceleration:</li>
+						<ul>
+							<li>x = x<sub>0</sub> + v<sub>0</sub>t + <sup>1</sup> &frasl; <sub>2</sub> * at<sup>2</sup></li>
+						</ul>
+						<li>Final velocity can be solved without the use of a time variable:</li>
+						<ul>
+							<li>v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2a(x - x<sub>0</sub>)</li>
+						</ul>
+					</ul>
+				</ul>
 			</section>
 			<!-- end section 2.5 -->
 
 			<section>
 				<h2>2-6 Problem-Solving Basics for One-Dimensional Kinematics</h2>
+				<ul>
+					<li>In order to understand what is being asked for in a problem and figure out how to solve it, the following steps can be used to simplify the process:</li>
+					<ul>
+						<li>Step 1 - Analyze the problem to see which physics concepts are used.</li>
+						<li>Step 2 - Identify given information, such as values.</li>
+						<li>Step 3 - Idenfity the unknown information that is being asked for.</li>
+						<li>Step 4 - Find an equation (or equations) that may lead you to the desired answer (the unknown information).</li>
+						<li>Step 5 - Input the given information into the equation(s) and calculate the solution (with units).</li>
+						<li>Step 6 - Analyze the answer to make sure it is reasonable.</li>
+					</ul>
+				</ul>
 			</section>
 			<!-- end section 2.6 -->
 
 			<section>
 				<h2>2-7 Falling Objects</h2>
+				<ul>
+					<li>If air resistance and friction are ignored, then all objects in a certain location on the earth fall to the ground at the same constant acceleration, no matter their mass.</li>
+					<li>Air resistance is what causes lighter objects to fall slower than heavy objects. If an object falls without air resistance or friction, then it is in free-fall</li>
+					<li>Gravity acts on all objects on Earth, causing them to fall towards the ground at a constant acceleration.</li>
+					<li>Assuming upward direction is positive and gravity is g:</li>
+					<ul>
+						<li>a = -g = -9.80 m/s<sup>2</sup></li>
+					</ul>
+					<li>Objects that only move vertically (such as those in free-fall) only have a vertical velocity. Ignoring air resistance and friction, these objects only move in one dimension with constant acceleration g.</li>
+					<li>Equations for objects in free-fall (a = -g):</li>
+					<ul>
+						<li>v = v<sub>0</sub> - gt</li>
+						<li>y = y<sub>0</sub> + v<sub>0</sub>t - <sup>1</sup> &frasl; <sub>2</sub> * gt<sup>2</sup></li>
+						<li>v<sup>2</sup> = v<sub>0</sub><sup>2</sup> - 2g(y - y<sub>0</sub>)</li>
+					</ul>
+				</ul>
 			</section>
 			<!-- end section 2.7 -->
 		</article>

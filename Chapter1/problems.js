@@ -28,3 +28,25 @@ function problem2(){
 	answer2 = x.toString().length;
 	return question2;
 }
+
+/* Problem 3: significant figures */
+var prob3 = document.getElementById("prob3");
+var output3 = document.getElementById("output3");
+prob3.innerHTML = problem3();
+var answer3;
+var hint3 = "The zeros on the left are not significant, but the trailing zeroes on the right are significant";
+
+function problem3(){
+	var y = randomNum(1, 350);
+	var z = randomNum(3, 5);
+	for (var i = 0; i < z; i++) {
+		y = y / 10;
+	}
+	console.log(z);
+	var question3 = "How many significant figures does the number <span class='probNum'>" + y.toPrecision(z) + "</span> have?";
+	// while (x % 10 == 0){
+	// 	x = x / 10;
+	// }
+	answer3 = z;
+	return question3;
+}

@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="../globalStyle.css">		
+	<link rel="stylesheet" type="text/css" href="../globalStyle.css">	
+	<link rel="stylesheet" type="text/css" href="../controllerStyle.css">		
 	<meta id="chapterName" name="Chapter 2">
 	<meta id="pageType" name="sampleProblems">
 	<title>Ch. 2 - Sample Problems</title>
@@ -50,16 +51,29 @@
 		</header>
 		
 		<article>
-		<p>
+		<div class="problemCont">
+			<h2>Problem 1</h2>
 			<div id="prob1"></div>
+			<br>
+			<div class="canvasCont color1" style="width:750px">
+				<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
+				<div class="engineHolder" style="width:750px">
+					<canvas id="p1Canvas" style=""></canvas>
+					<br>
+					<div class="controller" id="p1Controls"></div>
+					<br>
+					<button id="p1CanvasBtn" class="hide">Play</button>
+				</div>
+			</div> <!-- end p1Canvas -->
+			<br>
 			<div>
 				<input id="input1" type="number">
 				<button class="probBtn" type="button" onClick="answerCheck('input1', answer1, output1);">Submit</button>
 				<button class="hintBtn" type="button" onClick="showHint(hint1, output1)">Hint</button>
 			</div>
 			<div id="output1"></div>
-		</p>
-		<p>
+		</div>
+		<div class="problemCont">
 			<div id="prob2"></div>
 			<div>
 				<input id="input2" type="number">
@@ -67,8 +81,8 @@
 				<button class="hintBtn" type="button" onClick="showHint(hint2, output2)">Hint</button>
 			</div>
 			<div id="output2"></div>
-		</p>
-		<p>
+		</div>
+		<div class="problemCont">
 			<div id="prob3"></div>
 			<div>
 				<input id="input3" type="number">
@@ -76,8 +90,8 @@
 				<button class="hintBtn" type="button" onClick="showHint(hint3, output3)">Hint</button>
 			</div>
 			<div id="output3"></div>
-		</p>
-		<p>
+		</div>
+		<div class="problemCont">
 			<div id="prob4"></div>
 			<div>
 				<input id="input4" type="number">
@@ -85,8 +99,8 @@
 				<button class="hintBtn" type="button" onClick="showHint(hint4, output4)">Hint</button>
 			</div>
 			<div id="output4"></div>
-		</p>
-		<p>
+		</div>
+		<div class="problemCont">
 			<div id="prob5"></div>
 			<div>
 				<input id="input5" type="number">
@@ -94,7 +108,25 @@
 				<button class="hintBtn" type="button" onClick="showHint(hint5, output5)">Hint</button>
 			</div>
 			<div id="output5"></div>
-		</p>
+		</div>
+		<div class="problemCont">
+			<div class="canvasCont color5" style="margin: auto;width: 800px;">
+				<div class="engineHolder" style="margin: auto;">
+					<canvas id="maxHeightCanvas" class="floatRight" ></canvas>
+					<div class="controller floatLeft" id="maxHeightControls" style="width: 600px;">
+						<h4>Time to put your physics skills to the test!</h4>
+						<h5>Throw the blue square into the air by changing its velocity and pressing play. <br>Your goal is to get the (entire) blue square inside the green area without entering the red area!</h5>
+						<h5>Hint: x<sub>max</sub> = v<sub>0</sub><sup>2</sup> / 2a</h5>
+						<button id="maxHeightCanvasBtn" class="ctrlButton">Play</button>
+					</div>
+					<br>
+					<div style="width: 100px;height: 10px;float: left;">  </div>
+					<div id="maxHeightOutput"></div>
+					<div class="clearBoth"></div>
+					<br>
+				</div>
+			</div>
+		</div>
 		</article>
 	</div>
 </body>
@@ -102,6 +134,11 @@
 <script type="text/javascript" src="../jquery-3.1.1.js"></script>
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
-<script type="text/javascript" src="problems.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/staticMobile.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="problems.js"></script>
 </html>

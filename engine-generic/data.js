@@ -6,7 +6,7 @@ var Data = function(desc, unit, col) {
 	this.desc = desc;
 	this.units = unit;
 	this.col = col;
-	this.decimalPlaces = 2;
+	this.decimalPlaces = -1;
 	// HTML elements linked to this data
 	this.parentElem;
 	this.valueElem = document.createElement("div");
@@ -55,7 +55,10 @@ Data.prototype.print = function(parentElem) {
 
 Data.prototype.update = function() {
 	var newVal = this.manipulate();
-	newVal = newVal.toFixed(this.decimalPlaces);
+	newVal = newVal;
+	if(this.decimalPlaces >= 0) {
+		newVal = newVal.toFixed(this.decimalPlaces);
+	}
 	this.value = newVal;
 	this.valueElem.innerHTML = newVal;
 }
@@ -100,7 +103,10 @@ SliderData.prototype.print = function(parentElem) {
 
 SliderData.prototype.update = function() {
 	var newVal = this.manipulate();
-	newVal = newVal.toFixed(this.decimalPlaces);
+	newVal = newVal
+	if(this.decimalPlaces >= 0) {
+		newVal = newVal.toFixed(this.decimalPlaces);	
+	}
 	this.value = newVal;
 	// this.valueElem.value = newVal;
 	this.valueElem.innerHTML = newVal;
@@ -153,7 +159,10 @@ SliderControl.prototype.addToEngine = function(engine, thing) {
 
 SliderControl.prototype.update = function() {
 	var newVal = this.manipulate();
-	newVal = newVal.toFixed(this.decimalPlaces);
+	newVal = newVal;
+	if(this.decimalPlaces >= 0) {
+		newVal = newVal.toFixed(this.decimalPlaces);
+	}
 	this.value = newVal;
 	this.valueElem.value = newVal;
 	this.sliderElem.value = newVal;
@@ -186,14 +195,14 @@ SliderControl.prototype.print = function(parentElem) {
 
 	// event listeners
 	this.sliderElem.addEventListener("input", function() {
-		controlSlider.value = parseInt(controlSlider.sliderElem.value, 10);
+		controlSlider.value = parseFloat(controlSlider.sliderElem.value);
 		controlSlider.valueElem.value = controlSlider.value;
 		controlSlider.changeProperty();
 		controlSlider.engine.drawEverything();
 	})
 
 	this.valueElem.addEventListener("input", function() {
-		var inp = parseInt(controlSlider.valueElem.value, 10);
+		var inp = parseFloat(controlSlider.valueElem.value);
 		if(inp > controlSlider.maxVal) {
 			inp = controlSlider.maxVal;
 			controlSlider.valueElem.value = controlSlider.maxVal;
