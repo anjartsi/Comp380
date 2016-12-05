@@ -35,7 +35,7 @@ var mercuryV = 2 * Math.PI * mercuryDist / 0.88 * slow;
 var mercuryG = mercuryV * mercuryV * mercuryDist;
 var mercury = new Sphere(x0 + mercuryDist, y0);
 mercury.velocity = [0, mercuryV];
-mercury.col = "red";
+mercury.col = "grey";
 mercury.bigness = 5;
 mercury.addToEngine(solarSystemCanvas);
 
