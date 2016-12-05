@@ -108,7 +108,8 @@ var bStart = 10 + bBig;
 var oldPos = bStart;
 var newPos = bStart;
 var msgOutput = false;
-
+var scaleDown = 9.8 / 500; 
+var scaleUp = 1 / scaleDown;
 var maxHeightCanvas = new StaticEngine(document.getElementById("maxHeightCanvas"), document.getElementById("maxHeightCanvasBtn"));
 var maxHeightControls = document.getElementById("maxHeightControls");
 var maxHeightOutput = document.getElementById("maxHeightOutput");
@@ -128,24 +129,23 @@ var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
 
-var blueVel = new SliderControl("Initial Velocity", 0, 1000, "m/s", blue.col);
+var blueVel = new SliderControl("Initial Velocity", 0, 25, "m/s", blue.col);
 blueVel.addToEngine(maxHeightCanvas, blue);
 blueVel.print(maxHeightControls);
-
 blueVel.manipulate = function() {
 	if(msgOutput == false){
 		newPos = this.thing.position[1];
 		heightCheck();
 		oldPos = this.thing.position[1];
 	}
-	return this.thing.velocity[1];
+	return this.thing.velocity[1] * scaleDown;
 }
 
 blueVel.changeProperty = function() {
 	oldPos = bStart;
 	newPos = bStart;
 	msgOutput = false;
-	this.thing.velocity[1] = this.value;
+	this.thing.velocity[1] = this.value * scaleUp;
 	this.engine.elapsedTime = 0;
 	maxHeightOutput.innerHTML = "";
 }
@@ -180,21 +180,21 @@ var bA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
 bA.addToEngine(maxHeightCanvas, blue);
 bA.print(maxHeightControls);
 bA.manipulate = function() {
-	return -this.thing.acceleration[1];
+	return -this.thing.acceleration[1] * scaleDown;
 }
 
 var hG = new Data("Minimum height", "m", green.col);
 hG.addToEngine(maxHeightCanvas, green);
 hG.print(maxHeightControls);
 hG.manipulate = function() {
-	return hgreen;
+	return hgreen * scaleDown;
 }
 
 var hR = new Data("Maximum height", "m", red.col);
 hR.addToEngine(maxHeightCanvas, red);
 hR.print(maxHeightControls);
 hR.manipulate = function() {
-	return hred;
+	return hred * scaleDown;
 }
 
 green.addToEngine(maxHeightCanvas);
