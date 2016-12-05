@@ -35,15 +35,16 @@ header p {
 	font-size: 1.5em;
 	font-weight: bold;
 	list-style: none
+	color: #B84664;
 }
 
-article a
+a
 {
 	text-decoration: none;
 	color: #B84664;
 
 }
-article a:hover {
+a:hover {
 	text-decoration: underline;
 	background-color: white;
 }
