@@ -159,7 +159,7 @@ function heightCheck(){
 	if (newPos < oldPos && (blue.position[1] + bBig < hred) && (blue.position[1] - bBig > hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #1aff1a");
 		msgOutput = true;
-		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * 100) / 100 + " meters.";
+		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * scaleDown * 100) / 100 + " meters.";
 	}
 	if (newPos < oldPos && (blue.position[1] - bBig < hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #ff3333");
