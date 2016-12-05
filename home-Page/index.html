@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="../globalStyle.css">	
+	<link rel="stylesheet" type="text/css" href="../controllerStyle.css">	
 	<title>Home Page</title>
 </head>
 
@@ -47,6 +48,13 @@
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
 	<div id="content">
 		<header>
+			<div class="canvasCont" style="float: right;">
+					<canvas id="solarSystemCanvas" ></canvas>
+					<br>
+					<div class="controller" id="solarSystemControls"></div>
+					<br>
+					<button id="solarSystemCanvasBtn" class="ctrlButton hide">Play</button>
+			</div>
 		<p class="quote" style="text-align: center">"If I have seen farther, it is by standing on the shoulders of giants" &minus; Isaac Newton</p>
 		<h1>Welcome to the wonderful world of Physics!</h1>
 		<p class="">
@@ -91,9 +99,12 @@
 		</article>
 	</div>
 </body>
-
 <script type="text/javascript" src="../jquery-3.1.1.js"></script>
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
 <script type="text/javascript" src="script.js"></script>
 </html>

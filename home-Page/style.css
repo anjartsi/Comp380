@@ -28,6 +28,7 @@
 
 header p {
 	font-size: 1.2em;
+	width: 750px;
 }
 
 .chLink {
@@ -45,4 +46,9 @@ article a
 article a:hover {
 	text-decoration: underline;
 	background-color: white;
+}
+
+#solarSystemCanvas {
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 1px solid white;
 }

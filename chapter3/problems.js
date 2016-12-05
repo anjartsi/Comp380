@@ -5,8 +5,8 @@ prob1.innerHTML = problem1();
 var aMag, aDeg, bMag, bDeg; // Mag = magnitude, deg = degree above x-axis
 var ax, ay, bx, by, rx, ry;
 var answer1;
-var hint1 = "Adding the vectors together requires that you first add their x-components and y-components together.\nThe x-component can be found by multiplying the magnitude by the cosine of the direction."
-			+ "\nThe y-component can be found by multiplying the magnitude by the sine of the direction.\nThe new vector's magnitude can then be solved by adding the squares of its x- and y-components together, and finding the square root of this.";
+var hint1 = "Adding the vectors together requires that you first add their x-components and y-components together.<br>The x-component can be found by multiplying the magnitude by the cosine of the direction."
+			+ "<br>The y-component can be found by multiplying the magnitude by the sine of the direction.<br>The new vector's magnitude can then be solved by adding the squares of its x- and y-components together, and finding the square root of this.";
 
 function problem1(){
 	aMag = randomNum(43, 67);
@@ -48,7 +48,8 @@ var prob3 = document.getElementById("prob3");
 var output3 = document.getElementById("output3");
 prob3.innerHTML = problem3();
 var answer3;
-var hint3 = "The maximum height is found by squaring the initial velocity in the y-direction, and dividing this by two times g. Initial velocity in the y-direction is found by multiplying the initial velocity by the sine of the initial angle.";
+var hint3 = "The maximum height is found by squaring the initial velocity in the y-direction, and dividing this by two times g.\
+			 <br>Initial velocity in the y-direction is found by multiplying the initial velocity by the sine of the initial angle.";
 
 function problem3(){
 	var initSpd = randomNum(20, 30);

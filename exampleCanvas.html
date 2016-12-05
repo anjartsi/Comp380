@@ -1,0 +1,18 @@
+<div class="canvasCont color1">
+	<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
+	<div class="engineHolder">
+		<canvas id="NAMECanvas" style=""></canvas>
+		<br>
+		<div class="controller" id="NAMEControls"></div>
+		<br>
+		<button id="NAMECanvasBtn" class="hide">Play</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+var NAMECanvas = new Engine(document.getElementById("NAMECanvas"), document.getElementById("NAMECanvasBtn"));
+var NAMEControls = document.getElementById("NAMEControls");
+NAMECanvas.create(cWidth, cHeight);
+NAMECanvas.drawGridLines = true;
+</script>
