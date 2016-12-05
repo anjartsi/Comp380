@@ -9,13 +9,36 @@ var hint1 = "The starting position is 0 meters in this case. Add the amount of m
 
 function problem1(){
 	var question1 = "";
-	x1 = randomNum(1000, 4000);
+	x1 = randomNum(1000, 3000);
 	y1 = randomNum(-4000, -1000);
 	answer1 = x1 + y1;
-	question1 = "A jogger runs <span class='probNum'>" + x1 + "</span> meters east, stops for a bit, then runs <span class='probNum'>" + Math.abs(y1) + "</span> meters west. \
-	 			What is the jogger's displacement in meters? Assume east is positive.";
+	question1 = "A jogger, starting at position A, runs <span class='probNum'>" + x1 + "</span> meters east to point B, stops for a bit, then runs <span class='probNum'>" + Math.abs(y1) + "</span> meters west to point C."
+				+" What is the jogger's displacement in meters?" 
+				+" <br>Assume east is positive.";
 	return question1;
 }
+var p1Canvas = new Engine(document.getElementById("p1Canvas"), document.getElementById("p1CanvasBtn"));
+var p1Controls = document.getElementById("p1Controls");
+p1Canvas.create(700, 50);
+p1Canvas.drawGridLines = true;
+var p1black = new Mobile(p1Canvas.canvasWidth / 2, p1Canvas.canvasHeight / 2);
+p1black.addToEngine(p1Canvas);
+p1black.col = 'black';
+p1black.bigness = p1black.engine.canvasHeight / 2 - 5;
+var p1red = new Mobile(p1black.position[0] + x1 / 10, p1Canvas.canvasHeight / 2);
+p1red.addToEngine(p1Canvas);
+p1red.col = 'red';
+p1red.bigness = p1red.engine.canvasHeight / 2 - 5;
+var p1blue = new Mobile(p1red.position[0] + y1 / 10, p1Canvas.canvasHeight / 2);
+p1blue.addToEngine(p1Canvas);
+p1blue.col = 'blue';
+p1blue.bigness = p1blue.engine.canvasHeight / 2 - 5;
+
+
+p1Canvas.drawEverything();
+p1black.addText("A", 30, 'white');
+p1red.addText("B", 30, 'white');
+p1blue.addText("C", 30, 'white');
 
 /* Problem 2: speed */
 var prob2 = document.getElementById("prob2");
