@@ -1,15 +1,3 @@
-var ch1 = document.getElementById("ch1");
-var ch1Sect = document.getElementById("ch1Sect");
-var ch2 = document.getElementById("ch2");
-var ch2Sect = document.getElementById("ch2Sect");
-var ch3 = document.getElementById("ch3");
-var ch3Sect = document.getElementById("ch3Sect");
-
-// makeCollapsable(ch1, ch1Sect);
-// makeCollapsable(ch2, ch2Sect);
-// makeCollapsable(ch3, ch3Sect);
-
-
 var orbit = function(middle, orbitting, grav) {
 	var x = orbitting.position[0] - middle.position[0];
 	var y = orbitting.position[1] - middle.position[1];
@@ -41,7 +29,7 @@ sun.bigness = 25;
 sun.col = "gold";
 sun.addToEngine(solarSystemCanvas);
 
-
+/********************************* mercury *********************************/
 var mercuryDist = 58;
 var mercuryV = 2 * Math.PI * mercuryDist / 0.88 * slow;
 var mercuryG = mercuryV * mercuryV * mercuryDist;
@@ -56,7 +44,7 @@ mercuryRev.addToEngine(solarSystemCanvas, mercury);
 mercuryRev.manipulate = function() {
 	orbit(sun, mercury, mercuryG);
 }
-
+/********************************* venus *********************************/
 var venusDist = 108;
 var venusV =  2 * Math.PI * venusDist / 2.25 * slow;
 var venusG = venusV * venusV * venusDist;
@@ -71,7 +59,7 @@ venusRev.addToEngine(solarSystemCanvas, venus);
 venusRev.manipulate = function() {
 	orbit(sun, venus, venusG);
 }
-
+/********************************* earth *********************************/
 var earthDist = 150;
 var earthV =  2 * Math.PI * earthDist / 3.65 * slow;
 var earthG = earthV * earthV * earthDist;
@@ -87,7 +75,7 @@ earthRev.manipulate = function() {
 	orbit(sun, earth, earthG);
 }
 
-
+/********************************* mars *********************************/
 var marsDist = 228;
 var marsV =  2 * Math.PI * marsDist / 6.87 * slow;
 var marsG = marsV * marsV * marsDist;
@@ -102,7 +90,7 @@ marsRev.addToEngine(solarSystemCanvas, mars);
 marsRev.manipulate = function() {
 	orbit(sun, mars, marsG);
 }
-
+/********************************* jupiter *********************************/
 var jupiterDist = 778;
 var jupiterV =  2 * Math.PI * jupiterDist / 43.32 * slow;
 var jupiterG = jupiterV * jupiterV * jupiterDist;
