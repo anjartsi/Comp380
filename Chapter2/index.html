@@ -48,12 +48,13 @@
 	<!-- This is right below the navBar, where the Chapter title etc.go -->
 	<div id="content">
 		<header>
-			<h1>Chapter 2: Kinematics - Explanation</h1>
+			<h1>Chapter 2: Kinematics</h1>
+			<img src="images/ch2header.png" id="chapterHeader">
 		</header>
 
 		<article>
 			<section>
-				<h2>Kinematics</h2>
+				<h2>2-0 Kinematics</h2>
 				<ul>
 					<li><b>Kinematics</b> is the study of motion without considering its causes</li>
 					<ul>
@@ -73,7 +74,7 @@
 						<li><b>Reference frame</b> means another object that we can use for comparison. </li>
 						<li>Some reference frames can be stationary, while other reference frames can be moving. </li>
 
-						<div class="canvasCont color5">
+						<div class="canvasCont color1">
 							<h4>Control the <b>position</b> of the block by moving the sliders below:</h4>
 							<div class="engineHolder">
 								<canvas id="positionCanvas" style=""></canvas>
@@ -101,7 +102,7 @@
 						<ul>
 							<li>Note that the distance between two points does not depend on the direction</li>
 							<li>Unlike displacement, the distance between two points will never be negative.</li>
-							<div class="canvasCont color5">
+							<div class="canvasCont color1">
 								<h4>Move the slider to change the position of the ball</h4>
 								<h5>Note the difference between displacement and distance.</h5>
 								<div class="engineHolder">
@@ -160,8 +161,8 @@
 					<ul>
 						<li>When describing horizontal motion, we usually describe motion to the right as positive and motion to the left as negative </li>
 						<li>When describing vertical motion, we usually describe the up direction as positive and the down direction as negative</li>
-						<img src="x_axis.PNG">
-						<img src="y_axis.PNG">
+						<img src="images/x_axis.PNG">
+						<img src="images/y_axis.PNG">
 						<li>However, it can sometimes be more convenient to switch the positive and negative directions</li>
 
 						<li>For example, if an object is moving towards the left, it makes more sense to call <i>that</i> the &plus;x direction, this is perfectly acceptable.</li>
@@ -172,7 +173,7 @@
 					Two-dimensional: 
 					<ul>
 						<li>For two-dimensional motion, our coordinate consists of the x-y plane </li>
-						<img src="xy_plane.PNG">
+						<img src="images/xy_plane.PNG">
 						<li>Again, we are free to switch the positive (&plus;) and negative (&minus;) directions (for both x and y). </li>
 					</ul>
 				</li>
@@ -219,7 +220,7 @@
 						<ul>
 							<li>Thus velocity can be positive or negative</li>
 						</ul>
-						<div class="canvasCont color5">
+						<div class="canvasCont color1">
 							<h4>Press play to see how objects with different velocities move differently</h4>
 								<div class="engineHolder">
 								<canvas id="velocityCanvas" style=""></canvas>
@@ -258,7 +259,7 @@
 							<li>
 								a = <sup>&Delta;v</sup> &frasl; <sub>&Delta; t</sub>
 							</li>
-							<div class="canvasCont color5" style="width:550px;float: left;border-right: 1px solid white">
+							<div class="canvasCont color1" style="width:550px;float: left;border-right: 1px solid white">
 								<h4>Press play to see how objects with different accelerations move</h4>
 								<h5>Both of these objects start from rest, but the red square has a bigger accceleration than the blue square.</h5>
 								<div class="engineHolder">
@@ -269,7 +270,7 @@
 									<button id="accelerationCanvasBtn" class="ctrlButton">Play</button>
 								</div>
 							</div>
-							<div class="canvasCont color5" style="width:550px;float: left;">
+							<div class="canvasCont color1" style="width:550px;float: left;">
 								<h4>Even when the blue square has a head start</h4>
 								<h5> the red square catches up because it has a higher acceleration. Notice the blue square's  initial velocity and position</h5>
 									<div class="engineHolder">
@@ -290,13 +291,16 @@
 									<li>This can sometimes be called deceleration</li>
 									<li>But deceleration is not always the same as negative acceleration</li>
 								</ul>
-								<div class="canvasCont color5">
+								<div class="canvasCont color1">
 									<h4>Press play to see the difference between deceleration and negative acceleration</h4>
-									<h5>The red  square is decelerating</h5>
-									<h5>The blue square has a negative acceleration</h5>
 									<div class="engineHolder">
 										<canvas id="decelerationCanvas" style=""></canvas>
-										<br>
+										<h5>
+											The red  square is decelerating 
+											<br>
+											The blue square has a negative acceleration
+										</h5>
+										<!-- <br> -->
 										<div class="controller" id="decelerationControls"></div>
 										<br>
 										<button id="decelerationCanvasBtn" class="ctrlButton">Play</button>

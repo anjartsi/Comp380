@@ -78,28 +78,28 @@ var double = function(n) {
 shadow.addToEngine(dvdCanvas);
 blue.addToEngine(dvdCanvas);
 // blue.addSlider(dvdControls, "position", 0, 0, cWidth , "position", "meters");
-var bluePos = new SliderControl("Position", 0, 200, "meters", blue.col);
+var bluePos = new SliderControl("Position", -100, 100, "meters", blue.col);
 bluePos.decimalPlaces = 0;
 bluePos.addToEngine(dvdCanvas, blue);
 bluePos.print(dvdControls);
 
 
 
-var blueDisp = new SliderData("Displacement", -200, 200 ,"meters", blue.col);
+var blueDisp = new SliderData("Displacement", -100, 100 ,"meters", blue.col);
 blueDisp.decimalPlaces = 0;
 blueDisp.addToEngine(dvdCanvas, blue);
 blueDisp.print(dvdControls);
 
-var blueDist = new SliderData("Distance", -200, 200, "meters", blue.col);
+var blueDist = new SliderData("Distance", -100, 100, "meters", blue.col);
 blueDist.decimalPlaces = 0;
 blueDist.addToEngine(dvdCanvas, blue);
 blueDist.print(dvdControls);
 
 bluePos.manipulate = function() {
-	return this.thing.position[0] - 50;
+	return this.thing.position[0] - 150;
 }
 bluePos.changeProperty = function() {
-	var newVal = this.value + 50;
+	var newVal = this.value + 150;
 	this.thing.position[0] = newVal;
 }
 
@@ -284,7 +284,7 @@ fastAccel2.col = 'red';
 fastAccel2.addToEngine(acceleration2Canvas);
 slowAccel2.addToEngine(acceleration2Canvas);
 
-var timeSlider2 = new SliderControl("Time", 0, 3000, "milliseconds", "white");
+var timeSlider2 = new SliderControl("Elapsed Time", 0, 3000, "milliseconds", "white");
 timeSlider2.addToEngine(acceleration2Canvas, acceleration2Canvas);
 timeSlider2.print(acceleration2Controls);
 timeSlider2.sliderElem.step = 10;
@@ -346,6 +346,19 @@ decelerationCanvas.create(cWidth, cHeight);
 decelerationCanvas.setup(4000);
 decelerationCanvas.drawGridLines = false;
 
+var decelTimeSlider = new SliderControl("Elapsed Time", 0, 4000, "milliseconds", "white");
+decelTimeSlider.addToEngine(decelerationCanvas, decelerationCanvas);
+decelTimeSlider.print(decelerationControls);
+decelTimeSlider.sliderElem.step = 10;
+decelTimeSlider.decimalPlaces = 0;
+decelTimeSlider.manipulate = function() {
+	return this.thing.elapsedTime;
+}
+decelTimeSlider.changeProperty = function() {
+	this.engine.elapsedTime = this.value;
+}
+
+
 var decelRed = new StaticMobile(27, cHeight / 2 + 50);
 decelRed.velocity = [250, 0];
 decelRed.acceleration = [-125, 0];
@@ -368,9 +381,40 @@ decelBlue.col = '#2233ff';
 decelBlue.addToEngine(decelerationCanvas);
 
 decelBlueA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
-decelBlueV = new SliderData("Velocity", 0, 300, "m/s", blue.col);
+decelBlueV = new SliderData("Velocity", -300, 300, "m/s", blue.col);
 decelRedA = new Data("Acceleration", "m/s<sup>2</sup>", red.col);
-decelRedV = new SliderData("Velocity", 0, 300, "m/s", red.col);
+decelRedV = new SliderData("Velocity", -300, 300, "m/s", red.col);
+
+decelBlueA.addToEngine(decelerationCanvas, decelBlue);
+decelBlueA.print(decelerationControls);
+decelBlueA.manipulate = function() {
+	return this.thing.acceleration[0];
+}
+decelBlueV.addToEngine(decelerationCanvas, decelBlue);
+decelBlueV.print(decelerationControls);
+decelBlueV.manipulate = function() {
+	var timeMaxed = Math.min(this.thing.engine.elapsedTime, 2000);
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(timeMaxed, 10) / 1000;
+	return (v0 + a * t);
+}
+decelRedA.addToEngine(decelerationCanvas, decelRed);
+decelRedA.print(decelerationControls);
+decelRedA.manipulate = function() {
+	return this.thing.acceleration[0];
+}
+decelRedV.addToEngine(decelerationCanvas, decelRed);
+decelRedV.print(decelerationControls);
+decelRedV.manipulate = function() {
+	var v0 = parseInt(this.thing.velocity[0], 10);
+	var a = parseInt(this.thing.acceleration[0], 10);
+	var t = parseInt(this.thing.engine.elapsedTime, 10) / 1000;
+	return (v0 + a * t);
+}
+
+
+
 
 decelerationCanvas.drawEverything();
 

@@ -1,22 +1,3 @@
-
-
-#chapterNav {
-	position: relative;
-	z-index: 1;
-}
-
-
-#actionWindow{
-	/*float: right;*/
-}
-
-.canvasCont {
-	float: left;
-	text-align: center;
-}
-
-canvas{
-	background-color: white;
-	border: 1px solid black;
-	display: inline;
+.figures {
+	margin: 0px 25px;
 }

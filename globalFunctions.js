@@ -52,7 +52,8 @@ function answerCheck(inputField, answer, elementOutput){
 // ~~~~~~~~~~~~~~~~~~~ Hint-displaying function ~~~~~~~~~~~~~~~~~~~~~~
 function showHint(hint, elementOutput){
   elementOutput.innerHTML = hint;
-  elementOutput.setAttribute("style", "color: yellow");
+  elementOutput.setAttribute("style", "color: #B84664");
+
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HTML Class Functions~~~~~~~~~~~~~~~
