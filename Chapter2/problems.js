@@ -119,7 +119,7 @@ maxHeightCanvas.drawGridLines = true;
 var blue = new StaticMobile(cWidth / 2, bStart);
 blue.bigness = bBig;
 blue.mass = 1;
-blue.velocity  = [0, 0];
+blue.velocity  = [0, 100];
 blue.acceleration = [0, -500];
 blue.col = 'blue';
 
@@ -128,7 +128,7 @@ var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
 
-var blueVel = new SliderControl("Velocity", 0, 1000, "m/s", blue.col);
+var blueVel = new SliderControl("Initial Velocity", 0, 1000, "m/s", blue.col);
 blueVel.addToEngine(maxHeightCanvas, blue);
 blueVel.print(maxHeightControls);
 
@@ -176,15 +176,26 @@ var red = new StaticMobile(cWidth / 2, yred);
 red.bigness = cWidth / 2;
 red.col = 'red';
 
-// var greenHeight = randomNum(cHeight / 2, cHeight * 3 / 4);
-// var greenTop = greenHeight + green.bigness;
+var bA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
+bA.addToEngine(maxHeightCanvas, blue);
+bA.print(maxHeightControls);
+bA.manipulate = function() {
+	return -this.thing.acceleration[1];
+}
 
-// var redHeight = cHeight - greenTop;
-// sredHeight = greenTop + redHeight / 2;
+var hG = new Data("Minimum height", "m", green.col);
+hG.addToEngine(maxHeightCanvas, green);
+hG.print(maxHeightControls);
+hG.manipulate = function() {
+	return hgreen;
+}
 
-// var floor = new Platform(0,-2,maxHeightCanvas.canvasWidth);
-
-// var ceiling = new Platform(0,maxHeightCanvas.canvasHeight,maxHeightCanvas.canvasWidth);
+var hR = new Data("Maximum height", "m", red.col);
+hR.addToEngine(maxHeightCanvas, red);
+hR.print(maxHeightControls);
+hR.manipulate = function() {
+	return hred;
+}
 
 green.addToEngine(maxHeightCanvas);
 red.addToEngine(maxHeightCanvas);

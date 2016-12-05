@@ -97,16 +97,17 @@
 			<div id="output5"></div>
 		</p>
 		<p>
-			<div class="canvasCont color5" style="margin: auto;">
-				<h4>Time to put your physics skills to the test!</h4>
-					<h5>"Throw" the blue square into the air by changing its velocity and pressing play. Make it so that the entire square is within the green area at its maximum height without entering the red area!</h5>
-					<div class="engineHolder" style="margin: auto;">
-					<canvas id="maxHeightCanvas" class="floatLeft" ></canvas>
-					<br>
-					<div style="width: 100px;height: 10px;float: left;">  </div>
-					<div class="controller floatLeft" id="maxHeightControls">
+			<div class="canvasCont color5" style="margin: auto;width: 800px;">
+				<div class="engineHolder" style="margin: auto;">
+					<canvas id="maxHeightCanvas" class="floatRight" ></canvas>
+					<div class="controller floatLeft" id="maxHeightControls" style="width: 600px;">
+						<h4>Time to put your physics skills to the test!</h4>
+						<h5>Throw the blue square into the air by changing its velocity and pressing play. <br>Your goal is to get the (entire) blue square inside the green area without entering the red area!</h5>
+						<h5>Hint: x<sub>max</sub> = v<sub>0</sub><sup>2</sup> / 2a</h5>
 						<button id="maxHeightCanvasBtn" class="ctrlButton">Play</button>
 					</div>
+					<br>
+					<div style="width: 100px;height: 10px;float: left;">  </div>
 					<div id="maxHeightOutput"></div>
 					<div class="clearBoth"></div>
 					<br>
