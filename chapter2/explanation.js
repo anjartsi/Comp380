@@ -231,6 +231,7 @@ slowAccelA.manipulate = function() {
 
 slowAccelVel.addToEngine(accelerationCanvas, slowAccel);
 slowAccelVel.print(accelerationControls);
+slowAccelVel.decimalPlaces = 2;
 slowAccelVel.manipulate = function() {
 	var v0 = parseInt(this.thing.velocity[0], 10);
 	var a = parseInt(this.thing.acceleration[0], 10);
@@ -246,6 +247,7 @@ fastAccelA.manipulate = function() {
 
 fastAccelVel.addToEngine(accelerationCanvas, fastAccel);
 fastAccelVel.print(accelerationControls);
+fastAccelVel.decimalPlaces = 2;
 fastAccelVel.manipulate = function() {
 	var v0 = parseInt(this.thing.velocity[0], 10);
 	var a = parseInt(this.thing.acceleration[0], 10);
@@ -312,6 +314,7 @@ slowAccel2A.manipulate = function() {
 
 slowAccel2Vel.addToEngine(acceleration2Canvas, slowAccel2);
 slowAccel2Vel.print(acceleration2Controls);
+slowAccel2Vel.decimalPlaces = 2;
 slowAccel2Vel.manipulate = function() {
 	var v0 = parseInt(this.thing.velocity[0], 10);
 	var a = parseInt(this.thing.acceleration[0], 10);
@@ -327,6 +330,7 @@ fastAccel2A.manipulate = function() {
 
 fastAccel2Vel.addToEngine(acceleration2Canvas, fastAccel2);
 fastAccel2Vel.print(acceleration2Controls);
+fastAccel2Vel.decimalPlaces = 2;
 fastAccel2Vel.manipulate = function() {
 	var v0 = parseInt(this.thing.velocity[0], 10);
 	var a = parseInt(this.thing.acceleration[0], 10);
@@ -381,17 +385,23 @@ decelBlue.col = '#2233ff';
 decelBlue.addToEngine(decelerationCanvas);
 
 decelBlueA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
-decelBlueV = new SliderData("Velocity", -300, 300, "m/s", blue.col);
-decelRedA = new Data("Acceleration", "m/s<sup>2</sup>", red.col);
-decelRedV = new SliderData("Velocity", -300, 300, "m/s", red.col);
-
 decelBlueA.addToEngine(decelerationCanvas, decelBlue);
 decelBlueA.print(decelerationControls);
 decelBlueA.manipulate = function() {
 	return this.thing.acceleration[0];
 }
+
+decelRedA = new Data("Acceleration", "m/s<sup>2</sup>", red.col);
+decelRedA.addToEngine(decelerationCanvas, decelRed);
+decelRedA.print(decelerationControls);
+decelRedA.manipulate = function() {
+	return this.thing.acceleration[0];
+}
+
+decelBlueV = new SliderData("Velocity", -300, 300, "m/s", blue.col);
 decelBlueV.addToEngine(decelerationCanvas, decelBlue);
 decelBlueV.print(decelerationControls);
+decelBlueV.decimalPlaces = 2;
 decelBlueV.manipulate = function() {
 	var timeMaxed = Math.min(this.thing.engine.elapsedTime, 2000);
 	var v0 = parseInt(this.thing.velocity[0], 10);
@@ -399,13 +409,11 @@ decelBlueV.manipulate = function() {
 	var t = parseInt(timeMaxed, 10) / 1000;
 	return (v0 + a * t);
 }
-decelRedA.addToEngine(decelerationCanvas, decelRed);
-decelRedA.print(decelerationControls);
-decelRedA.manipulate = function() {
-	return this.thing.acceleration[0];
-}
+
+decelRedV = new SliderData("Velocity", -300, 300, "m/s", red.col);
 decelRedV.addToEngine(decelerationCanvas, decelRed);
 decelRedV.print(decelerationControls);
+decelRedV.decimalPlaces = 2;
 decelRedV.manipulate = function() {
 	var v0 = parseInt(this.thing.velocity[0], 10);
 	var a = parseInt(this.thing.acceleration[0], 10);

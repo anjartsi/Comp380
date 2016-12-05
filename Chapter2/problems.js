@@ -100,9 +100,9 @@ function problem5(){
 }
 
 /* Game animation */
-var cHeight = 600;
+var cHeight = 500;
 var cWidth = 150;
-var cTime = 2000;
+var cTime = 1500;
 var bBig = 25;
 var bStart = 10 + bBig;
 var oldPos = bStart;
@@ -129,9 +129,10 @@ var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
 
-var blueVel = new SliderControl("Initial Velocity", 0, 25, "m/s", blue.col);
+var blueVel = new SliderControl("Initial Velocity", 0, 20, "m/s", blue.col);
 blueVel.addToEngine(maxHeightCanvas, blue);
 blueVel.print(maxHeightControls);
+blueVel.sliderElem.step = 0.1;
 blueVel.manipulate = function() {
 	if(msgOutput == false){
 		newPos = this.thing.position[1];
@@ -186,6 +187,7 @@ bA.manipulate = function() {
 var hG = new Data("Minimum height", "m", green.col);
 hG.addToEngine(maxHeightCanvas, green);
 hG.print(maxHeightControls);
+hG.decimalPlaces = 3;
 hG.manipulate = function() {
 	return hgreen * scaleDown;
 }
@@ -193,6 +195,7 @@ hG.manipulate = function() {
 var hR = new Data("Maximum height", "m", red.col);
 hR.addToEngine(maxHeightCanvas, red);
 hR.print(maxHeightControls);
+hR.decimalPlaces = 3;
 hR.manipulate = function() {
 	return hred * scaleDown;
 }
