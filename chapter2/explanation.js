@@ -217,11 +217,11 @@ timeSlider.changeProperty = function() {
 }
 
 var slowAccelA = new Data("Acceleration", "m/s<sup>2</sup>", slowAccel.col);
-var slowAccelVel = new SliderData("Velocity", 0, 300, "m/s", slowAccel.col);
-
+var slowAccelVel = new SliderData("Velocity", 0, 30, "m/s", slowAccel.col);
+slowAccelVel.sliderElem.step = 0.1
 var fastAccelA = new Data("Acceleration", "m/s<sup>2</sup>", fastAccel.col);
-var fastAccelVel = new SliderData("Velocity", 0, 300, "m/s", fastAccel.col);
-
+var fastAccelVel = new SliderData("Velocity", 0, 30, "m/s", fastAccel.col);
+fastAccelVel.sliderElem.step = 0.1
 
 slowAccelA.addToEngine(accelerationCanvas, slowAccel);
 slowAccelA.print(accelerationControls);
@@ -266,13 +266,13 @@ Acceleration2 Canvas
 var acceleration2Canvas = new StaticEngine(document.getElementById("acceleration2Canvas"), document.getElementById("acceleration2CanvasBtn"));
 var acceleration2Controls = document.getElementById("acceleration2Controls");
 acceleration2Canvas.create(2 * cWidth - 100, cHeight);
-acceleration2Canvas.setup(3000);
+acceleration2Canvas.setup(4000);
 acceleration2Canvas.drawGridLines = false;
 
-var slowAccel2 = new StaticMobile(12 + 50, 2 * cHeight / 3);
+var slowAccel2 = new StaticMobile(12, 2 * cHeight / 3);
 slowAccel2.bigness = 10;
 slowAccel2.mass = 1;
-slowAccel2.velocity = [50,0];
+slowAccel2.velocity = [0,0];
 slowAccel2.acceleration = [50, 0];
 slowAccel2.col = '#2233ff';
 
@@ -282,6 +282,18 @@ fastAccel2.mass = 1;
 fastAccel2.velocity = [0,0];
 fastAccel2.acceleration = [100, 0];
 fastAccel2.col = 'red';
+
+fastAccel2.incrementTime = function(time) {
+	var newTime = time - 1000;
+	if(newTime < 0) {
+		newTime = 0;
+	}
+	for (var i = 0; i < 2; i++) {
+		this.position[i] = this.initialPosition[i] + this.velocity[i] * newTime / 1000 
+		this.position[i] += 0.5 * this.acceleration[i] * newTime * newTime / 1000000
+	}
+}
+
 
 fastAccel2.addToEngine(acceleration2Canvas);
 slowAccel2.addToEngine(acceleration2Canvas);
@@ -300,10 +312,10 @@ timeSlider2.changeProperty = function() {
 }
 
 var slowAccel2A = new Data("Acceleration", "m/s<sup>2</sup>", slowAccel2.col);
-var slowAccel2Vel = new SliderData("Velocity", 0, 300, "m/s", slowAccel2.col);
+var slowAccel2Vel = new SliderData("Velocity", 0, 30, "m/s", slowAccel2.col);
 
 var fastAccel2A = new Data("Acceleration", "m/s<sup>2</sup>", fastAccel2.col);
-var fastAccel2Vel = new SliderData("Velocity", 0, 300, "m/s", fastAccel2.col);
+var fastAccel2Vel = new SliderData("Velocity", 0, 30, "m/s", fastAccel2.col);
 
 
 slowAccel2A.addToEngine(acceleration2Canvas, slowAccel2);
