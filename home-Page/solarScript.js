@@ -10,10 +10,9 @@ var orbit = function(middle, orbitting, grav) {
 	orbitting.acceleration[0] = -f * Math.cos(theta) * dir;
 	orbitting.acceleration[1] = -f * Math.sin(theta) * dir;	
 }
-
-var slow = 1;
-var small = 0.5
-var cWidth = 800;
+var slow = 1; // scale the speed of planets
+var small = 0.5; // scale the size of EVERYTHING
+var cWidth = 1600 * small;
 var cHeight = cWidth;
 	
 var solarSystemCanvas = new Engine(document.getElementById("solarSystemCanvas"), document.getElementById("solarSystemCanvasBtn"));
@@ -107,6 +106,3 @@ jupiterRev.manipulate = function() {
 }
 
 solarSystemCanvas.drawEverything();
-solarSystemCanvas.play();
-
-
