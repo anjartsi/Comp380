@@ -12,20 +12,11 @@
 	position: relative;
 	left: 25%;
 }
-#shade {
-position: fixed;
-width: 1284px;
-height: 100%;
-z-index: -2;
-background-color: black;
-opacity: 0.85;
-}
+
+
 
 html
 {
-
-	/*-webkit-text-stroke-width: 2px;*/
-   /*-webkit-text-stroke-color: blue;*/
 	color: #FFFFFF;
 	background-image: url("galaxy2.jpg");
     background-repeat: no-repeat;
@@ -38,21 +29,25 @@ html
 	font-size: 1em;
 	overflow: scroll;
 }
+/* semitransparent filter between background-image and the page */
+#shade {
+position: fixed;
+width: 1284px;
+height: 100%;
+z-index: -2;
+background-color: black;
+opacity: 0.85;
+}
 
 img {
+	/* need images to appear behind navBar items */
 	z-index: -1;
 }
 
-#banner
+/* canvases are white by default*/
+canvas 
 {
-	width: 100%;
-	height: 300px;
-	margin-top: 0px;
-	text-align: center;
-	background-image: url("galaxy1.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+	background-color: white;
 }
 
 /*Body Content*/
@@ -62,6 +57,7 @@ img {
 	padding: 10px;
 	
 }
+
 ul li {
 	margin-bottom: 2px;
 }
@@ -80,16 +76,9 @@ ul li {
 	padding-top: 5px;
 }
 
-article a
-{
-	text-decoration: none;
-	color: #B84664;
-
-}
-article a:hover {
-	text-decoration: underline;
-}
-/* The nav bar*/
+/*********************************************** 
+The nav bar
+************************************************/
 #navBar 
 {
 	position: sticky;
@@ -200,18 +189,11 @@ nav li a, .dropbtn
 	width: 1000px;
 }
 
-/* +/- button for collapsable elements */
-.collapse-pm 
-{
-	-webkit-user-select: none;	
-	font-weight: bold;
-	display: inline;
-	float:right;
-	width:50px;
-	text-align: right;
-	vertical-align: middle;
-}
+/* end nav bar */
 
+/**************************************************
+Sample Problem Styles
+***************************************************/
 .probNum
 {
 	color: #B84664;
@@ -234,6 +216,29 @@ nav li a, .dropbtn
 	margin: 10px
 	font-size: 25px;
 }
+
+.problemCont {
+	background-color: rgba(100,100,100, 0.2);
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.hint {
+	color: #B84664;
+}
+
+.correct {
+	color: #1aff1a;
+}
+
+.incorrect {
+	color: #ff3333;
+}
+
+/**************************************************
+Helper classes
+***************************************************/
 
 .hide 
 {
@@ -261,8 +266,15 @@ nav li a, .dropbtn
 	clear:both;
 }
 
-canvas 
-{
-	background-color: white;
-}
 
+/* +/- button for collapsable elements */
+.collapse-pm 
+{
+	-webkit-user-select: none;	
+	font-weight: bold;
+	display: inline;
+	float:right;
+	width:50px;
+	text-align: right;
+	vertical-align: middle;
+}

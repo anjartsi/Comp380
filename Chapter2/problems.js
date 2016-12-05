@@ -9,13 +9,36 @@ var hint1 = "The starting position is 0 meters in this case. Add the amount of m
 
 function problem1(){
 	var question1 = "";
-	x1 = randomNum(1000, 4000);
+	x1 = randomNum(1000, 3000);
 	y1 = randomNum(-4000, -1000);
 	answer1 = x1 + y1;
-	question1 = "A jogger runs <span class='probNum'>" + x1 + "</span> meters east, stops for a bit, then runs <span class='probNum'>" + Math.abs(y1) + "</span> meters west. \
-	 			What is the jogger's displacement in meters? Assume east is positive.";
+	question1 = "A jogger, starting at position A, runs <span class='probNum'>" + x1 + "</span> meters east to point B, stops for a bit, then runs <span class='probNum'>" + Math.abs(y1) + "</span> meters west to point C."
+				+" What is the jogger's displacement in meters?" 
+				+" <br>Assume east is positive.";
 	return question1;
 }
+var p1Canvas = new Engine(document.getElementById("p1Canvas"), document.getElementById("p1CanvasBtn"));
+var p1Controls = document.getElementById("p1Controls");
+p1Canvas.create(700, 50);
+p1Canvas.drawGridLines = true;
+var p1black = new Mobile(p1Canvas.canvasWidth / 2, p1Canvas.canvasHeight / 2);
+p1black.addToEngine(p1Canvas);
+p1black.col = 'black';
+p1black.bigness = p1black.engine.canvasHeight / 2 - 5;
+var p1red = new Mobile(p1black.position[0] + x1 / 10, p1Canvas.canvasHeight / 2);
+p1red.addToEngine(p1Canvas);
+p1red.col = 'red';
+p1red.bigness = p1red.engine.canvasHeight / 2 - 5;
+var p1blue = new Mobile(p1red.position[0] + y1 / 10, p1Canvas.canvasHeight / 2);
+p1blue.addToEngine(p1Canvas);
+p1blue.col = 'blue';
+p1blue.bigness = p1blue.engine.canvasHeight / 2 - 5;
+
+
+p1Canvas.drawEverything();
+p1black.addText("A", 30, 'white');
+p1red.addText("B", 30, 'white');
+p1blue.addText("C", 30, 'white');
 
 /* Problem 2: speed */
 var prob2 = document.getElementById("prob2");
@@ -100,15 +123,16 @@ function problem5(){
 }
 
 /* Game animation */
-var cHeight = 600;
+var cHeight = 500;
 var cWidth = 150;
-var cTime = 2000;
+var cTime = 1500;
 var bBig = 25;
 var bStart = 10 + bBig;
 var oldPos = bStart;
 var newPos = bStart;
 var msgOutput = false;
-
+var scaleDown = 9.8 / 500; 
+var scaleUp = 1 / scaleDown;
 var maxHeightCanvas = new StaticEngine(document.getElementById("maxHeightCanvas"), document.getElementById("maxHeightCanvasBtn"));
 var maxHeightControls = document.getElementById("maxHeightControls");
 var maxHeightOutput = document.getElementById("maxHeightOutput");
@@ -119,7 +143,7 @@ maxHeightCanvas.drawGridLines = true;
 var blue = new StaticMobile(cWidth / 2, bStart);
 blue.bigness = bBig;
 blue.mass = 1;
-blue.velocity  = [0, 0];
+blue.velocity  = [0, 100];
 blue.acceleration = [0, -500];
 blue.col = 'blue';
 
@@ -128,24 +152,24 @@ var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
 
-var blueVel = new SliderControl("Velocity", 0, 1000, "m/s", blue.col);
+var blueVel = new SliderControl("Initial Velocity", 0, 20, "m/s", blue.col);
 blueVel.addToEngine(maxHeightCanvas, blue);
 blueVel.print(maxHeightControls);
-
+blueVel.sliderElem.step = 0.1;
 blueVel.manipulate = function() {
 	if(msgOutput == false){
 		newPos = this.thing.position[1];
 		heightCheck();
 		oldPos = this.thing.position[1];
 	}
-	return this.thing.velocity[1];
+	return this.thing.velocity[1] * scaleDown;
 }
 
 blueVel.changeProperty = function() {
 	oldPos = bStart;
 	newPos = bStart;
 	msgOutput = false;
-	this.thing.velocity[1] = this.value;
+	this.thing.velocity[1] = this.value * scaleUp;
 	this.engine.elapsedTime = 0;
 	maxHeightOutput.innerHTML = "";
 }
@@ -159,7 +183,7 @@ function heightCheck(){
 	if (newPos < oldPos && (blue.position[1] + bBig < hred) && (blue.position[1] - bBig > hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #1aff1a");
 		msgOutput = true;
-		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * 100) / 100 + " meters.";
+		return maxHeightOutput.innerHTML = "You did it! The max height the square reached was " + Math.round(oldPos * scaleDown * 100) / 100 + " meters.";
 	}
 	if (newPos < oldPos && (blue.position[1] - bBig < hgreen)){
 		maxHeightOutput.setAttribute("style", "color: #ff3333");
@@ -176,15 +200,28 @@ var red = new StaticMobile(cWidth / 2, yred);
 red.bigness = cWidth / 2;
 red.col = 'red';
 
-// var greenHeight = randomNum(cHeight / 2, cHeight * 3 / 4);
-// var greenTop = greenHeight + green.bigness;
+var bA = new Data("Acceleration", "m/s<sup>2</sup>", blue.col);
+bA.addToEngine(maxHeightCanvas, blue);
+bA.print(maxHeightControls);
+bA.manipulate = function() {
+	return -this.thing.acceleration[1] * scaleDown;
+}
 
-// var redHeight = cHeight - greenTop;
-// sredHeight = greenTop + redHeight / 2;
+var hG = new Data("Minimum height", "m", green.col);
+hG.addToEngine(maxHeightCanvas, green);
+hG.print(maxHeightControls);
+hG.decimalPlaces = 3;
+hG.manipulate = function() {
+	return hgreen * scaleDown;
+}
 
-// var floor = new Platform(0,-2,maxHeightCanvas.canvasWidth);
-
-// var ceiling = new Platform(0,maxHeightCanvas.canvasHeight,maxHeightCanvas.canvasWidth);
+var hR = new Data("Maximum height", "m", red.col);
+hR.addToEngine(maxHeightCanvas, red);
+hR.print(maxHeightControls);
+hR.decimalPlaces = 3;
+hR.manipulate = function() {
+	return hred * scaleDown;
+}
 
 green.addToEngine(maxHeightCanvas);
 red.addToEngine(maxHeightCanvas);

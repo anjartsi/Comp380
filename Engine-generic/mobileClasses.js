@@ -66,14 +66,15 @@ Mobile.prototype.makePath = function() {
 
 
 
-Mobile.prototype.addText = function() {
-	ctx.save();
-	ctx.fillStyle='black';
-	ctx.translate(this.position[0], this.position[1]);
-	ctx.textAlign='center';
-	ctx.scale(1, -1);
-	ctx.fillText('( ' + this.position[0] + ' , ' + this.position[1] + ' )', 0, 0);
-	ctx.restore();
+Mobile.prototype.addText = function(text, size, col) {
+	this.engine.ctx.save();
+	this.engine.ctx.fillStyle = col;
+	this.engine.ctx.font = size + "px Arial";
+	this.engine.ctx.translate(this.position[0], this.position[1]-size/3);
+	this.engine.ctx.textAlign='center';
+	this.engine.ctx.scale(1, -1);
+	this.engine.ctx.fillText(text, 0, 0);
+	this.engine.ctx.restore();
 }
 
 // Changes all the properties of the mobile object after each time increment
