@@ -28,21 +28,28 @@
 
 header p {
 	font-size: 1.2em;
+	width: 750px;
 }
 
 .chLink {
 	font-size: 1.5em;
 	font-weight: bold;
 	list-style: none
+	color: #B84664;
 }
 
-article a
+a
 {
 	text-decoration: none;
 	color: #B84664;
 
 }
-article a:hover {
+a:hover {
 	text-decoration: underline;
 	background-color: white;
+}
+
+#solarSystemCanvas {
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 1px solid white;
 }

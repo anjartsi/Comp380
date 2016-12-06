@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../globalStyle.css">	
+	<link rel="stylesheet" type="text/css" href="../controllerStyle.css">	
+	<title>Solar System</title>
+</head>
+
+<body>
+	<!-- <div id="shade"></div> -->
+	<div>
+		<nav id = "navBar" class="color2">
+			<ul class="color2">
+				<li id="logoLeft"><img src="../open2.png" alt="some_text" style="width:auto;height:50px;"></li>
+				<li><a id="selected" href="index.html">Home Page</a></li>
+				<li class="dropdown">
+					<a href="../Chapter1/index.html" class="dropbtn">Chapter 1</a>
+					<div class="dropdown-content">
+	      				<a href="../Chapter1/index.html">Explanation</a>
+	      				<a href="../Chapter1/sampleProblems.html">Sample Problems</a>
+	    			</div>
+				</li>
+	  			<li class="dropdown">
+	  				<a href="../Chapter2/index.html" class="dropbtn">Chapter 2</a>
+	  				<div class="dropdown-content">
+	      				<a href="../Chapter2/index.html">Explanation</a>
+	      				<a href="../Chapter2/sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+	  			<li class="dropdown">
+	    			<a href="../Chapter3/index.html" class="dropbtn">Chapter 3</a>
+	    			<div class="dropdown-content">
+	      				<a href="../Chapter3/index.html">Explanation</a>
+	      				<a href="../Chapter3/sampleProblems.html">Sample Problems</a>
+	    			</div>
+	  			</li>
+	  			<li id="logoRight"><img src="../open3.png" alt="some_text" style="width:auto;height:50px;"></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="banner">
+		<h1 id="bannerText">CollegePhysicsTA.com</h1>
+	</div>
+	<!-- buffer space between the navBar and the rest of the page -->
+	<div id="buffer2"></div>
+
+	<!-- This is right below the navBar, where the Chapter title etc.go -->
+	<div id="content">
+		<header>
+		<p class="quote" style="text-align: center; width: 100%">"If I have seen farther, it is by standing on the shoulders of giants" &minus; Isaac Newton</p>
+			<div class="canvasCont" style="width: 1300px; margin:0px;">
+					<canvas id="solarSystemCanvas" style="background-color: black;"></canvas>
+					<br>
+					<div class="controller" id="solarSystemControls"></div>
+					<br>
+					<button id="solarSystemCanvasBtn" class="ctrlButton">Play</button>
+			</div>
+		
+		<p class="quote" style="text-align: center;width: 100%">"All of physics is either impossible or trivial. It is impossible until you understand it, and then it becomes trivial" &minus; Ernest Rutherford</p>
+		</header>
+	</div>
+</body>
+<script type="text/javascript" src="../jquery-3.1.1.js"></script>
+<script type="text/javascript" src="../globalFunctions.js"></script>
+<script type="text/javascript" src="../navBar.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
+<script type="text/javascript" src="solarScript.js"></script>
+</html>

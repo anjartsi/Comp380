@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="../globalStyle.css">	
+	<link rel="stylesheet" type="text/css" href="../controllerStyle.css">	
 	<meta id="chapterName" name="Chapter 3">
 	<meta id="pageType" name="explanation">		
 	<title>Ch. 3 - Explanation</title>
@@ -70,6 +71,7 @@
 						<ul>
 							<li>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></li>
 							<li>a and b are the magnitudes of the perpendicular vectors, while c is the magnitude of the hypotenuse.</li>
+							<img src="images/pyth.png" class="figures">
 						</ul>
 						<li>The horizontal and vertical components of motion are independent of each other, and neither affects the other</li>
 					</ul>
@@ -90,12 +92,14 @@
 				<h2>3-3 Vector Addition and Subtraction: Analytical Methods</h2>
 				<ul>
 					<li>Trigonometry is used to determine the magnitudes and directions of vectors</li>
+						<img src="images/analytical-vectors.png" class="figures">
 					<li>Say there exists a vector, vector <b>A</b>, with direction <i>&#952;</i>. It is composed of two perpendicular vectors added together: its x-component (<b>A<sub>x</sub></b>) and its y-component (<b>A<sub>y</sub></b>).</li>
 					<ul>
 						<li>Magnitude of <b>A<sub>x</sub></b>: <i><b>A<sub>x</sub></b></i> = <i><b>A</b></i> cos <i>&#952;</i></li>
 						<li>Magnitude of <b>A<sub>y</sub></b>: <i><b>A<sub>y</sub></b></i> = <i><b>A</b></i> sin <i>&#952;</i></li>
-						<li>Magnitude of <b>A</b>: <i><b>A</b></i><sub>2</sub> = <i><b>A<sub>x</sub></b></i><sup>2</sup> + <i><b>A<sub>y</sub></b></i><sup>2</sup></li>
+						<li>Magnitude of <b>A</b>: <i><b>A</b></i><sup>2</sup> = <i><b>A<sub>x</sub></b></i><sup>2</sup> + <i><b>A<sub>y</sub></b></i><sup>2</sup></li>
 						<li>Direction <i>&#952;</i>: <i>&#952;</i> = tan<sup>-1</sup>(<i><b>A<sub>x</sub></b></i> / <i><b>A<sub>y</sub></b></i>)</li>
+						<img src="images/vectors.png" class="figures">
 					</ul>
 				</ul>
 			</section>
@@ -104,10 +108,12 @@
 				<h2>3-4 Projectile Motion</h2>
 				<ul>
 					<li>Objects thrown into the air are called projectiles, and their path is called the trajectory. Assume air resistance is negligible for now.</li>
+					<img src="images/projectile.png" class="figures">
 					<li>Recall that motions along perpendicular axes are independent of each other.</li>
 					<ul>
 						<li>This allows us to analyze motion by splitting it into two motions: one vertical, one horizontal.</li>
 					</ul>
+					<img src="images/projectile-components.png" class="figures">
 					<li>Assume that gravity only affects motion in the vertical direction.</li>
 					<ul>
 						<li><b>a<sub>y</sub></b> = -<b>g</b> = -9.80 m/s<sup>2</sup></li>
@@ -141,7 +147,16 @@
 					</ul>
 				</ul>
 			</section>
-
+			<div class="canvasCont color1" style="width: 700px;">
+				<h4>Compare the purple square with its x-component (blue) and y-component(red)</h4>
+				<div class="engineHolder" style="width: 700px;">
+					<canvas id="componentsCanvas" ></canvas>
+					<br>
+					<div class="controller" id="componentsControls"></div>
+					<br>
+					<button id="componentsCanvasBtn" class="ctrlButton">Play</button>
+				</div>
+			</div>
 			<section>
 				<h2>3-5 Addition of Velocities</h2>
 				<ul>
@@ -163,5 +178,9 @@
 <script type="text/javascript" src="../jquery-3.1.1.js"></script>
 <script type="text/javascript" src="../globalFunctions.js"></script>
 <script type="text/javascript" src="../navBar.js"></script>
+<script type="text/javascript" src="../engine-generic/engineClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/immobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/mobileClasses.js"></script>
+<script type="text/javascript" src="../engine-generic/data.js"></script>
 <script type="text/javascript" src="script.js"></script>
 </html>

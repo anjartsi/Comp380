@@ -122,7 +122,9 @@ function problem5(){
 	return question5;
 }
 
-/* Game animation */
+/********************************************* 
+Game animation 
+*********************************************/
 var cHeight = 500;
 var cWidth = 150;
 var cTime = 1500;
@@ -143,12 +145,13 @@ maxHeightCanvas.drawGridLines = true;
 var blue = new StaticMobile(cWidth / 2, bStart);
 blue.bigness = bBig;
 blue.mass = 1;
-blue.velocity  = [0, 100];
+blue.velocity  = [0, 250];
 blue.acceleration = [0, -500];
 blue.col = 'blue';
 
 var hred = randomNum(cHeight - cWidth + 1, cHeight - 3 * blue.bigness);
-var hgreen = randomNum(hred - cWidth + 1, hred - 3 * blue.bigness);
+var hgreen = randomNum(hred - cWidth + blue.bigness, hred - 2 * blue.bigness);
+
 var yred = hred + cWidth / 2;
 var ygreen = hgreen + cWidth / 2;
 
