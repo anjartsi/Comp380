@@ -57,6 +57,7 @@ StaticMobile.prototype.constructor = StaticMobile;
 
 StaticMobile.prototype.incrementTime = function(time) {
 	for (var i = 0; i < 2; i++) {
+		// movement is based on initial position and total elapsed time
 		this.position[i] = this.initialPosition[i] + this.velocity[i] * time / 1000 
 		this.position[i] += 0.5 * this.acceleration[i] * time * time / 1000000
 	}

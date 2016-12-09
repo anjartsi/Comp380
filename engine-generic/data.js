@@ -42,17 +42,18 @@ Data.prototype.print = function(parentElem) {
 	this.rowElem.className = "controllerRow " + this.dataType +  "Row";
 	this.rowElem.style.color = this.col;
 
+	// make each element
 	this.makeDesc();
 	this.makeValue();
 	this.makeUnits();
 
-	// add to controller
+	// add them to controller
 	this.rowElem.appendChild(this.descElem);
 	this.rowElem.appendChild(this.valueElem);
 	this.rowElem.appendChild(this.unitsElem);
 	this.parent.appendChild(this.rowElem);
 }
-
+// this function is called any time a change occurs in the engine
 Data.prototype.update = function() {
 	var newVal = this.manipulate();
 	newVal = newVal;
@@ -63,6 +64,9 @@ Data.prototype.update = function() {
 	this.valueElem.innerHTML = newVal;
 }
 
+// This function will be created separately for each Data object
+// the function will contain calculations and return a single result
+// that result is what will be printed by this object
 Data.prototype.manipulate = function() {
 	return 0;
 }
@@ -222,6 +226,9 @@ SliderControl.prototype.print = function(parentElem) {
 
 }
 
+// This function will be created separately for each SliderControl object
+// This function is responsible for changing the values of this.thing
+// after this.value has been 
 SliderControl.prototype.changeProperty = function() {
 	return 0;
 }
